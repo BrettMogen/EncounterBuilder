@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  margin-bottom: 2em;
+}
+
+.teamsContainer {
+  padding: 0.25em 0em;
+}
+
+.friendlyParty {
+  width: 50%;
+  float: left;
+  padding: 0 1em;
+}
+
+.friendlyInterior {
+  width: 100%;
+  outline: 1em solid green;
+}
+
+.enemyTeam {
+  width: 50%;
+  float: right;
+  padding: 0 1em;
+}
+
+.enemyInterior {
+  width: 100%;
+  outline: 1em solid red;
+}

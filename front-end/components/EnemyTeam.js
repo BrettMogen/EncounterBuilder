@@ -3,7 +3,9 @@ import React, { useState, useContext } from 'react';
 const EnemyTeam = () => {
   return (
     <div>
-      <div className="enemyTeam">Enemy!</div>
+      <div className="enemyTeam">
+        <div className="enemyInterior">Enemy!</div>
+      </div>
    </div>
   )
 }

@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <div>
-      <div>Hello World!</div>
+      <div className="title" >Hello World!</div>
       <div className="teamsContainer">
         <FriendlyParty />
         <EnemyTeam />
