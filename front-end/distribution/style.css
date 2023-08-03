@@ -7,13 +7,13 @@ body {
 
 .header {
   margin-bottom: 2em;
-  background-color: aqua;
   height: 4em;
   line-height: 4em;
   font-size: large;
   padding-left: 2em;
   font-weight: 400;
   font-style: normal;
+  background-image: url("./images/mushroom-background.avif");
 }
 
 .teamsContainer {
