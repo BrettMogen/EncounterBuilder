@@ -8,7 +8,9 @@ const App = () => {
 
   return (
     <div>
-      <div className="title" >Hello World!</div>
+      <div className="header" >
+        <h1>Encounter Builder</h1>
+      </div>
       <div className="teamsContainer">
         <FriendlyParty />
         <EnemyTeam />

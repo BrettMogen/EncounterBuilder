@@ -1,14 +1,24 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Lugrasimo', cursive;
+  font-style: italic;
 }
 
-.title {
+.header {
   margin-bottom: 2em;
+  background-color: aqua;
+  height: 4em;
+  line-height: 4em;
+  font-size: large;
+  padding-left: 2em;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .teamsContainer {
   padding: 0.25em 0em;
+  height: 80%;
 }
 
 .friendlyParty {
@@ -19,7 +29,8 @@ body {
 .friendlyInterior {
   box-sizing: border-box;
   width: 100%;
-  border: 1em solid green;
+  border: 1em ridge green;
+  height: 100%;
 }
 
 .enemyTeam {
@@ -30,5 +41,6 @@ body {
 .enemyInterior {
   box-sizing: border-box;
   width: 100%;
-  border: 1em solid red;
+  border: 1em ridge red;
+  height: 100%;
 }
