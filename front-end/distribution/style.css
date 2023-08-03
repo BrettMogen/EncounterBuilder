@@ -14,21 +14,21 @@ body {
 .friendlyParty {
   width: 50%;
   float: left;
-  padding: 0 1em;
 }
 
 .friendlyInterior {
+  box-sizing: border-box;
   width: 100%;
-  outline: 1em solid green;
+  border: 1em solid green;
 }
 
 .enemyTeam {
   width: 50%;
   float: right;
-  padding: 0 1em;
 }
 
 .enemyInterior {
+  box-sizing: border-box;
   width: 100%;
-  outline: 1em solid red;
+  border: 1em solid red;
 }
