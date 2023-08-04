@@ -33,7 +33,7 @@ body {
 .friendlyInterior {
   box-sizing: border-box;
   width: 100%;
-  border: 1em ridge green;
+  border: 1em ridge #1d7d36;
   height: 100%;
 }
 
@@ -45,6 +45,6 @@ body {
 .enemyInterior {
   box-sizing: border-box;
   width: 100%;
-  border: 1em ridge red;
+  border: 1em ridge #6e1c19;
   height: 100%;
 }
