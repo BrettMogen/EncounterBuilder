@@ -28,11 +28,7 @@ body {
 .friendlyParty {
   width: 50%;
   float: left;
-}
-
-.friendlyInterior {
   box-sizing: border-box;
-  width: 100%;
   border: 1em ridge #1d7d36;
   height: 100%;
 }
@@ -40,11 +36,7 @@ body {
 .enemyTeam {
   width: 50%;
   float: right;
-}
-
-.enemyInterior {
   box-sizing: border-box;
-  width: 100%;
   border: 1em ridge #6e1c19;
   height: 100%;
 }
