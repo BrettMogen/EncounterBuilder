@@ -25,7 +25,7 @@ body {
   height: 80%;
 }
 
-.friendlyParty {
+.friendlyPartyContainer {
   width: 50%;
   float: left;
   box-sizing: border-box;
@@ -33,7 +33,13 @@ body {
   height: 100%;
 }
 
-.enemyTeam {
+.friendlyParty {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.enemyTeamContainer {
   width: 50%;
   float: right;
   box-sizing: border-box;
