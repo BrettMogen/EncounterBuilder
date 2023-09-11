@@ -5,6 +5,7 @@ const EnemyTeam = () => {
   return (
     <div>
       <div className="enemyTeamContainer">
+        <div className="enemyTeamTitle">Enemy Team</div>
         <div className="enemyTeam">{enemyTeam}</div>
       </div>
    </div>

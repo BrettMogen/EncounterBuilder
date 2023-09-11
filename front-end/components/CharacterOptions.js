@@ -3,7 +3,7 @@ import { MainContext } from '../context.js';
 
 const CharacterOptions = () => {
   return (
-    <div></div>
+    <div className="characterOptionsTitle">Character Options</div>
   )
 }
 

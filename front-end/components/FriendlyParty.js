@@ -6,6 +6,7 @@ const FriendlyParty = () => {
   return (
     <div>
       <div className="friendlyPartyContainer">
+        <div className="friendlyPartyTitle">Friendly Party</div>
         <div className="friendlyParty">{friendlyParty}</div>
       </div>
     </div>
