@@ -48,3 +48,18 @@ body {
   border: 1em ridge #6e1c19;
   height: 100%;
 }
+
+.enemyTeam {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  height: 100%;
+}
+
+.characterOptions {
+  height: 30%;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1em ridge #2351cf;
+}

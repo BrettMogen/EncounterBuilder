@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MainContext } from '../context.js';
 import Axios from 'axios';
+import CharacterOptions from './CharacterOptions.js';
 import FriendlyParty from './FriendlyParty.js';
 import EnemyTeam from './EnemyTeam.js';
 
@@ -10,6 +11,9 @@ const App = () => {
     <div>
       <div className="header" >
         <h1>Encounter Builder</h1>
+      </div>
+      <div className = "characterOptions">
+        <CharacterOptions />
       </div>
       <div className="teamsContainer">
         <FriendlyParty />
