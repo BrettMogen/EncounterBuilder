@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 
 const FriendlyParty = () => {
-  let friendlyParty = [<div>Hello</div>, <div>Hi there</div>, <div>Howdy</div>, <div>What happens now?</div>];
+  let friendlyParty = [<div style={{height: "1000px"}}>Hello</div>, <div>Hi there</div>, <div>Howdy</div>, <div>What happens now?</div>];
 
   return (
     <div>
