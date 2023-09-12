@@ -93,21 +93,34 @@ body {
   width: 100%;
 }
 
-/* CharacterOptions */
-.characterOptions {
+/* Character Options */
+.characterOptionsContainer {
   height: 30%;
   width: 100%;
   box-sizing: border-box;
   border: 1em ridge #2351cf;
   display: flex;
+  position: relative;
 }
 
 .characterOptionsTitle {
+  z-index: 1;
+  position: absolute;
   display: flex;
   width: 100%;
+  height: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 450%;
   color: #c3c7d4;
+}
+
+.characterOptions {
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  height: 100%;
+  width: 100%;
 }

@@ -4,6 +4,7 @@ import Axios from 'axios';
 import CharacterOptions from './CharacterOptions.js';
 import FriendlyParty from './FriendlyParty.js';
 import EnemyTeam from './EnemyTeam.js';
+import UniqueCharacters from './UniqueCharacters.js';
 
 const App = () => {
 
@@ -12,7 +13,7 @@ const App = () => {
       <div className="header" >
         <h1>Encounter Builder</h1>
       </div>
-      <div className = "characterOptions">
+      <div>
         <CharacterOptions />
       </div>
       <div className="teamsContainer">
