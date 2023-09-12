@@ -6,10 +6,10 @@ const UniqueCharacters = (input) => {
 
 
   return (
-    <div>
-      <div>{input['name']}</div>
-      <div>{input['weapon']}</div>
-      <div>{input['health']}</div>
+    <div className="characterContainer">
+      <div className="characterName">{input['name']}</div>
+      <div className="characterWeapon">{input['weapon']}</div>
+      <div className="characterHealth">Health: {input['health']}</div>
     </div>
   )
 }
