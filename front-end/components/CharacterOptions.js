@@ -1,15 +1,15 @@
-import React, { useState, useEffeect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MainContext } from '../context.js';
 import UniqueCharacters from './UniqueCharacters.js';
 
 const CharacterOptions = () => {
-  let characterBank = [];
 
   const characters = [
     {
       name: 'Archer',
       weapon: 'Bow',
-      health: 12
+      health: 12,
+      characterDescription: 'This character is sick!!'
     },
     {
       name: 'Barbarian',
@@ -18,16 +18,9 @@ const CharacterOptions = () => {
     }
   ];
 
-  let i = 0;
-
-  while (i < characters.length) {
-    characterBank.push(UniqueCharacters(characters[i]));
-    i++;
-  }
-
   return (
     <div className = "characterOptionsContainer">
-      <div className="characterOptions">{characterBank}</div>
+      <div className="characterOptions">{characters.map( (c) => <UniqueCharacters character={c}/> )}</div>
       <div className="characterOptionsTitle">Character Options</div>
     </div>
   )
