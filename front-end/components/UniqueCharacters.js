@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import MainContext from '../context.js';
 import CharacterOptions from './CharacterOptions.js';
 
-const UniqueCharacters = (props) => {
+const UniqueCharacters = ({character}) => {
+  const { name, weapon, health } = character;
 
-   console.log('Props: ', props);
 //{character}:props    to destructure incoming props
   return (
     <div className="characterContainer">
-      <div className="characterName">{props.character.name}</div>
-      <div className="characterWeapon">{props.character.weapon}</div>
-      <div className="characterHealth">Health: {props.character.health}</div>
+      <div className="characterName">{name}</div>
+      <div className="characterWeapon">{weapon}</div>
+      <div className="characterHealth">Health: {health}</div>
     </div>
   )
 }
