@@ -5,6 +5,7 @@ const characters = [
     armour: 14,
     health: 12,
     description: 'This character is sick!!',
+    image: './images/Hunter.png',
     baseStats: {
       strength: 10,
       dexterity: 15,
@@ -46,6 +47,7 @@ const characters = [
     armour: 16,
     health: 20,
     description: 'This character is sick!!',
+    image: './images/Barbarian.png',
     baseStats: {
       strength: 16,
       dexterity: 10,
@@ -87,6 +89,7 @@ const characters = [
     armour: 12,
     health: 10,
     description: 'This character is sick!!',
+    image: './images/Sorcerer.png',
     baseStats: {
       strength: 8,
       dexterity: 10,
@@ -128,6 +131,7 @@ const characters = [
     armour: 12,
     health: 10,
     description: 'This character is sick!!',
+    image: './images/Sorcerer.png',
     baseStats: {
       strength: 8,
       dexterity: 10,
@@ -169,6 +173,7 @@ const characters = [
     armour: 12,
     health: 10,
     description: 'This character is sick!!',
+    image: './images/Sorcerer.png',
     baseStats: {
       strength: 8,
       dexterity: 10,
@@ -210,6 +215,7 @@ const characters = [
     armour: 12,
     health: 10,
     description: 'This character is sick!!',
+    image: './images/Sorcerer.png',
     baseStats: {
       strength: 8,
       dexterity: 10,
