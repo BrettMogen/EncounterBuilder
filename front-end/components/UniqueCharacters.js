@@ -11,7 +11,7 @@ const UniqueCharacters = ({character}) => {
       <div className="characterImage" style={{ backgroundImage: `url(${image})` }}></div>
       <div className="characterName">{name}</div>
       <div className="characterHealth">Health: {health}</div>
-      <div className="characterArmourClass">Armour Class: {armour}</div>
+      <div className="characterArmourClass">AC: {armour}</div>
       <div className="characterWeapon">Weapon: {weapon}</div>
       <div className="characterStrength baseStat">Str: {strength}</div>
       <div className="characterDexterity baseStat">Dex: {dexterity}</div>

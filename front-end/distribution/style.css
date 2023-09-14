@@ -134,6 +134,8 @@ body {
 }
 
 .characterName {
+  font-weight: bolder;
+  font-size: larger;
   grid-area: 1/4/2/7;
   size: 100%;
 }
@@ -151,6 +153,10 @@ body {
 .characterWeapon {
   grid-area: 4/4/5/7;
   size: 100%;
+}
+
+.baseStat {
+  justify-content: center;
 }
 
 .characterStrength {
