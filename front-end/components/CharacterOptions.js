@@ -8,7 +8,6 @@ const CharacterOptions = () => {
   return (
     <div className="characterOptionsContainer">
       <div className="characterOptions">{characters.map((c) => <UniqueCharacters character={c} />)}</div>
-      <div className="characterOptionsTitle">Character Options</div>
     </div>
   )
 }
