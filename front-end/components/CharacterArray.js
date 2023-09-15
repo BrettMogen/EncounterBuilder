@@ -1,6 +1,8 @@
 const characters = [
   {
     name: 'Hunter',
+    cssName: 'hunter',
+    cssBorderColor: '#295e21',
     weapon: 'Bow',
     armour: 14,
     health: 12,
@@ -43,6 +45,8 @@ const characters = [
   },
   {
     name: 'Barbarian',
+    cssName: 'barbarian',
+    cssBorderColor: '#9c2129',
     weapon: 'Great Axe',
     armour: 16,
     health: 20,
@@ -85,6 +89,8 @@ const characters = [
   },
   {
     name: 'Sorcerer',
+    cssName: 'sorcerer',
+    cssBorderColor: '#7019a3',
     weapon: 'Wand',
     armour: 12,
     health: 10,
@@ -127,6 +133,8 @@ const characters = [
   },
   {
     name: 'Sorcerer',
+    cssName: 'sorcerer',
+    cssBorderColor: '#7019a3',
     weapon: 'Wand',
     armour: 12,
     health: 10,
@@ -169,6 +177,8 @@ const characters = [
   },
   {
     name: 'Sorcerer',
+    cssName: 'sorcerer',
+    cssBorderColor: '#7019a3',
     weapon: 'Wand',
     armour: 12,
     health: 10,
@@ -211,6 +221,8 @@ const characters = [
   },
   {
     name: 'Sorcerer',
+    cssName: 'sorcerer',
+    cssBorderColor: '#7019a3',
     weapon: 'Wand',
     armour: 12,
     health: 10,
