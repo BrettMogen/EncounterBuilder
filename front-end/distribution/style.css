@@ -138,53 +138,56 @@ body {
   font-size: larger;
   grid-area: 1/4/2/7;
   size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .characterHealth {
   grid-area: 2/4/3/7;
   size: 100%;
+  padding-left: 0.25em;
 }
 
 .characterArmourClass {
   grid-area: 3/4/4/7;
   size: 100%;
+  padding-left: 0.25em;
 }
 
 .characterWeapon {
   grid-area: 4/4/5/7;
   size: 100%;
+  padding-left: 0.25em;
 }
 
 .baseStat {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  size: 100%;
 }
 
 .characterStrength {
   grid-area: 5/1/6/3;
-  size: 100%;
 }
 
 .characterDexterity {
   grid-area: 5/3/6/5;
-  size: 100%;
 }
 
 .characterConstitution {
   grid-area: 5/5/6/7;
-  size: 100%;
 }
 
 .characterIntelligence {
   grid-area: 6/1/7/3;
-  size: 100%;
 }
 
 .characterWisdom {
   grid-area: 6/3/7/5;
-  size: 100%;
 }
 
 .characterCharisma {
   grid-area: 6/5/7/7;
-  size: 100%;
 }
