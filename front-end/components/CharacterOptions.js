@@ -7,11 +7,11 @@ const CharacterOptions = () => {
   const [charactersState, setCharactersState] =  useState([]);
 
   const createCharacters = () => {
-    const startingCharacterOptions = characters.map((c) => <UniqueCharacters character={c} />);
+    const startingCharacterOptions = characters.map((c) => <UniqueCharacters character={c} key={characters.id}/>);
     setCharactersState(startingCharacterOptions);
   }
 
-  createCharacters();
+  charactersState.length === 0 && createCharacters();
 
   return (
     <div className="characterOptionsContainer">

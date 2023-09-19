@@ -1,5 +1,6 @@
 const characters = [
   {
+    id: 0,
     name: 'Hunter',
     cssName: 'hunter',
     cssBorderColor: '#295e21',
@@ -44,6 +45,7 @@ const characters = [
     ]
   },
   {
+    id: 1,
     name: 'Barbarian',
     cssName: 'barbarian',
     cssBorderColor: '#9c2129',
@@ -88,6 +90,7 @@ const characters = [
     ]
   },
   {
+    id: 2,
     name: 'Sorcerer',
     cssName: 'sorcerer',
     cssBorderColor: '#7019a3',
@@ -132,6 +135,7 @@ const characters = [
     ]
   },
   {
+    id: 3,
     name: 'Sorcerer',
     cssName: 'sorcerer',
     cssBorderColor: '#7019a3',
@@ -176,6 +180,7 @@ const characters = [
     ]
   },
   {
+    id: 4,
     name: 'Sorcerer',
     cssName: 'sorcerer',
     cssBorderColor: '#7019a3',
@@ -220,6 +225,7 @@ const characters = [
     ]
   },
   {
+    id: 5,
     name: 'Sorcerer',
     cssName: 'sorcerer',
     cssBorderColor: '#7019a3',
