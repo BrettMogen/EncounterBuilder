@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
-// import { MainContext } from '../context.js';
+import React, { useState, useEffect, useContext } from 'react';
+import { MainContext } from '../context.js';
 import UniqueCharacters from './UniqueCharacters.js';
 import characters from './CharacterArray.js';
 
 const CharacterOptions = () => {
-  const [charactersState, setCharactersState] =  useState([]);
+    const { characterOptionsArray, setCharacterOptionsArray } = useContext(MainContext);
 
-  const createCharacters = () => {
+    const createCharacters = () => {
     const startingCharacterOptions = characters.map((c) => <UniqueCharacters character={c} key={characters.id}/>);
-    setCharactersState(startingCharacterOptions);
+    setCharacterOptionsArray(startingCharacterOptions);
   }
 
-  charactersState.length === 0 && createCharacters();
+  characterOptionsArray.length === 0 && createCharacters();
 
   return (
     <div className="characterOptionsContainer">
-      <div className="characterOptions">{charactersState}</div>
+      <div className="characterOptions">{characterOptionsArray}</div>
     </div>
   )
 }

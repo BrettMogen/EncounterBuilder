@@ -7,9 +7,11 @@ import EnemyTeam from './EnemyTeam.js';
 import UniqueCharacters from './UniqueCharacters.js';
 
 const App = () => {
+  const [characterOptionsArray, setCharacterOptionsArray] =  useState([]);
 
   return (
     <div>
+      <MainContext.Provider value={{ characterOptionsArray, setCharacterOptionsArray }}>
       <div className="header" >
         <h1>Encounter Builder</h1>
       </div>
@@ -20,6 +22,7 @@ const App = () => {
         <FriendlyParty />
         <EnemyTeam />
       </div>
+      </MainContext.Provider>
     </div>
   )
 }

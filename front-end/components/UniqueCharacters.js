@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import MainContext from '../context.js';
-import CharacterOptions from './CharacterOptions.js';
 
 const UniqueCharacters = ({ character }) => {
   const { name, cssName, cssBorderColor, weapon, health, armour, image, baseStats } = character;
   const { strength, dexterity, constitution, intelligence, wisdom, charisma } = baseStats;
 
+  const handleDragStart = (e, character) => {
+    e.dataTransfer.setData('text/plain', character.id);
+  }
+
   return (
-    <div className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}`}}>
+    <div draggable onDragStart={(e) => handleDragStart(e, character)} className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}` }}>
       <div className="character">
         <div className="characterImage" style={{ backgroundImage: `url(${image})` }}></div>
         <div className="characterName">{name}</div>
