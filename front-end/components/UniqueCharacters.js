@@ -6,7 +6,7 @@ const UniqueCharacters = ({ character }) => {
   const { strength, dexterity, constitution, intelligence, wisdom, charisma } = baseStats;
 
   const handleDragStart = (e, character) => {
-    e.dataTransfer.setData('text/plain', character.id);
+    e.dataTransfer.setData('text/plain', character.name);
   }
 
   return (

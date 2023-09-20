@@ -15,13 +15,11 @@ const FriendlyParty = () => {
   const handleOnDrop = (e) => {
     e.preventDefault();
     let newCharacter;
-    const characterID = e.dataTransfer.getData('text/plain');
-    console.log('characterID', characterID);
+    const characterType = e.dataTransfer.getData('text/plain');
     for (let i = 0; i < characterOptionsArray.length; i++) {
-      if (characterOptionsArray[i].props.character.id === characterID) {
+      if (characterOptionsArray[i].props.character.name === characterType) {
         newCharacter = characterOptionsArray[i].props.character;
-        console.log('newCharacter', newCharacter);
-        newCharacter.id = numberOfAllies + 1;
+        newCharacter.id = numberOfAllies;
         setNumberOfAllies(numberOfAllies + 1);
         setFriendlyParty([...friendlyParty, <UniqueCharacters character={newCharacter}/>]);
         break;
