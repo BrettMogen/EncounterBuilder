@@ -20,6 +20,7 @@ const FriendlyParty = () => {
       if (characterOptionsArray[i].props.character.name === characterType) {
         newCharacter = characterOptionsArray[i].props.character;
         newCharacter.id = numberOfAllies;
+        newCharacter.inParty = true;
         setNumberOfAllies(numberOfAllies + 1);
         setFriendlyParty([...friendlyParty, <UniqueCharacters character={newCharacter}/>]);
         break;
