@@ -114,6 +114,7 @@ body {
 
 /* Character */
 .characterContainer {
+  position: relative;
   height: 100%;
   width: 100%;
   box-sizing: border-box;
@@ -121,6 +122,8 @@ body {
 }
 
 .character {
+  z-index: 1;
+  position: relative;
   height: 100%;
   width: 100%;
   display: grid;
@@ -133,6 +136,23 @@ body {
     0 0.12em black,
     -0.12em 0 black,
     0 -0.12em black;
+}
+
+.cover {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out; 
+}
+
+.characterContainer:hover .cover {
+  opacity: 1;
 }
 
 .hunter {
