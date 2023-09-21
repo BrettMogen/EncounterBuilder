@@ -13,7 +13,9 @@ const UniqueCharacters = ({ character }) => {
 
   inParty ? content =
     <div className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}` }}>
-      <div className="cover"></div>
+      <div className="moreInfo characterHover">More Info</div>
+      <div className="fillerShade characterHover"></div>
+      <div className="remove characterHover">Remove</div>
       <div className="character">
         <div className="characterImage" style={{ backgroundImage: `url(${image})` }}></div>
         <div className="characterName">{name}</div>

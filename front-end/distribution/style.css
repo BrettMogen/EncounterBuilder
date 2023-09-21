@@ -138,21 +138,40 @@ body {
     0 -0.12em black;
 }
 
-.cover {
+.characterHover {
   z-index: 2;
   position: absolute;
-  top: 0;
   left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  height: calc(100% / 3);
   color: white;
   opacity: 0;
   transition: opacity 0.3s ease-in-out; 
+  font-size: 200%;
 }
 
-.characterContainer:hover .cover {
+.characterContainer:hover .characterHover {
   opacity: 1;
+}
+
+.moreInfo {
+  color: blue;
+  top: 0;
+  background: linear-gradient(to bottom, white, rgba(0, 0 , 0, 0.5));
+}
+
+.fillerShade {
+  top: calc(100% / 3);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.remove {
+  color: red;
+  bottom: 0;
+  background: linear-gradient(to top, white, rgba(0, 0 , 0, 0.5));
 }
 
 .hunter {
