@@ -8,10 +8,14 @@ import UniqueCharacters from './UniqueCharacters.js';
 
 const App = () => {
   const [characterOptionsArray, setCharacterOptionsArray] =  useState([]);
+  const [friendlyParty, setFriendlyParty] = useState([]);
+  const [numberOfAllies, setNumberOfAllies] = useState(0);
 
   return (
     <div>
-      <MainContext.Provider value={{ characterOptionsArray, setCharacterOptionsArray }}>
+      <MainContext.Provider value={{ characterOptionsArray, setCharacterOptionsArray,
+      friendlyParty, setFriendlyParty,
+      numberOfAllies, setNumberOfAllies }}>
       <div className="header" >
         <h1>Encounter Builder</h1>
       </div>

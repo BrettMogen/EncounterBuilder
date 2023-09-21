@@ -1,13 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import MainContext from '../context.js';
+import React, { useState, useEffect, useContext } from 'react';
+import { MainContext } from '../context.js';
 
 const UniqueCharacters = ({ character }) => {
   const { name, inParty, cssName, cssBorderColor, weapon, health, armour, image, baseStats } = character;
   const { strength, dexterity, constitution, intelligence, wisdom, charisma } = baseStats;
 
+  const { friendlyParty, setFriendlyParty } = useContext(MainContext);
+
   const handleDragStart = (e, character) => {
     e.dataTransfer.setData('text/plain', character.name);
   }
+
+  // const removeCharacter = (character) => {
+  //   console.log('character.name', character.name);
+  //   console.log('character.id', character.id);
+  //   let newParty = [];
+  //   for (let i = 0; i < friendlyParty.length; i++) {
+  //     if (character.id !== friendlyParty[i]['id']) {
+  //       newParty.push(friendlyParty[i]);
+  //     }
+  //   }
+  //   setFriendlyParty(newParty);
+  // }
+
+  // onClick={(e) => removeCharacter(character)}
 
   let content;
 
