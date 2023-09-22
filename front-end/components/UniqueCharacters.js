@@ -11,19 +11,16 @@ const UniqueCharacters = ({ character }) => {
     e.dataTransfer.setData('text/plain', character.name);
   }
 
-  // const removeCharacter = (character) => {
-  //   console.log('character.name', character.name);
-  //   console.log('character.id', character.id);
-  //   let newParty = [];
-  //   for (let i = 0; i < friendlyParty.length; i++) {
-  //     if (character.id !== friendlyParty[i]['id']) {
-  //       newParty.push(friendlyParty[i]);
-  //     }
-  //   }
-  //   setFriendlyParty(newParty);
-  // }
-
-  // onClick={(e) => removeCharacter(character)}
+  const removeCharacter = (character) => {
+    let newParty = [];
+    for (let i = 0; i < friendlyParty.length; i++) {
+      if (character.id !== friendlyParty[i].props.character.id) {
+        newParty.push(friendlyParty[i]);
+      }
+    }
+    console.log('newParty', newParty);
+    setFriendlyParty(newParty);
+  }
 
   let content;
 
@@ -34,7 +31,7 @@ const UniqueCharacters = ({ character }) => {
       </div>
       <div className="fillerShade characterHover"></div>
       <div className="remove characterHover">
-        <div className="removeText textEnlarge">Remove</div>
+        <div onClick={(e) => removeCharacter(character)} className="removeText textEnlarge">Remove</div>
       </div>
       <div className="character">
         <div className="characterImage" style={{ backgroundImage: `url(${image})` }}></div>
