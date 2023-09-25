@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../context.js';
+import CharacterModal from './CharacterModal.js';
+// import DeepClone from './DeepClone.js';
 
 const UniqueCharacters = ({ character }) => {
-  const { name, inParty, cssName, cssBorderColor, weapon, health, armour, image, baseStats } = character;
+  const { name, inParty, showModal, cssName, cssBorderColor, weapon, health, armour, image, baseStats } = character;
   const { strength, dexterity, constitution, intelligence, wisdom, charisma } = baseStats;
 
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
@@ -18,16 +20,25 @@ const UniqueCharacters = ({ character }) => {
         newParty.push(friendlyParty[i]);
       }
     }
-    console.log('newParty', newParty);
     setFriendlyParty(newParty);
+  }
+
+  const unhideCharacterModal = (character) => {
+    const newParty = [...friendlyParty];
+    const indexToUpdate = newParty.findIndex(index => index.props.character.id === character.id);
+    if (indexToUpdate !== -1) {
+      newParty[indexToUpdate].props.character.showModal = true;
+      setFriendlyParty(newParty);
+    }
   }
 
   let content;
 
   inParty ? content =
     <div className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}` }}>
+      {showModal && <CharacterModal character={character}/>}
       <div className="moreInfo characterHover">
-        <div className="moreInfoText textEnlarge">More Info</div>
+        <div onClick={(e) => unhideCharacterModal(character)}className="moreInfoText textEnlarge">More Info</div>
       </div>
       <div className="fillerShade characterHover"></div>
       <div className="remove characterHover">
