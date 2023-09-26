@@ -58,7 +58,7 @@ const UniqueCharacters = ({ character }) => {
         <div className="characterCharisma baseStat">Cha: {charisma}</div>
       </div>
     </div> : content =
-  <div draggable onDragStart={(e) => handleDragStart(e, character)} className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}` }}>
+  <div draggable onDragStart={(e) => handleDragStart(e, character)} className={`${cssName} characterContainer`} style={{ cursor: "pointer", border: `0.25em ridge ${cssBorderColor}` }}>
     <div className="character">
       <div className="characterImage" style={{ backgroundImage: `url(${image})` }}></div>
       <div className="characterName">{name}</div>
