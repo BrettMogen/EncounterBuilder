@@ -36,14 +36,17 @@ const UniqueCharacters = ({ character }) => {
 
   inParty ? content =
     <div className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}` }}>
-      {showModal && <CharacterModal character={character} />}
-      <div className="moreInfo characterHover">
-        <div onClick={(e) => unhideCharacterModal(character)} className="moreInfoText textEnlarge">More Info</div>
-      </div>
-      <div className="fillerShade characterHover"></div>
-      <div className="remove characterHover">
-        <div onClick={(e) => removeCharacter(character)} className="removeText textEnlarge">Remove</div>
-      </div>
+      {/* Conditionally render either the characterModal or the hover options to show the modal or remove the character. 
+      This was done to eliminate and interactivity with this options while the modal is open. */}
+      {showModal ? <CharacterModal character={character} /> : <div>
+        <div className="moreInfo characterHover">
+          <div onClick={(e) => unhideCharacterModal(character)} className="moreInfoText textEnlarge">More Info</div>
+        </div>
+        <div className="fillerShade characterHover"></div>
+        <div className="remove characterHover">
+          <div onClick={(e) => removeCharacter(character)} className="removeText textEnlarge">Remove</div>
+        </div>
+      </div>}
       <div className="character">
         <div className="characterImage" style={{ backgroundImage: `url(${image})` }}></div>
         <div className="characterName">{name}</div>
