@@ -305,25 +305,21 @@ body {
 }
 
 .characterModalCloseButton {
-  z-index: 4;
+  z-index: 5;
+  position: absolute;
   height: 4em;
   width: 4em;
-  border-radius: 10%;
-  position: absolute;
   top: 0;
   right: 0;
+  border-radius: 10%;
   background-image: url('./images/Close-Icon.png');
   background-size: cover;
-  opacity: 0;
   transition: opacity 0.3s ease;
+  opacity: 0;
 }
 
-.characterModal:hover .characterModalCloseButton {
-  opacity: 0.5;
-}
-
-.characterModalCloseButton {
- opacity: 1;
+.characterModalContainer:hover .characterModalCloseButton {
+  opacity: 1;
 }
 
 .characterModalName {

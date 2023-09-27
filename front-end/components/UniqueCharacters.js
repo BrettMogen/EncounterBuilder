@@ -36,8 +36,8 @@ const UniqueCharacters = ({ character }) => {
 
   inParty ? content =
     <div className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}` }}>
-      {/* Conditionally render either the characterModal or the hover options to show the modal or remove the character. 
-      This was done to eliminate and interactivity with this options while the modal is open. */}
+      {/* Conditionally render either the characterModal or the show modal and remove hover options. 
+      This was done to eliminate and interactivity with these options while the modal is open. */}
       {showModal ? <CharacterModal character={character} /> : <div>
         <div className="moreInfo characterHover">
           <div onClick={(e) => unhideCharacterModal(character)} className="moreInfoText textEnlarge">More Info</div>

@@ -1,17 +1,31 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { MainContext } from '../context.js';
 
 const CharacterModal = ({ character }) => {
-  console.log('character in modal', character);
-
   const { name, inParty, showModal, cssName, cssBorderColor, weapon, health, armour, description, image, baseStats } = character;
   const { strength, dexterity, constitution, intelligence, wisdom, charisma } = baseStats;
+
+  const { friendlyParty, setFriendlyParty } = useContext(MainContext);
+
+  const showMe = function() {
+    console.log('Hello, the close button works!');
+  }
+
+  const closeModal = (character) => {
+    const newParty = [...friendlyParty];
+    const indexToUpdate = newParty.findIndex(index => index.props.character.id === character.id);
+    if (indexToUpdate !== -1) {
+      newParty[indexToUpdate].props.character.showModal = false;
+      setFriendlyParty(newParty);
+    }
+  }
 
   return (
     <div>
       <div className="characterModalBackground">
         <div className={`${cssName} characterModalContainer`} style={{ border: `1em ridge ${cssBorderColor}`, boxShadow: `0 0 1.5em ${cssBorderColor}` }}>
           <div className="characterModal">
-            <div className="characterModalCloseButton"></div>
+            <div className="characterModalCloseButton" onClick={(e) => closeModal(character)}></div>
             <div className="characterModalName">{name}</div>
             <div className="characterModalImageContainer">
               <div className="characterModalImage" style={{ backgroundImage: `url(${image})`, border: `0.5em ridge ${cssBorderColor}` }}></div>
