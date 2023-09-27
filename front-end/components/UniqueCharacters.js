@@ -4,10 +4,11 @@ import CharacterModal from './CharacterModal.js';
 // import DeepClone from './DeepClone.js';
 
 const UniqueCharacters = ({ character }) => {
-  const { name, inParty, showModal, cssName, cssBorderColor, weapon, health, armour, image, baseStats } = character;
+  const { name, inFriendlyParty, inEnemyTeam, showModal, cssName, cssBorderColor, weapon, health, armour, image, baseStats } = character;
   const { strength, dexterity, constitution, intelligence, wisdom, charisma } = baseStats;
 
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
+  const { enemyTeam, setEnemyTeam } = useContext(MainContext);
 
   const handleDragStart = (e, character) => {
     e.dataTransfer.setData('text/plain', character.name);
@@ -15,26 +16,27 @@ const UniqueCharacters = ({ character }) => {
 
   const removeCharacter = (character) => {
     let newParty = [];
-    for (let i = 0; i < friendlyParty.length; i++) {
-      if (character.id !== friendlyParty[i].props.character.id) {
-        newParty.push(friendlyParty[i]);
+    const whichSide = character.inFriendlyParty === true ? friendlyParty : enemyTeam;
+    for (let i = 0; i < whichSide.length; i++) {
+      if (character.id !== whichSide[i].props.character.id) {
+        newParty.push(whichSide[i]);
       }
     }
-    setFriendlyParty(newParty);
+    character.inFriendlyParty === true ? setFriendlyParty(newParty) : setEnemyTeam(newParty);
   }
 
   const unhideCharacterModal = (character) => {
-    const newParty = [...friendlyParty];
+    const newParty = character.inFriendlyParty === true ? [...friendlyParty] : [...enemyTeam];
     const indexToUpdate = newParty.findIndex(index => index.props.character.id === character.id);
     if (indexToUpdate !== -1) {
       newParty[indexToUpdate].props.character.showModal = true;
-      setFriendlyParty(newParty);
+      character.inFriendlyParty === true ? setFriendlyParty(newParty) : setEnemyTeam(newParty);
     }
   }
 
   let content;
 
-  inParty ? content =
+  inFriendlyParty || inEnemyTeam ? content =
     <div className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}` }}>
       {/* Conditionally render either the characterModal or the show modal and remove hover options. 
       This was done to eliminate and interactivity with these options while the modal is open. */}

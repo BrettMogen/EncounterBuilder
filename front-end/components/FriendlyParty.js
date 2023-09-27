@@ -19,7 +19,7 @@ const FriendlyParty = () => {
       if (characterOptionsArray[i].props.character.name === characterType) {
         const newCharacter = DeepClone(characterOptionsArray[i].props.character);
         newCharacter.id = numberOfAllies;
-        newCharacter.inParty = true;
+        newCharacter.inFriendlyParty = true;
         setNumberOfAllies(numberOfAllies + 1);
         setFriendlyParty([...friendlyParty, <UniqueCharacters character={newCharacter}/>]);
         break;

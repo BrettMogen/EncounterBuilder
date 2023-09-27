@@ -10,13 +10,17 @@ const App = () => {
   const [characterOptionsArray, setCharacterOptionsArray] = useState([]);
   const [friendlyParty, setFriendlyParty] = useState([]);
   const [numberOfAllies, setNumberOfAllies] = useState(0);
+  const [enemyTeam, setEnemyTeam] = useState([]);
+  const [numberOfEnemies, setNumberOfEnemies] = useState(0);
 
   return (
     <div>
       <MainContext.Provider value={{
         characterOptionsArray, setCharacterOptionsArray,
         friendlyParty, setFriendlyParty,
-        numberOfAllies, setNumberOfAllies
+        numberOfAllies, setNumberOfAllies,
+        enemyTeam, setEnemyTeam,
+        numberOfEnemies, setNumberOfEnemies
       }}>
         <div className="header" >
           <h1>Encounter Builder</h1>

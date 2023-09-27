@@ -2,21 +2,22 @@ import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../context.js';
 
 const CharacterModal = ({ character }) => {
-  const { name, inParty, showModal, cssName, cssBorderColor, weapon, health, armour, description, image, baseStats } = character;
+  const { name, inFriendlyParty, inEnemyTeam, showModal, cssName, cssBorderColor, weapon, health, armour, description, image, baseStats } = character;
   const { strength, dexterity, constitution, intelligence, wisdom, charisma } = baseStats;
 
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
+  const { enemyTeam, setEnemyTeam } = useContext(MainContext);
 
   const showMe = function() {
     console.log('Hello, the close button works!');
   }
 
   const closeModal = (character) => {
-    const newParty = [...friendlyParty];
+    const newParty = character.inFriendlyParty === true ? [...friendlyParty] : [...enemyTeam];
     const indexToUpdate = newParty.findIndex(index => index.props.character.id === character.id);
     if (indexToUpdate !== -1) {
       newParty[indexToUpdate].props.character.showModal = false;
-      setFriendlyParty(newParty);
+      character.inFriendlyParty === true ? setFriendlyParty(newParty) : setEnemyTeam(newParty);
     }
   }
 

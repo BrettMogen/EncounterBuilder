@@ -1,7 +1,8 @@
 const characters = [
   {
     id: '0',
-    inParty: false,
+    inFriendlyParty: false,
+    inEnemyTeam: false,
     showModal: false,
     name: 'Hunter',
     cssName: 'hunter',
@@ -48,7 +49,8 @@ const characters = [
   },
   {
     id: '1',
-    inParty: false,
+    inFriendlyParty: false,
+    inEnemyTeam: false,
     showModal: false,
     name: 'Barbarian',
     cssName: 'barbarian',
@@ -95,7 +97,8 @@ const characters = [
   },
   {
     id: '2',
-    inParty: false,
+    inFriendlyParty: false,
+    inEnemyTeam: false,
     showModal: false,
     name: 'Sorcerer',
     cssName: 'sorcerer',
@@ -142,7 +145,8 @@ const characters = [
   },
   {
     id: '3',
-    inParty: false,
+    inFriendlyParty: false,
+    inEnemyTeam: false,
     showModal: false,
     name: 'Sorcerer',
     cssName: 'sorcerer',
@@ -189,7 +193,8 @@ const characters = [
   },
   {
     id: '4',
-    inParty: false,
+    inFriendlyParty: false,
+    inEnemyTeam: false,
     showModal: false,
     name: 'Sorcerer',
     cssName: 'sorcerer',
@@ -236,7 +241,8 @@ const characters = [
   },
   {
     id: '5',
-    inParty: false,
+    inFriendlyParty: false,
+    inEnemyTeam: false,
     showModal: false,
     name: 'Sorcerer',
     cssName: 'sorcerer',
