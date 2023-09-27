@@ -7,25 +7,28 @@ const CharacterModal = ({ character }) => {
   const { strength, dexterity, constitution, intelligence, wisdom, charisma } = baseStats;
 
   return (
-    <div className="characterModalBackground">
-      <div className={`${cssName} characterModalContainer`} style={{ border: `1em ridge ${cssBorderColor}`, boxShadow: `0 0 1.5em ${cssBorderColor}` }}>
-        <div className="characterModal">
-          <div className="characterModalName">{name}</div>
-          <div className="characterModalImageContainer">
-            <div className="characterModalImage" style={{ backgroundImage: `url(${image})`, border: `0.5em ridge ${cssBorderColor}` }}></div>
+    <div>
+      <div className="characterModalBackground">
+        <div className={`${cssName} characterModalContainer`} style={{ border: `1em ridge ${cssBorderColor}`, boxShadow: `0 0 1.5em ${cssBorderColor}` }}>
+          <div className="characterModal">
+            <div className="characterModalCloseButton"></div>
+            <div className="characterModalName">{name}</div>
+            <div className="characterModalImageContainer">
+              <div className="characterModalImage" style={{ backgroundImage: `url(${image})`, border: `0.5em ridge ${cssBorderColor}` }}></div>
+            </div>
+            <div className="characterModalDescription">{description}</div>
+            <div className="characterModalHealth">Health: {health}</div>
+            <div className="characterModalArmourClass">Armour Class: {armour}</div>
+            <div className="baseStatModal">
+              <div className="characterModalStrength">Strength: {strength}</div>
+              <div className="characterModalDexterity">Dexterity: {dexterity}</div>
+              <div className="characterModalConstitution">Constitution: {constitution}</div>
+              <div className="characterModalIntelligence">Intelligence: {intelligence}</div>
+              <div className="characterModalWisdom">Wisdom: {wisdom}</div>
+              <div className="characterModalCharisma">Charisma: {charisma}</div>
+            </div>
+            <div className="characterModalWeapon">Weapon: {weapon}</div>
           </div>
-          <div className="characterModalDescription">{description}</div>
-          <div className="characterModalHealth">Health: {health}</div>
-          <div className="characterModalArmourClass">Armour Class: {armour}</div>
-          <div className="baseStatModal">
-            <div className="characterModalStrength">Strength: {strength}</div>
-            <div className="characterModalDexterity">Dexterity: {dexterity}</div>
-            <div className="characterModalConstitution">Constitution: {constitution}</div>
-            <div className="characterModalIntelligence">Intelligence: {intelligence}</div>
-            <div className="characterModalWisdom">Wisdom: {wisdom}</div>
-            <div className="characterModalCharisma">Charisma: {charisma}</div>
-          </div>
-          <div className="characterModalWeapon">Weapon: {weapon}</div>
         </div>
       </div>
     </div>

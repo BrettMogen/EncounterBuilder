@@ -36,9 +36,9 @@ const UniqueCharacters = ({ character }) => {
 
   inParty ? content =
     <div className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}` }}>
-      {showModal && <CharacterModal character={character}/>}
+      {showModal && <CharacterModal character={character} />}
       <div className="moreInfo characterHover">
-        <div onClick={(e) => unhideCharacterModal(character)}className="moreInfoText textEnlarge">More Info</div>
+        <div onClick={(e) => unhideCharacterModal(character)} className="moreInfoText textEnlarge">More Info</div>
       </div>
       <div className="fillerShade characterHover"></div>
       <div className="remove characterHover">
