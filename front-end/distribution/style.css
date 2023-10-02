@@ -344,11 +344,38 @@ body {
 
 .characterModalDescription {
   grid-area: 3/2/6/3;
-  padding-bottom: 0.25em;
+  padding: 0.25em;
 }
 
 .customScrollBar {
   overflow: auto;
+}
+
+.customScrollbar::-webkit-scrollbar {
+  width: 1em;
+}
+
+.customScrollBar::-webkit-scrollbar-track {
+  background: hsla(0, 0%, 0%, 1);
+  border-radius: 100vw;
+  margin-block: 0.5em;
+}
+
+.customScrollBar::-webkit-scrollbar-thumb {
+  border: 0.25em solid hsl(0, 0%, 0%, 1);
+  border-radius: 100vw;
+}
+
+.rangerScroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(#295e21, #6cc25f);
+}
+
+.barbarianScroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(#9c2129, #9e8a26);
+}
+
+.warlockScroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(#7019a3, #e5e5f7);
 }
 
 

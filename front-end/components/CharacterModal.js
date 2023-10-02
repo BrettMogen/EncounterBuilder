@@ -31,7 +31,7 @@ const CharacterModal = ({ character }) => {
             <div className="characterModalImageContainer">
               <div className="characterModalImage" style={{ backgroundImage: `url(${image})`, border: `0.5em ridge ${cssBorderColor}` }}></div>
             </div>
-            <div className="characterModalDescription customScrollBar">{description}</div>
+            <div className={`characterModalDescription customScrollBar ${cssName + 'Scroll'}`}>{description}</div>
             <div className="characterModalHealth">Health: {health}</div>
             <div className="characterModalArmourClass">Armour Class: {armour}</div>
             <div className="baseStatModal">
