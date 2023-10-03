@@ -22,27 +22,25 @@ const characters = [
     },
     actions: [
       {
-        attack: {
-          name: "Bow Attack",
-          hitChance: 5,
-          damage: {
-            numberOfDice: 2,
-            kindOfDice: 6,
-            baseDamage: 3
-          }
+        type: 'attack',
+        name: 'Bow Attack',
+        hitChance: 5,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 6,
+          baseDamage: 3
         }
       }
     ],
     bonusActions: [
       {
-        attack: {
-          name: "Dagger Attack",
-          hitChance: 2,
-          damage: {
-            numberOfDice: 2,
-            kindOfDice: 4,
-            baseDamage: 2
-          }
+        type: 'attack',
+        name: 'Dagger Attack',
+        hitChance: 2,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 4,
+          baseDamage: 2
         }
       }
     ]
@@ -70,27 +68,25 @@ const characters = [
     },
     actions: [
       {
-        attack: {
-          name: "Axe Attack",
-          hitChance: 6,
-          damage: {
-            numberOfDice: 2,
-            kindOfDice: 8,
-            baseDamage: 4
-          }
+        type: 'attack',
+        name: 'Axe Attack',
+        hitChance: 6,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 8,
+          baseDamage: 4
         }
       }
     ],
     bonusActions: [
       {
-        attack: {
-          name: "Dagger Attack",
-          hitChance: 2,
-          damage: {
-            numberOfDice: 2,
-            kindOfDice: 4,
-            baseDamage: 2
-          }
+        type: 'attack',
+        name: 'Dagger Attack',
+        hitChance: 2,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 4,
+          baseDamage: 2
         }
       }
     ]
@@ -118,27 +114,25 @@ const characters = [
     },
     actions: [
       {
-        attack: {
-          name: "Spell Attack",
-          hitChance: 5,
-          damage: {
-            numberOfDice: 2,
-            kindOfDice: 10,
-            baseDamage: 0
-          }
+        type: 'attack',
+        name: 'Spell Attack',
+        hitChance: 5,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 10,
+          baseDamage: 0
         }
       }
     ],
     bonusActions: [
       {
-        attack: {
-          name: "Dagger Attack",
-          hitChance: 2,
-          damage: {
-            numberOfDice: 2,
-            kindOfDice: 4,
-            baseDamage: 2
-          }
+        type: 'attack',
+        name: 'Dagger Attack',
+        hitChance: 2,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 4,
+          baseDamage: 2
         }
       }
     ]
@@ -166,27 +160,25 @@ const characters = [
     },
     actions: [
       {
-        attack: {
-          name: "Spell Attack",
-          hitChance: 5,
-          damage: {
-            numberOfDice: 2,
-            kindOfDice: 10,
-            baseDamage: 0
-          }
+        type: 'attack',
+        name: 'Bow Attack',
+        hitChance: 5,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 6,
+          baseDamage: 3
         }
       }
     ],
     bonusActions: [
       {
-        attack: {
-          name: "Dagger Attack",
-          hitChance: 2,
-          damage: {
-            numberOfDice: 2,
-            kindOfDice: 4,
-            baseDamage: 2
-          }
+        type: 'attack',
+        name: 'Dagger Attack',
+        hitChance: 2,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 4,
+          baseDamage: 2
         }
       }
     ]
@@ -214,27 +206,25 @@ const characters = [
     },
     actions: [
       {
-        attack: {
-          name: "Spell Attack",
-          hitChance: 5,
-          damage: {
-            numberOfDice: 2,
-            kindOfDice: 10,
-            baseDamage: 0
-          }
+        type: 'attack',
+        name: 'Bow Attack',
+        hitChance: 5,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 6,
+          baseDamage: 3
         }
       }
     ],
     bonusActions: [
       {
-        attack: {
-          name: "Dagger Attack",
-          hitChance: 2,
-          damage: {
-            numberOfDice: 2,
-            kindOfDice: 4,
-            baseDamage: 2
-          }
+        type: 'attack',
+        name: 'Dagger Attack',
+        hitChance: 2,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 4,
+          baseDamage: 2
         }
       }
     ]
@@ -262,27 +252,25 @@ const characters = [
     },
     actions: [
       {
-        attack: {
-          name: "Spell Attack",
-          hitChance: 5,
-          damage: {
-            numberOfDice: 2,
-            kindOfDice: 10,
-            baseDamage: 0
-          }
+        type: 'attack',
+        name: 'Bow Attack',
+        hitChance: 5,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 6,
+          baseDamage: 3
         }
       }
     ],
     bonusActions: [
       {
-        attack: {
-          name: "Dagger Attack",
-          hitChance: 2,
-          damage: {
-            numberOfDice: 2,
-            kindOfDice: 4,
-            baseDamage: 2
-          }
+        type: 'attack',
+        name: 'Dagger Attack',
+        hitChance: 2,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 4,
+          baseDamage: 2
         }
       }
     ]

@@ -2,15 +2,11 @@ import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../context.js';
 
 const CharacterModal = ({ character }) => {
-  const { name, inFriendlyParty, inEnemyTeam, showModal, cssName, cssBorderColor, weapon, health, armour, description, image, baseStats } = character;
+  const { name, inFriendlyParty, inEnemyTeam, showModal, cssName, cssBorderColor, weapon, health, armour, description, image, baseStats, actions, bonusActions } = character;
   const { strength, dexterity, constitution, intelligence, wisdom, charisma } = baseStats;
 
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
   const { enemyTeam, setEnemyTeam } = useContext(MainContext);
-
-  const showMe = function() {
-    console.log('Hello, the close button works!');
-  }
 
   const closeModal = (character) => {
     const newParty = character.inFriendlyParty === true ? [...friendlyParty] : [...enemyTeam];
@@ -19,6 +15,37 @@ const CharacterModal = ({ character }) => {
       newParty[indexToUpdate].props.character.showModal = false;
       character.inFriendlyParty === true ? setFriendlyParty(newParty) : setEnemyTeam(newParty);
     }
+  }
+
+  const formatActionsAndBonusActions = function () {
+    const actionsList = actions.map((input) => {
+      if (input.type === 'attack') {
+        return (
+          <div>
+            <div>{input.name}: +{input.hitChance} to hit, {input.damage.numberOfDice}d{input.damage.kindOfDice} + {input.damage.baseDamage} damage</div>
+          </div>
+        )
+      }
+    });
+
+    const bonusActionsList = bonusActions.map((input) => {
+      if (input.type === 'attack') {
+        return (
+          <div>
+            <div>{input.name}: +{input.hitChance} to hit, {input.damage.numberOfDice}d{input.damage.kindOfDice} + {input.damage.baseDamage} damage</div>
+          </div>
+        )
+      }
+    });
+
+    return (
+      <div>
+        <div className="actionsTitle">Actions</div>
+        <div>{actionsList}</div>
+        <div className="bonusActionsTitle">Bonus Actions</div>
+        <div>{bonusActionsList}</div>
+      </div>
+    );
   }
 
   return (
@@ -42,7 +69,7 @@ const CharacterModal = ({ character }) => {
               <div className="characterModalWisdom">Wisdom: {wisdom}</div>
               <div className="characterModalCharisma">Charisma: {charisma}</div>
             </div>
-            <div className="characterModalWeapon">Weapon: {weapon}</div>
+            <div className="characterModalActionsAndBonusActions">{formatActionsAndBonusActions()}</div>
           </div>
         </div>
       </div>
@@ -51,19 +78,3 @@ const CharacterModal = ({ character }) => {
 }
 
 export default CharacterModal;
-
-{/* <div className={`${cssName} characterContainer`} style={{ cursor: "pointer", border: `0.25em ridge ${cssBorderColor}` }}>
-          <div className="character">
-            <div className="characterImage" style={{ backgroundImage: `url(${image})` }}></div>
-            <div className="characterName">{name}</div>
-            <div className="characterHealth">Health: {health}</div>
-            <div className="characterArmourClass">AC: {armour}</div>
-            <div className="characterWeapon">Weapon: {weapon}</div>
-            <div className="characterStrength baseStat">Str: {strength}</div>
-            <div className="characterDexterity baseStat">Dex: {dexterity}</div>
-            <div className="characterConstitution baseStat">Con: {constitution}</div>
-            <div className="characterIntelligence baseStat">Int: {intelligence}</div>
-            <div className="characterWisdom baseStat">Wis: {wisdom}</div>
-            <div className="characterCharisma baseStat">Cha: {charisma}</div>
-          </div>
-        </div> */}
