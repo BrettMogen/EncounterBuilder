@@ -10,11 +10,10 @@ body {
   height: 6em;
   line-height: 6em;
   padding-left: 2em;
-  font-weight: 400;
-  font-size: x-large;
   font-style: normal;
   background-image: url("./images/mushroom-background.avif");
   color: white;
+  /* font-size: 7vw; */
   text-shadow: 0.12em 0 black,
     0 0.12em black,
     -0.12em 0 black,
@@ -45,7 +44,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 450%;
+  font-size: 5vw;
   color: #c3c7d4;
 }
 
@@ -78,7 +77,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 450%;
+  font-size: 5vw;
   color: #c3c7d4;
 }
 
@@ -129,6 +128,7 @@ body {
   grid-column-gap: 0;
   grid-row-gap: 0;
   color: white;
+  font-size: 1vw;
   text-shadow: 0.12em 0 black,
     0 0.12em black,
     -0.12em 0 black,
@@ -147,7 +147,7 @@ body {
   color: white;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  font-size: 200%;
+  font-size: 1.75vw;
 }
 
 .characterContainer:hover .characterHover {
@@ -345,7 +345,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 500%;
+  font-size: 5vw;
 }
 
 .characterModalImageContainer {
@@ -368,6 +368,7 @@ body {
 .characterModalDescription {
   grid-area: 3/2/6/3;
   padding: 0.25em;
+  font-size: 1.2vw;
 }
 
 .customScrollBar {
@@ -418,7 +419,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 200%;
+  font-size: 2vw;
 }
 
 .characterModalArmourClass {
@@ -426,7 +427,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 200%;
+  font-size: 2vw;
 }
 
 .baseStatModal {
@@ -434,7 +435,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  font-size: 125%;
+  font-size: 1.1vw;
 }
 
 .characterModalStrength {
@@ -481,4 +482,5 @@ body {
 
 .characterModalActionsAndBonusActions {
   grid-area: 6/2/10/3;
+  font-size: 1.2vw;
 }
