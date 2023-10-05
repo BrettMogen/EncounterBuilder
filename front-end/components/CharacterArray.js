@@ -22,6 +22,14 @@ const characters = [
       wisdom: 14,
       charisma: 15
     },
+    savingStats: {
+      strength: 3,
+      dexterity: 7,
+      constitution: 1,
+      intelligence: -1,
+      wisdom: 2,
+      charisma: 2
+    },
     spellSlots: {
       levelOne: 4,
       levelTwo: 2
@@ -66,13 +74,13 @@ const characters = [
           kindOfDice: 8,
           baseHealing: 2
         }
-      }, 
+      },
       {
         //Choose a friendly target and change their AC to 16 if it is below 16
         name: 'Bark Skin',
         type: 'spell',
         concentration: true,
-        newAC: '16'
+        newAC: 16
       }
     ],
     bonusActions: [
@@ -128,6 +136,14 @@ const characters = [
       intelligence: 9,
       wisdom: 11,
       charisma: 13
+    },
+    savingStats: {
+      strength: 6,
+      dexterity: 2,
+      constitution: 6,
+      intelligence: -1,
+      wisdom: 0,
+      charisma: 1
     },
     spellSlots: {},
     actions: [
@@ -203,6 +219,14 @@ const characters = [
       intelligence: 13,
       wisdom: 15,
       charisma: 18
+    },
+    savingStats: {
+      strength: -1,
+      dexterity: 2,
+      constitution: 0,
+      intelligence: 1,
+      wisdom: 5,
+      charisma: 7
     },
     spellSlots: {
       levelOne: 0,
@@ -333,40 +357,79 @@ const characters = [
     name: 'Rogue',
     cssName: 'rogue',
     cssBorderColor: '#000000',
-    weapon: 'Dagger',
-    armour: 12,
-    health: 10,
+    armour: 14,
+    health: 33,
+    initiative: 3,
     description: 'Rogues rely on skill, stealth, and their foes\’ vulnerabilities to get the upper hand in any situation. They have a knack for finding the solution to just about any problem, demonstrating a resourcefulness and versatility that is the cornerstone of any successful adventuring party.',
     image: './images/Rogue.png',
     baseStats: {
-      strength: 8,
-      dexterity: 10,
-      constitution: 10,
-      intelligence: 13,
-      wisdom: 16,
-      charisma: 12
+      strength: 9,
+      dexterity: 17,
+      constitution: 13,
+      intelligence: 16,
+      wisdom: 11,
+      charisma: 14
     },
+    savingStats: {
+      strength: -1,
+      dexterity: 6,
+      constitution: 1,
+      intelligence: 6,
+      wisdom: 0,
+      charisma: 2
+    },
+    spellSlots: {},
     actions: [
       {
+        name: 'Rapier',
         type: 'attack',
-        name: 'Bow Attack',
-        hitChance: 5,
+        hitChance: 6,
         damage: {
-          numberOfDice: 2,
+          numberOfDice: 1,
+          kindOfDice: 8,
+          baseDamage: 3
+        }
+      },
+      {
+        name: 'Shortbow',
+        type: 'attack',
+        hitChance: 6,
+        damage: {
+          numberOfDice: 1,
           kindOfDice: 6,
+          baseDamage: 3
+        }
+      },
+      {
+        name: 'Rapier',
+        type: 'attack',
+        hitChance: 6,
+        damage: {
+          numberOfDice: 1,
+          kindOfDice: 4,
           baseDamage: 3
         }
       }
     ],
     bonusActions: [
       {
-        type: 'attack',
-        name: 'Dagger Attack',
-        hitChance: 2,
+        name: 'Two-Weapon Fighting',
+        description: 'When you take an action to use a light melee weapon attack, you can make another attack using your bonus action with a different light melee weapon.'
+      }
+    ],
+    reactions: [
+      {
+        name: 'Uncanny Dodge',
+        description: 'When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack\’s damage against you.'
+      }
+    ],
+    other: [
+      {
+        name: 'Sneak Attack',
+        description: 'Once per turn, deal an extra 3d6 damage to a target you hit with a finesse or ranged weapon if you have advantage on the attack roll or if the target is within melee distance.',
         damage: {
-          numberOfDice: 2,
-          kindOfDice: 4,
-          baseDamage: 2
+          numberOfDice: 3,
+          kindOfDice: 6
         }
       }
     ]
@@ -379,41 +442,88 @@ const characters = [
     name: 'Fighter',
     cssName: 'fighter',
     cssBorderColor: '#0e6ba2',
-    weapon: 'Wand',
-    armour: 12,
-    health: 10,
+    armour: 17,
+    health: 44,
+    initiative: 3,
     description: 'Questing knights, conquering overlords, royal champions, elite foot soldiers, hardened mercenaries, and bandit kings—fighters all share an unparalleled mastery with weapons and armor, and a thorough knowledge of the skills of combat. And they are well acquainted with death, both meting it out and staring it defiantly in the face.',
     image: './images/Fighter.png',
     baseStats: {
-      strength: 8,
-      dexterity: 10,
-      constitution: 10,
-      intelligence: 13,
-      wisdom: 16,
-      charisma: 12
+      strength: 17,
+      dexterity: 16,
+      constitution: 14,
+      intelligence: 11,
+      wisdom: 13,
+      charisma: 9
     },
+    savingStats: {
+      strength: 6,
+      dexterity: 3,
+      constitution: 5,
+      intelligence: 0,
+      wisdom: 1,
+      charisma: -1
+    },
+    spellSlots: {},
     actions: [
       {
+        name: 'Flail',
         type: 'attack',
-        name: 'Bow Attack',
-        hitChance: 5,
+        hitChance: 6,
         damage: {
-          numberOfDice: 2,
+          numberOfDice: 1,
+          kindOfDice: 8,
+          baseDamage: 3
+        }
+      },
+      {
+        name: 'Scimitar',
+        type: 'attack',
+        hitChance: 6,
+        damage: {
+          numberOfDice: 1,
           kindOfDice: 6,
+          baseDamage: 3
+        }
+      },
+      {
+        name: 'Crossbow',
+        type: 'attack',
+        hitChance: 6,
+        damage: {
+          numberOfDice: 1,
+          kindOfDice: 8,
           baseDamage: 3
         }
       }
     ],
     bonusActions: [
       {
-        type: 'attack',
-        name: 'Dagger Attack',
-        hitChance: 2,
-        damage: {
-          numberOfDice: 2,
-          kindOfDice: 4,
-          baseDamage: 2
+        name: 'Two-Weapon Fighting',
+        description: 'When you take an action to use a light melee weapon attack, you can make another attack using your bonus action with a different light melee weapon.'
+      },
+      {
+        name: 'Second Wind',
+        description: 'Once per combat, you can use a bonus action to regain 1d10 + 5 health.',
+        healing: {
+          numberOfDice: 1,
+          kindOfDice: 10,
+          baseHealing: 5
         }
+      }
+    ],
+    reactions: [],
+    other: [
+      {
+        name: 'Action Surge',
+        description: 'You can take one additional action once per combat.'
+      },
+      {
+        name: 'Extra Attack',
+        description: 'When an attack with a weapon is made, make an extra attack.'
+      },
+      {
+        name: 'Improved Critical',
+        description: 'Your weapon attacks score a critical hit on a roll of 19 or 20.'
       }
     ]
   },
@@ -425,26 +535,56 @@ const characters = [
     name: 'Monk',
     cssName: 'monk',
     cssBorderColor: '#e6de65',
-    weapon: 'Wand',
-    armour: 12,
-    health: 10,
+    armour: 15,
+    health: 38,
+    initiative: 3,
     description: 'Monks are united in their ability to magically harness the energy that flows in their bodies. Whether channeled as a striking display of combat prowess or a subtler focus of defensive ability and speed, this energy infuses all that a monk does.',
     image: './images/Monk.png',
     baseStats: {
-      strength: 8,
-      dexterity: 10,
-      constitution: 10,
+      strength: 9,
+      dexterity: 17,
+      constitution: 15,
       intelligence: 13,
-      wisdom: 16,
-      charisma: 12
+      wisdom: 15,
+      charisma: 11
     },
+    savingStats: {
+      strength: 2,
+      dexterity: 6,
+      constitution: 2,
+      intelligence: 1,
+      wisdom: 2,
+      charisma: 0
+    },
+    spellSlots: {},
+    kiPoints: 5,
     actions: [
       {
+        name: 'Sickle',
         type: 'attack',
-        name: 'Bow Attack',
-        hitChance: 5,
+        hitChance: 6,
         damage: {
-          numberOfDice: 2,
+          numberOfDice: 1,
+          kindOfDice: 6,
+          baseDamage: 3
+        }
+      },
+      {
+        name: 'Light Hammer',
+        type: 'attack',
+        hitChance: 6,
+        damage: {
+          numberOfDice: 1,
+          kindOfDice: 6,
+          baseDamage: 3
+        }
+      },
+      {
+        name: 'Unarmed Strike',
+        type: 'attack',
+        hitChance: 6,
+        damage: {
+          numberOfDice: 1,
           kindOfDice: 6,
           baseDamage: 3
         }
@@ -452,14 +592,52 @@ const characters = [
     ],
     bonusActions: [
       {
+        name: 'Unarmed Strike',
         type: 'attack',
-        name: 'Dagger Attack',
-        hitChance: 2,
+        hitChance: 6,
         damage: {
-          numberOfDice: 2,
-          kindOfDice: 4,
-          baseDamage: 2
+          numberOfDice: 1,
+          kindOfDice: 6,
+          baseDamage: 3
         }
+      },
+      {
+        name: 'Flurry of Blows',
+        description: 'Spend one ki point to make two unarmed strikes.'
+      },
+      {
+        name: 'Patient Defense',
+        description: 'Spend one ki point to Dodge. When Dodge is used, all attacks against you are at disadvantage until the start of your next turn.'
+      }
+    ],
+    reactions: [
+      {
+        name: 'Deflect Missiles',
+        description: 'Once per round, if a ranged missile attack is made towards you, roll a d10 and add your dexterity modifier and monk level to the roll. This number is the amount of damage reduced from the attack. If the attack damage is reduced to zero, you have the option to spend a ki point to use the Deflect Missiles Attack.',
+        damageReduction: {
+          numberOfDice: 1,
+          kindOfDice: 10,
+          baseReduction: 8
+        }
+      },
+      {
+        name: 'Deflect Missiles Attack',
+        description: 'If the damage of the incoming missile damage was reduced to zero during the Deflect Missiles reaction, you can choose to spend one ki point to make a ranged attack towards an enemy using the missile you caught.',
+        damage: {
+          numberOfDice: 1,
+          kindOfDice: 6,
+          baseDamage: 3
+        }
+      }
+    ],
+    other: [
+      {
+        name: 'Open Hand Technique',
+        description: 'Whenever you hit with one of your Flurry of Blows attacks, the hit enemy cannot use a reaction until the end of your next turn.'
+      },
+      {
+        name: 'Stunning Strike',
+        description: 'When you hit with a melee weapon attack, you can spend one ki point to stun the target if it fails a constitution saving throw of DC13.'
       }
     ]
   }
