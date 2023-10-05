@@ -9,9 +9,9 @@ const characters = [
     name: 'Ranger',
     cssName: 'ranger',
     cssBorderColor: '#295e21',
-    weapon: 'Bow',
     armour: 15,
     health: 39,
+    initiative: 4,
     description: 'Far from the bustle of cities and towns, past the hedges that shelter the most distant farms from the terrors of the wild, amid the dense-packed trees of trackless forests and across wide and empty plains, rangers keep their unending watch.',
     image: './images/Ranger.png',
     baseStats: {
@@ -21,6 +21,10 @@ const characters = [
       intelligence: 9,
       wisdom: 14,
       charisma: 15
+    },
+    spellSlots: {
+      levelOne: 4,
+      levelTwo: 2
     },
     actions: [
       {
@@ -112,9 +116,9 @@ const characters = [
     name: 'Barbarian',
     cssName: 'barbarian',
     cssBorderColor: '#9c2129',
-    weapon: 'Great Axe',
     armour: 15,
     health: 55,
+    initiative: 2,
     description: 'Barbarians, different as they might be, are defined by their rage: unbridled, unquenchable, and unthinking fury. More than a mere emotion, their anger is the ferocity of a cornered predator, the unrelenting assault of a storm, the churning turmoil of the sea. For some, their rage springs from a communion with fierce animal spirits. Others draw from a roiling reservoir of anger at a world full of pain. For every barbarian, rage is a power that fuels not just a battle frenzy but also uncanny reflexes, resilience, and feats of strength.',
     image: './images/Barbarian.png',
     baseStats: {
@@ -125,6 +129,7 @@ const characters = [
       wisdom: 11,
       charisma: 13
     },
+    spellSlots: {},
     actions: [
       {
         name: 'Greataxe',
@@ -186,26 +191,107 @@ const characters = [
     name: 'Warlock',
     cssName: 'warlock',
     cssBorderColor: '#7019a3',
-    weapon: 'Wand',
-    armour: 12,
-    health: 10,
+    armour: 13,
+    health: 28,
+    initiative: 2,
     description: 'Warlocks are seekers of the knowledge that lies hidden in the fabric of the multiverse. Through pacts made with mysterious beings of supernatural power, warlocks unlock magical effects both subtle and spectacular. Drawing on the ancient knowledge of beings such as fey nobles, demons, devils, hags, and alien entities of the Far Realm, warlocks piece together arcane secrets to bolster their own power.',
     image: './images/Warlock.png',
     baseStats: {
-      strength: 8,
-      dexterity: 10,
-      constitution: 10,
+      strength: 9,
+      dexterity: 14,
+      constitution: 11,
       intelligence: 13,
-      wisdom: 16,
-      charisma: 12
+      wisdom: 15,
+      charisma: 18
+    },
+    spellSlots: {
+      levelOne: 0,
+      levelTwo: 0,
+      levelThree: 2
     },
     actions: [
       {
+        name: 'Sling',
         type: 'attack',
-        name: 'Spell Attack',
         hitChance: 5,
         damage: {
+          numberOfDice: 1,
+          kindOfDice: 4,
+          baseDamage: 2
+        }
+      },
+      {
+        name: 'Mace',
+        type: 'attack',
+        hitChance: 2,
+        damage: {
+          numberOfDice: 1,
+          kindOfDice: 6,
+          baseDamage: -1
+        }
+      },
+      {
+        name: 'Dagger',
+        type: 'attack',
+        hitChance: 5,
+        damage: {
+          numberOfDice: 1,
+          kindOfDice: 4,
+          baseDamage: 2
+        }
+      },
+      {
+        name: 'Chill Touch',
+        type: 'cantrip',
+        description: 'The target that is hit cannot recieve healing until the start of this character\'s next turn.',
+        hitChance: 7,
+        damage: {
           numberOfDice: 2,
+          kindOfDice: 8,
+          baseDamage: 0
+        }
+      },
+      {
+        name: 'Scorching Ray',
+        type: 'spell',
+        description: 'When cast at third level, fire four rays of scorching fire at the target. Each hit results in 2d6 fire damage.',
+        hitChance: 7,
+        timesFired: 4,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 6,
+          baseDamage: 0
+        }
+      },
+      {
+        name: 'Vampiric Touch',
+        type: 'spell',
+        description: 'On successful hit, half of the necrotic damage dealt is returned to the user as healing.',
+        hitChance: 7,
+        damage: {
+          numberOfDice: 3,
+          kindOfDice: 6,
+          baseDamage: 0
+        }
+      },
+      {
+        name: 'Fire Bolt',
+        type: 'cantrip',
+        hitChance: 7,
+        damage: {
+          numberOfDice: 2,
+          kindOfDice: 10,
+          baseDamage: 0
+        }
+      },
+      {
+        name: 'Eldritch Blast',
+        type: 'cantrip',
+        description: 'Attack with two beams of force damage either at the same target or two different targets.',
+        hitChance: 7,
+        timesFired: 2,
+        damage: {
+          numberOfDice: 1,
           kindOfDice: 10,
           baseDamage: 0
         }
@@ -213,14 +299,29 @@ const characters = [
     ],
     bonusActions: [
       {
-        type: 'attack',
-        name: 'Dagger Attack',
-        hitChance: 2,
+        name: 'Two-Weapon Fighting',
+        description: 'When you take an action to use a light melee weapon attack, you can make another attack using your bonus action with a different light melee weapon.'
+      }
+    ],
+    reactions: [
+      {
+        name: 'Hellish Rebuke',
+        type: 'spell',
+        description: 'When you are damaged by an enemy, you can invoke Hellish Rebuke on them. The enemy must make a DC 15 Dexterity Saving Throw to take half damage. Deals 4d10 fire damage.',
+        saveType: 'dexterity',
+        saveDC: 15,
+        saveBenefit: 'halved',
         damage: {
-          numberOfDice: 2,
-          kindOfDice: 4,
-          baseDamage: 2
+          numberOfDice: 4,
+          kindOfDice: 10,
+          baseDamage: 0
         }
+      }
+    ],
+    other: [
+      {
+        name: 'Dark One\'s Blessing',
+        description: 'When you reduce a hostile creature to 0 health, gain 9 temporary health.'
       }
     ]
   },

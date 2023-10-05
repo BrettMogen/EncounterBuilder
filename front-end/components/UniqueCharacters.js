@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../context.js';
 import CharacterModal from './CharacterModal.js';
-// import DeepClone from './DeepClone.js';
 
 const UniqueCharacters = ({ character }) => {
-  const { name, inFriendlyParty, inEnemyTeam, showModal, cssName, cssBorderColor, weapon, health, armour, image, baseStats } = character;
+  const { name, inFriendlyParty, inEnemyTeam, showModal, cssName, cssBorderColor, health, armour, initiative, image, baseStats } = character;
   const { strength, dexterity, constitution, intelligence, wisdom, charisma } = baseStats;
 
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
@@ -39,7 +38,7 @@ const UniqueCharacters = ({ character }) => {
   inFriendlyParty || inEnemyTeam ? content =
     <div className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}` }}>
       {/* Conditionally render either the characterModal or the show modal and remove hover options. 
-      This was done to eliminate and interactivity with these options while the modal is open. */}
+      This was done to eliminate any interactivity with these options while the modal is open. */}
       {showModal ? <CharacterModal character={character} /> : <div>
         <div className="moreInfo characterHover">
           <div onClick={(e) => unhideCharacterModal(character)} className="moreInfoText textEnlarge">More Info</div>
@@ -54,7 +53,7 @@ const UniqueCharacters = ({ character }) => {
         <div className="characterName">{name}</div>
         <div className="characterHealth">Health: {health}</div>
         <div className="characterArmourClass">AC: {armour}</div>
-        <div className="characterWeapon">Weapon: {weapon}</div>
+        <div className="characterInitiative">Initiative: {initiative}</div>
         <div className="characterStrength baseStat">Str: {strength}</div>
         <div className="characterDexterity baseStat">Dex: {dexterity}</div>
         <div className="characterConstitution baseStat">Con: {constitution}</div>
@@ -69,7 +68,7 @@ const UniqueCharacters = ({ character }) => {
       <div className="characterName">{name}</div>
       <div className="characterHealth">Health: {health}</div>
       <div className="characterArmourClass">AC: {armour}</div>
-      <div className="characterWeapon">Weapon: {weapon}</div>
+      <div className="characterInitiative">Initiative: {initiative}</div>
       <div className="characterStrength baseStat">Str: {strength}</div>
       <div className="characterDexterity baseStat">Dex: {dexterity}</div>
       <div className="characterConstitution baseStat">Con: {constitution}</div>

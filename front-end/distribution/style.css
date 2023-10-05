@@ -245,7 +245,7 @@ body {
   padding-left: 0.25em;
 }
 
-.characterWeapon {
+.characterInitiative {
   grid-area: 4/4/5/7;
   size: 100%;
   padding-left: 0.25em;
