@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import CharacterModal from './CharacterModal.js';
 
-const FormatActionsBonusActionsReactionsAndFeatures = ({ character }) => {
+const DisplayActionsBonusActionsReactionsAndFeatures = ({ character }) => {
   const { spellSlots, kiPoints, actions, bonusActions, reactions, other } = character;
   // const formatActionsAndBonusActions = function () {
   //   const actionsList = actions.map((input) => {
@@ -64,9 +64,9 @@ const FormatActionsBonusActionsReactionsAndFeatures = ({ character }) => {
   return (
     <div>
       {kiPoints !== undefined && <div>{displayKiPoints()}</div>}
-      {(spellSlots[0] !== 0 || spellSlots.length > 0) && <div>{displaySpellSlots()}</div>}
+      {spellSlots.length > 0 && <div>{displaySpellSlots()}</div>}
     </div>
   )
 }
 
-export default FormatActionsBonusActionsReactionsAndFeatures;
+export default DisplayActionsBonusActionsReactionsAndFeatures;

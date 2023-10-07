@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../context.js';
-import FormatActionsBonusActionsReactionsAndFeatures from './FormatActionsBonusActionsReactionsAndFeatures.js';
+import DisplayActionsBonusActionsReactionsAndFeatures from './DisplayActionsBonusActionsReactionsAndFeatures.js';
 
 const CharacterModal = ({ character }) => {
   const { name, inFriendlyParty, inEnemyTeam, showModal, cssName, cssBorderColor, health, armour, initiative, description, image, baseStats } = character;
@@ -42,7 +42,7 @@ const CharacterModal = ({ character }) => {
               <div className="characterModalWisdom modalBaseStat">Wisdom: {wisdom}</div>
               <div className="characterModalCharisma modalBaseStat">Charisma: {charisma}</div>
             </div>
-            <div className="characterModalActionsAndBonusActions customScrollBar"><FormatActionsBonusActionsReactionsAndFeatures character={character}/></div>
+            <div className="characterModalActionsAndBonusActions customScrollBar"><DisplayActionsBonusActionsReactionsAndFeatures character={character}/></div>
           </div>
         </div>
       </div>
