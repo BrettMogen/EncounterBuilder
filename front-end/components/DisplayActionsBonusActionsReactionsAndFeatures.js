@@ -61,10 +61,19 @@ const DisplayActionsBonusActionsReactionsAndFeatures = ({ character }) => {
     )
   }
 
+  const displayActions = function() {
+    return (
+      <div className="displayActions">
+        <div className="actionsTitle">Actions</div>
+      </div>
+    )
+  }
+
   return (
     <div>
       {kiPoints !== undefined && <div>{displayKiPoints()}</div>}
       {spellSlots.length > 0 && <div>{displaySpellSlots()}</div>}
+      {displayActions()}
     </div>
   )
 }
