@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../context.js';
 
 const CharacterModal = ({ character }) => {
-  const { name, inFriendlyParty, inEnemyTeam, showModal, cssName, cssBorderColor, weapon, health, armour, description, image, baseStats, actions, bonusActions } = character;
+  const { name, inFriendlyParty, inEnemyTeam, showModal, cssName, cssBorderColor, health, armour, initiative, description, image, baseStats, actions, bonusActions } = character;
   const { strength, dexterity, constitution, intelligence, wisdom, charisma } = baseStats;
 
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
@@ -59,17 +59,20 @@ const CharacterModal = ({ character }) => {
               <div className="characterModalImage" style={{ backgroundImage: `url(${image})`, border: `0.5em ridge ${cssBorderColor}` }}></div>
             </div>
             <div className={`characterModalDescription customScrollBar ${cssName + 'Scroll'}`}>{description}</div>
-            <div className="characterModalHealth">Health: {health}</div>
-            <div className="characterModalArmourClass">Armour Class: {armour}</div>
-            <div className="baseStatModal">
-              <div className="characterModalStrength">Strength: {strength}</div>
-              <div className="characterModalDexterity">Dexterity: {dexterity}</div>
-              <div className="characterModalConstitution">Constitution: {constitution}</div>
-              <div className="characterModalIntelligence">Intelligence: {intelligence}</div>
-              <div className="characterModalWisdom">Wisdom: {wisdom}</div>
-              <div className="characterModalCharisma">Charisma: {charisma}</div>
+            <div className="characterModalPrimaryStatsContainer">
+              <div className="characterModalHealth modalPrimaryStat">Health: {health}</div>
+              <div className="characterModalArmourClass modalPrimaryStat">Armour Class: {armour}</div>
+              <div className="characterModalInitiative modalPrimaryStat">{initiative >= 0 ? <div>Initiative: +{initiative}</div> : <div>Initiative: -{initiative}</div>}</div>
             </div>
-            <div className="characterModalActionsAndBonusActions">{formatActionsAndBonusActions()}</div>
+            <div className="characterModalBaseStatContainer">
+              <div className="characterModalStrength modalBaseStat">Strength: {strength}</div>
+              <div className="characterModalDexterity modalBaseStat">Dexterity: {dexterity}</div>
+              <div className="characterModalConstitution modalBaseStat">Constitution: {constitution}</div>
+              <div className="characterModalIntelligence modalBaseStat">Intelligence: {intelligence}</div>
+              <div className="characterModalWisdom modalBaseStat">Wisdom: {wisdom}</div>
+              <div className="characterModalCharisma modalBaseStat">Charisma: {charisma}</div>
+            </div>
+            <div className="characterModalActionsAndBonusActions customScrollBar">{formatActionsAndBonusActions()}</div>
           </div>
         </div>
       </div>
