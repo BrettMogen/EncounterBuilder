@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../context.js';
+import FormatActionsBonusActionsReactionsAndFeatures from './FormatActionsBonusActionsReactionsAndFeatures.js';
 
 const CharacterModal = ({ character }) => {
-  const { name, inFriendlyParty, inEnemyTeam, showModal, cssName, cssBorderColor, health, armour, initiative, description, image, baseStats, actions, bonusActions } = character;
+  const { name, inFriendlyParty, inEnemyTeam, showModal, cssName, cssBorderColor, health, armour, initiative, description, image, baseStats } = character;
   const { strength, dexterity, constitution, intelligence, wisdom, charisma } = baseStats;
 
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
@@ -15,37 +16,6 @@ const CharacterModal = ({ character }) => {
       newParty[indexToUpdate].props.character.showModal = false;
       character.inFriendlyParty === true ? setFriendlyParty(newParty) : setEnemyTeam(newParty);
     }
-  }
-
-  const formatActionsAndBonusActions = function () {
-    const actionsList = actions.map((input) => {
-      if (input.type === 'attack') {
-        return (
-          <div>
-            <div>{input.name}: +{input.hitChance} to hit, {input.damage.numberOfDice}d{input.damage.kindOfDice} + {input.damage.baseDamage} damage</div>
-          </div>
-        )
-      }
-    });
-
-    const bonusActionsList = bonusActions.map((input) => {
-      if (input.type === 'attack') {
-        return (
-          <div>
-            <div>{input.name}: +{input.hitChance} to hit, {input.damage.numberOfDice}d{input.damage.kindOfDice} + {input.damage.baseDamage} damage</div>
-          </div>
-        )
-      }
-    });
-
-    return (
-      <div>
-        <div className="actionsTitle">Actions</div>
-        <div>{actionsList}</div>
-        <div className="bonusActionsTitle">Bonus Actions</div>
-        <div>{bonusActionsList}</div>
-      </div>
-    );
   }
 
   return (
@@ -72,7 +42,7 @@ const CharacterModal = ({ character }) => {
               <div className="characterModalWisdom modalBaseStat">Wisdom: {wisdom}</div>
               <div className="characterModalCharisma modalBaseStat">Charisma: {charisma}</div>
             </div>
-            <div className="characterModalActionsAndBonusActions customScrollBar">{formatActionsAndBonusActions()}</div>
+            <div className="characterModalActionsAndBonusActions customScrollBar"><FormatActionsBonusActionsReactionsAndFeatures character={character}/></div>
           </div>
         </div>
       </div>

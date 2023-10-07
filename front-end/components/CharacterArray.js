@@ -1,4 +1,4 @@
-//Characters referenced from lvl. 5 custom-created characters on DnDBeyond
+//Characters referenced from custom-created characters on DnDBeyond (lvl. 5 human race used for standardization)
 
 const characters = [
   {
@@ -30,10 +30,7 @@ const characters = [
       wisdom: 2,
       charisma: 2
     },
-    spellSlots: {
-      levelOne: 4,
-      levelTwo: 2
-    },
+    spellSlots: [4, 2],
     actions: [
       {
         name: 'Longbow',
@@ -145,7 +142,7 @@ const characters = [
       wisdom: 0,
       charisma: 1
     },
-    spellSlots: {},
+    spellSlots: [],
     actions: [
       {
         name: 'Greataxe',
@@ -228,11 +225,7 @@ const characters = [
       wisdom: 5,
       charisma: 7
     },
-    spellSlots: {
-      levelOne: 0,
-      levelTwo: 0,
-      levelThree: 2
-    },
+    spellSlots: [0, 0, 2],
     actions: [
       {
         name: 'Sling',
@@ -378,7 +371,7 @@ const characters = [
       wisdom: 0,
       charisma: 2
     },
-    spellSlots: {},
+    spellSlots: [],
     actions: [
       {
         name: 'Rapier',
@@ -463,7 +456,7 @@ const characters = [
       wisdom: 1,
       charisma: -1
     },
-    spellSlots: {},
+    spellSlots: [],
     actions: [
       {
         name: 'Flail',
@@ -556,7 +549,7 @@ const characters = [
       wisdom: 2,
       charisma: 0
     },
-    spellSlots: {},
+    spellSlots: [],
     kiPoints: 5,
     actions: [
       {
