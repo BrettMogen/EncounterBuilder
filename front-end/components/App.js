@@ -23,7 +23,7 @@ const App = () => {
         numberOfEnemies, setNumberOfEnemies
       }}>
         <div className="header" >
-          <h1>Encounter Builder</h1>
+          <div className="headerTitle">Encounter Builder</div>
         </div>
         <div>
           <CharacterOptions />
