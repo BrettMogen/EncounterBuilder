@@ -15,7 +15,7 @@ body {
     0 0.15em black,
     -0.15em 0 black,
     0 -0.15em black;
-    color: white;
+  color: white;
 }
 
 .headerTitle {
@@ -384,17 +384,17 @@ body {
 }
 
 .customScrollbar::-webkit-scrollbar {
-  width: 1em;
+  width: 0.75em;
 }
 
 .customScrollBar::-webkit-scrollbar-track {
   background: black;
   border-radius: 100vw;
-  margin-block: 0.5em;
+  margin-block: 0.3em;
 }
 
 .customScrollBar::-webkit-scrollbar-thumb {
-  border: 0.25em solid black;
+  border: 0.2em solid black;
   border-radius: 100vw;
 }
 
@@ -489,4 +489,40 @@ body {
   grid-area: 6/2/11/3;
   padding: 0.25em;
   font-size: 1.2vw;
+  overflow: visible;
+}
+
+/* DisplayActionsBonusActionsReactionsAndFeatures */
+.action {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 100%;
+}
+
+.actionName {
+  display: inline-block;
+}
+
+.actionDescription {
+  visibility: hidden;
+  width: 30vw;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.action:hover .actionDescription {
+  visibility: visible;
+  opacity: 1;
 }

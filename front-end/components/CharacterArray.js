@@ -33,8 +33,9 @@ const characters = [
     spellSlots: [4, 2],
     actions: [
       {
-        name: 'Longbow',
-        type: 'attack',
+        name: 'Longbow Attack',
+        type: 'attack ranged',
+        description: 'Make an attack using a longbow dealing 1d8 + 4 damage. +9 to hit.',
         hitChance: 9,
         damage: {
           numberOfDice: 1,
@@ -43,8 +44,9 @@ const characters = [
         }
       },
       {
-        name: 'Dagger',
-        type: 'attack',
+        name: 'Dagger Attack',
+        type: 'attack melee',
+        description: 'Make an attack using a dagger dealing 1d4 + 4 damage. +7 to hit.',
         hitChance: 7,
         damage: {
           numberOfDice: 1,
@@ -53,8 +55,9 @@ const characters = [
         }
       },
       {
-        name: 'Handaxe',
-        type: 'attack',
+        name: 'Handaxe Attack',
+        type: 'attack melee',
+        description: 'Make an attack using a handaxe dealing 1d6 damage. +3 to hit.',
         hitChance: 3,
         damage: {
           numberOfDice: 1,
@@ -89,6 +92,7 @@ const characters = [
         //Mark an enemy. The enemy takes an additional 1d6 damage from weapon attacks made by the character who marked it
         name: 'Hunter\'s Mark',
         type: 'spell',
+        description: 'Mark an enemy. Any physical weapon attacks this character makes towards the marked enemy deal an additional 1d6 damage until the spell ends.',
         concentration: true,
         damage: {
           numberOfDice: 1,
@@ -103,6 +107,7 @@ const characters = [
         //Your first melee attack this turn does 1d6 extra damage for whatever type you stored
         name: 'Absorb Elements',
         type: 'spell',
+        description: 'If an incoming attack deals acid, cold, fire, lightning, or thunder damage, you can use your reaction to absorb 1d6 of that damage. Until the start of your next turn, you have resistence to whatever damage type was stored. Your first melee attack on your next turn does 1d6 extra damage for whatever type you stored.',
         concentration: false,
         absorb: {
           numberOfDice: 1,

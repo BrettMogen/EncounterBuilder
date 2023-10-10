@@ -42,7 +42,7 @@ const CharacterModal = ({ character }) => {
               <div className="characterModalWisdom modalBaseStat">Wisdom: {wisdom}</div>
               <div className="characterModalCharisma modalBaseStat">Charisma: {charisma}</div>
             </div>
-            <div className="characterModalActionsAndBonusActions customScrollBar"><DisplayActionsBonusActionsReactionsAndFeatures character={character}/></div>
+            <div className={`characterModalActionsAndBonusActions customScrollBar ${cssName + 'Scroll'}`}><DisplayActionsBonusActionsReactionsAndFeatures character={character}/></div>
           </div>
         </div>
       </div>

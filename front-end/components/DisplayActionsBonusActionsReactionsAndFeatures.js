@@ -3,36 +3,6 @@ import CharacterModal from './CharacterModal.js';
 
 const DisplayActionsBonusActionsReactionsAndFeatures = ({ character }) => {
   const { spellSlots, kiPoints, actions, bonusActions, reactions, other } = character;
-  // const formatActionsAndBonusActions = function () {
-  //   const actionsList = actions.map((input) => {
-  //     if (input.type === 'attack') {
-  //       return (
-  //         <div>
-  //           <div>{input.name}: +{input.hitChance} to hit, {input.damage.numberOfDice}d{input.damage.kindOfDice} + {input.damage.baseDamage} damage</div>
-  //         </div>
-  //       )
-  //     }
-  //   });
-
-  //   const bonusActionsList = bonusActions.map((input) => {
-  //     if (input.type === 'attack') {
-  //       return (
-  //         <div>
-  //           <div>{input.name}: +{input.hitChance} to hit, {input.damage.numberOfDice}d{input.damage.kindOfDice} + {input.damage.baseDamage} damage</div>
-  //         </div>
-  //       )
-  //     }
-  //   });
-
-  //   return (
-  //     <div>
-  //       <div className="actionsTitle">Actions</div>
-  //       <div>{actionsList}</div>
-  //       <div className="bonusActionsTitle">Bonus Actions</div>
-  //       <div>{bonusActionsList}</div>
-  //     </div>
-  //   );
-  // }
 
   const displayKiPoints = function () {
     return (
@@ -61,9 +31,17 @@ const DisplayActionsBonusActionsReactionsAndFeatures = ({ character }) => {
     )
   }
 
-  const displayActions = function() {
+  const displayActions = function () {
     let actionsList = [];
 
+    for (let i = 0; i < actions.length; i++) {
+      actionsList.push(
+        <div className="action">
+          <div className="actionName">{actions[i].name}</div>
+          <div className="actionDescription">{actions[i].description}</div>
+        </div>
+      )
+    }
 
     return (
       <div className="displayActions">
@@ -77,7 +55,7 @@ const DisplayActionsBonusActionsReactionsAndFeatures = ({ character }) => {
     <div>
       {kiPoints !== undefined && <div>{displayKiPoints()}</div>}
       {spellSlots.length > 0 && <div>{displaySpellSlots()}</div>}
-      {displayActions()}
+      <div>{displayActions()}</div>
     </div>
   )
 }
