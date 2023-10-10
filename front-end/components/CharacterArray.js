@@ -64,18 +64,22 @@ const characters = [
       },
       {
         name: 'Cure Wounds',
+        description: 'Heal a friendly target for 1d8+2 health points by spending a lvl. one spell slot. If casted at a higher level, add 1d8 healing for each level above first.',
         type: 'spell',
         concentration: false,
+        levelChoice: [1, 2],
         healing: {
-          numberOfDice: 1,
-          kindOfDice: 8,
-          baseHealing: 2
+          numberOfDice: [1, 2],
+          kindOfDice: [8, 8],
+          baseHealing: [2, 2]
         }
       },
       {
         //Choose a friendly target and change their AC to 16 if it is below 16
         name: 'Bark Skin',
+        description: 'Spend a lvl. two spell slot to increase a friendly target\'s AC to 16.',
         type: 'spell',
+        slotRequired: 2,
         concentration: true,
         newAC: 16
       }

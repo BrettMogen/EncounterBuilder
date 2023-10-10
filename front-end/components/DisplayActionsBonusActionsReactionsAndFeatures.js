@@ -45,26 +45,30 @@ const DisplayActionsBonusActionsReactionsAndFeatures = ({ character }) => {
   const displaySpellSlots = function () {
     const indexToStringArray = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
 
-    let spellSlotList = [];
+    let spellSlotsList = [];
 
     for (let i = 0; i < spellSlots.length; i++) {
       if (spellSlots[i] > 0) {
-        spellSlotList.push(<div>Lvl. {indexToStringArray[i]}: {spellSlots[i].toString()}</div>);
+        spellSlotsList.push(<div>Lvl. {indexToStringArray[i]}: {spellSlots[i].toString()}</div>);
       }
     }
 
     return (
       <div className="displaySpellSlots">
         <div className="spellSlotsTitle">Available Spell Slots</div>
-        <div>{spellSlotList}</div>
+        <div className="spellSlotsList">{spellSlotsList}</div>
       </div>
     )
   }
 
   const displayActions = function() {
+    let actionsList = [];
+
+
     return (
       <div className="displayActions">
         <div className="actionsTitle">Actions</div>
+        <div className="actionsList">{actionsList}</div>
       </div>
     )
   }
