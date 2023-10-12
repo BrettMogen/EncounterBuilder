@@ -77,6 +77,7 @@ const DisplayActionsBonusActionsReactionsAndFeatures = ({ character }) => {
       {spellSlots.length > 0 && <div>{displaySpellSlots()}</div>}
       <div>{displayActions()}</div>
       <div>{displayBonusActions()}</div>
+      <div></div>
     </div>
   )
 }

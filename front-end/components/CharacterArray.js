@@ -120,7 +120,7 @@ const characters = [
     other: [
       {
         name: 'Extra Attack',
-        description: 'When an attack with a weapon is made, make an extra attack.'
+        description: 'You can attack twice whenever you take the attack action on your turn.'
       }
     ]
   },
@@ -156,8 +156,9 @@ const characters = [
     spellSlots: [],
     actions: [
       {
-        name: 'Greataxe',
-        type: 'attack',
+        name: 'Greataxe Attack',
+        type: 'attack melee',
+        description: 'Make a melee attack using a greataxe dealing 1d12 + 3 damage. +6 to hit.',
         hitChance: 6,
         damage: {
           numberOfDice: 1,
@@ -166,8 +167,9 @@ const characters = [
         }
       },
       {
-        name: 'Greatclub',
-        type: 'attack',
+        name: 'Greatclub Attack',
+        type: 'attack melee',
+        description: 'Make a melee attack using a greatclub dealing 1d8 + 3 damage. +6 to hit.',
         hitChance: 6,
         damage: {
           numberOfDice: 1,
@@ -176,8 +178,9 @@ const characters = [
         }
       },
       {
-        name: 'Javelin',
-        type: 'attack',
+        name: 'Javelin Attack',
+        type: 'attack ranged',
+        description: 'Make a ranged attack using a javelin dealing 1d6 + 3 damage. +6 to hit.',
         hitChance: 6,
         damage: {
           numberOfDice: 1,
@@ -203,7 +206,7 @@ const characters = [
     other: [
       {
         name: 'Extra Attack',
-        description: 'When an attack with a weapon is made, make an extra attack.'
+        description: 'You can attack twice whenever you take the attack action on your turn.'
       }
     ]
   },
@@ -239,8 +242,9 @@ const characters = [
     spellSlots: [0, 0, 2],
     actions: [
       {
-        name: 'Sling',
-        type: 'attack',
+        name: 'Sling Attack',
+        type: 'attack ranged',
+        description: 'Make a ranged attack using a sling dealing 1d4 + 2 damage. +5 to hit.',
         hitChance: 5,
         damage: {
           numberOfDice: 1,
@@ -249,8 +253,9 @@ const characters = [
         }
       },
       {
-        name: 'Mace',
-        type: 'attack',
+        name: 'Mace Attack',
+        type: 'attack melee',
+        description: 'Make a melee attack using a mace dealing 1d6 - 1 damage. +2 to hit.',
         hitChance: 2,
         damage: {
           numberOfDice: 1,
@@ -259,8 +264,9 @@ const characters = [
         }
       },
       {
-        name: 'Dagger',
-        type: 'attack',
+        name: 'Dagger Attack',
+        type: 'attack melee',
+        description: 'Make a melee attack using a dagger dealing 1d4+ 2 damage. +5 to hit.',
         hitChance: 5,
         damage: {
           numberOfDice: 1,
@@ -270,8 +276,8 @@ const characters = [
       },
       {
         name: 'Chill Touch',
-        type: 'cantrip',
-        description: 'The target that is hit cannot recieve healing until the start of this character\'s next turn.',
+        type: 'cantrip ranged spell necrotic',
+        description: 'Make a ranged spell attack dealing 2d8 necrotic damage. +7 to hit. On successful hit, the target cannot recieve healing until the start of this warlock\'s next turn.',
         hitChance: 7,
         damage: {
           numberOfDice: 2,
@@ -281,8 +287,9 @@ const characters = [
       },
       {
         name: 'Scorching Ray',
-        type: 'spell',
-        description: 'When cast at third level, fire four rays of scorching fire at the target. Each hit results in 2d6 fire damage.',
+        type: 'spell ranged fire',
+        description: 'Spend a lvl. three spell slot to attack with four rays of scorching fire at a target dealing 2d6 fire damage. +7 to hit on each ray attack.',
+        levelChoice: [3],
         hitChance: 7,
         timesFired: 4,
         damage: {
@@ -293,8 +300,10 @@ const characters = [
       },
       {
         name: 'Vampiric Touch',
-        type: 'spell',
-        description: 'On successful hit, half of the necrotic damage dealt is returned to the user as healing.',
+        type: 'spell melee necrotic',
+        description: 'Spend a lvl. three spell slot to make a melee attack dealing 3d6 necrotic damage. +7 to hit. On success, heal for half of the damage dealt. On successive turns, you can choose to recast this spell without expending a spell slot so long as concentration remains unbroken.',
+        concentration: true,
+        levelChoice: [3],
         hitChance: 7,
         damage: {
           numberOfDice: 3,
@@ -304,7 +313,8 @@ const characters = [
       },
       {
         name: 'Fire Bolt',
-        type: 'cantrip',
+        type: 'cantrip spell ranged fire',
+        description: 'Make a ranged spell attack dealing 1d10 fire damage. +7 to hit.',
         hitChance: 7,
         damage: {
           numberOfDice: 2,
@@ -314,8 +324,8 @@ const characters = [
       },
       {
         name: 'Eldritch Blast',
-        type: 'cantrip',
-        description: 'Attack with two beams of force damage either at the same target or two different targets.',
+        type: 'cantrip ranged spell force',
+        description: 'Make a ranged spell attack by creating two beams of crackling energy. Each beam deals 1d10 force damage and has a +7 chance to hit.',
         hitChance: 7,
         timesFired: 2,
         damage: {
@@ -335,7 +345,7 @@ const characters = [
       {
         name: 'Hellish Rebuke',
         type: 'spell',
-        description: 'When you are damaged by an enemy, you can invoke Hellish Rebuke on them. The enemy must make a DC 15 Dexterity Saving Throw to take half damage. Deals 4d10 fire damage.',
+        description: 'When you are damaged by an enemy, you can invoke Hellish Rebuke on them. The enemy must make a DC 15 Dexterity Saving Throw Success to take half damage. Deals 4d10 fire damage.',
         saveType: 'dexterity',
         saveDC: 15,
         saveBenefit: 'halved',
@@ -385,8 +395,9 @@ const characters = [
     spellSlots: [],
     actions: [
       {
-        name: 'Rapier',
-        type: 'attack',
+        name: 'Rapier Attack',
+        type: 'attack melee',
+        description: 'Make a melee attack using a rapier dealing 1d8 + 3 damage. +6 to hit.',
         hitChance: 6,
         damage: {
           numberOfDice: 1,
@@ -395,8 +406,9 @@ const characters = [
         }
       },
       {
-        name: 'Shortbow',
-        type: 'attack',
+        name: 'Shortbow Attack',
+        type: 'attack ranged',
+        description: 'Make a ranged attack using a shortbow dealing 1d6 + 3 damage. +6 to hit.',
         hitChance: 6,
         damage: {
           numberOfDice: 1,
@@ -405,8 +417,9 @@ const characters = [
         }
       },
       {
-        name: 'Rapier',
-        type: 'attack',
+        name: 'Dagger Attack',
+        type: 'attack melee',
+        description: 'Make a melee attack using a dagger dealing 1d4 + 3 damage. +6 to hit.',
         hitChance: 6,
         damage: {
           numberOfDice: 1,
@@ -470,8 +483,9 @@ const characters = [
     spellSlots: [],
     actions: [
       {
-        name: 'Flail',
-        type: 'attack',
+        name: 'Flail Attack',
+        type: 'attack melee',
+        description: 'Make a melee attack using a flail dealing 1d8 + 3 damage. +6 to hit.',
         hitChance: 6,
         damage: {
           numberOfDice: 1,
@@ -480,8 +494,9 @@ const characters = [
         }
       },
       {
-        name: 'Scimitar',
-        type: 'attack',
+        name: 'Scimitar Attack',
+        type: 'attack melee',
+        description: 'Make a melee attack using a schimitar dealing 1d6 + 3 damage. +6 to hit.',
         hitChance: 6,
         damage: {
           numberOfDice: 1,
@@ -490,8 +505,9 @@ const characters = [
         }
       },
       {
-        name: 'Crossbow',
-        type: 'attack',
+        name: 'Crossbow Attack',
+        type: 'attack ranged',
+        description: 'Make a ranged attack using a crossbow dealing 1d8 + 3 damage. +6 to hit.',
         hitChance: 6,
         damage: {
           numberOfDice: 1,
@@ -519,11 +535,11 @@ const characters = [
     other: [
       {
         name: 'Action Surge',
-        description: 'You can take one additional action once per combat.'
+        description: 'Once per combat, you can take one additional action.'
       },
       {
         name: 'Extra Attack',
-        description: 'When an attack with a weapon is made, make an extra attack.'
+        description: 'You can attack twice whenever you take the attack action on your turn.'
       },
       {
         name: 'Improved Critical',
@@ -564,8 +580,9 @@ const characters = [
     kiPoints: 5,
     actions: [
       {
-        name: 'Sickle',
-        type: 'attack',
+        name: 'Sickle Attack',
+        type: 'attack melee',
+        description: 'Make a melee attack using a sickle dealing 1d6 + 3 damage. +6 to hit.',
         hitChance: 6,
         damage: {
           numberOfDice: 1,
@@ -574,8 +591,9 @@ const characters = [
         }
       },
       {
-        name: 'Light Hammer',
-        type: 'attack',
+        name: 'Light Hammer Attack',
+        type: 'attack melee',
+        description: 'Make a melee attack using a light hammer dealing 1d6 + 3 damage. +6 to hit.',
         hitChance: 6,
         damage: {
           numberOfDice: 1,
@@ -585,7 +603,8 @@ const characters = [
       },
       {
         name: 'Unarmed Strike',
-        type: 'attack',
+        type: 'attack melee',
+        description: 'Make a melee attack using your fist dealing 1d6 + 3 damage. +6 to hit.',
         hitChance: 6,
         damage: {
           numberOfDice: 1,
@@ -597,7 +616,8 @@ const characters = [
     bonusActions: [
       {
         name: 'Unarmed Strike',
-        type: 'attack',
+        type: 'attack melee',
+        description: 'Make a melee attack using your fist dealing 1d6 + 3 damage. +6 to hit.',
         hitChance: 6,
         damage: {
           numberOfDice: 1,
@@ -617,7 +637,7 @@ const characters = [
     reactions: [
       {
         name: 'Deflect Missiles',
-        description: 'Once per round, if a ranged missile attack is made towards you, roll a d10 and add your dexterity modifier and monk level to the roll. This number is the amount of damage reduced from the attack. If the attack damage is reduced to zero, you have the option to spend a ki point to use the Deflect Missiles Attack.',
+        description: 'Once per round, if a ranged missile attack is made towards you, roll a d10 and add your dexterity modifier(+3) and monk level(+5) to the roll. This number is the amount of damage reduced from the attack. If the attack damage is reduced to 0, you have the option to spend a ki point to use the Deflect Missiles Attack.',
         damageReduction: {
           numberOfDice: 1,
           kindOfDice: 10,
@@ -626,7 +646,7 @@ const characters = [
       },
       {
         name: 'Deflect Missiles Attack',
-        description: 'If the damage of the incoming missile damage was reduced to zero during the Deflect Missiles reaction, you can choose to spend one ki point to make a ranged attack towards an enemy using the missile you caught.',
+        description: 'If the damage of the incoming missile damage was reduced to 0 during the Deflect Missiles reaction, you can choose to spend one ki point to make a ranged attack dealing 1d6 + 3 damage towards an enemy using the missile you caught.',
         damage: {
           numberOfDice: 1,
           kindOfDice: 6,
@@ -637,7 +657,7 @@ const characters = [
     other: [
       {
         name: 'Open Hand Technique',
-        description: 'Whenever you hit with one of your Flurry of Blows attacks, the hit enemy cannot use a reaction until the end of your next turn.'
+        description: 'Whenever you hit with one of your Flurry of Blows attacks, the hit target cannot use a reaction until the end of your next turn.'
       },
       {
         name: 'Stunning Strike',
