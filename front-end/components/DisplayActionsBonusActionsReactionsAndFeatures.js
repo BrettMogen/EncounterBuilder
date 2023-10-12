@@ -6,8 +6,9 @@ const DisplayActionsBonusActionsReactionsAndFeatures = ({ character }) => {
 
   const displayKiPoints = function () {
     return (
-      <div className="displayKiPoints">
-        <div className="kiPointsTitle displayTitle">Available Ki Points: {kiPoints}</div>
+      <div>
+        <div className="aBAROrOTitle">Available Ki Points</div>
+        <div>Ki points: {kiPoints}</div>
       </div>
     )
   }
@@ -19,54 +20,60 @@ const DisplayActionsBonusActionsReactionsAndFeatures = ({ character }) => {
 
     for (let i = 0; i < spellSlots.length; i++) {
       if (spellSlots[i] > 0) {
-        spellSlotsList.push(<div className="spellSlot">Lvl. {indexToStringArray[i]}: {spellSlots[i].toString()}</div>);
+        spellSlotsList.push(<div>Lvl. {indexToStringArray[i]}: {spellSlots[i].toString()}</div>);
       }
     }
 
     return (
-      <div className="displaySpellSlots">
-        <div className="spellSlotsTitle displayTitle">Available Spell Slots</div>
-        <div className="spellSlotsList">{spellSlotsList}</div>
+      <div>
+        <div className="aBAROrOTitle">Available Spell Slots</div>
+        <div>{spellSlotsList}</div>
       </div>
     )
   }
 
-  const displayActions = function () {
-    let actionsList = [];
+  const displayABAROrO = function () {
+    const actionsList = [];
+    const bonusActionsList = [];
+    const reactionsList = [];
+    const otherList = [];
 
-    for (let i = 0; i < actions.length; i++) {
-      actionsList.push(
-        <div className="action aBAOrR">
-          <div className="actionName aBAOrRName">{actions[i].name}</div>
-          <div className="actionDescription aBAOrRDescription">{actions[i].description}</div>
-        </div>
-      )
+    const lists = [[actions, actionsList], [bonusActions, bonusActionsList], [reactions, reactionsList], [other, otherList]];
+
+    //Loop through actions, bonus actions, reactions, and other and display their contents
+    for (let i = 0; i < lists.length; i++) {
+      for (let j = 0; j < lists[i][0].length; j++) {
+        lists[i][1].push(
+          <div className="aBAROrO">
+            <div className="aBAROrOName">{lists[i][0][j].name}</div>
+            <div className="aBAROrODescription">{lists[i][0][j].description}</div>
+          </div>
+        )
+      }
     }
 
     return (
-      <div className="displayActions aBAOrRContainer">
-        <div className="actionsTitle displayTitle">Actions</div>
-        <div className="actionsList aBAOrRList">{actionsList}</div>
-      </div>
-    )
-  }
-
-  const displayBonusActions = function () {
-    let bonusActionsList = [];
-
-    for (let i = 0; i < bonusActions.length; i++) {
-      bonusActionsList.push(
-        <div className="bonusAction aBAOrR">
-          <div className="bonusActionName aBAOrRName">{bonusActions[i].name}</div>
-          <div className="bonusActionDescription aBAOrRDescription">{bonusActions[i].description}</div>
-        </div>
-      )
-    }
-
-    return (
-      <div className="displayBonusActions aBAOrRContainer">
-        <div className="bonusActionsTitle displayTitle">Bonus Actions</div>
-        <div className="bonusActionsList aBAOrRList">{bonusActionsList}</div>
+      <div>
+        {actions.length > 0 &&
+          <div>
+            <div className="aBAROrOTitle">Actions</div>
+            <div>{actionsList}</div>
+          </div>}
+          {bonusActions.length > 0 &&
+          <div>
+            <div className="aBAROrOTitle">Bonus Actions</div>
+            <div>{bonusActionsList}</div>
+          </div>}
+          {reactions.length > 0 &&
+          <div>
+            <div className="aBAROrOTitle">Reactions</div>
+            <div>{reactionsList}</div>
+          </div>}
+          {other.length > 0 &&
+          <div>
+            <div className="aBAROrOTitle">Other</div>
+            <div>{otherList}</div>
+          </div>}
       </div>
     )
   }
@@ -75,9 +82,7 @@ const DisplayActionsBonusActionsReactionsAndFeatures = ({ character }) => {
     <div className="displayContainer">
       {kiPoints !== undefined && <div>{displayKiPoints()}</div>}
       {spellSlots.length > 0 && <div>{displaySpellSlots()}</div>}
-      <div>{displayActions()}</div>
-      <div>{displayBonusActions()}</div>
-      <div></div>
+      <div>{displayABAROrO()}</div>
     </div>
   )
 }

@@ -487,36 +487,19 @@ body {
 }
 
 /* DisplayActionsBonusActionsReactionsAndFeatures */
-.displayContainer {
-  width: 100%;
-
-}
-
-.aBAOrRContainer {
-  width: 100%;
-}
-
-.displayTitle {
+.aBAROrOTitle {
   text-decoration: underline;
   margin: 1em 0 0.5em;
   text-align: center;
 }
 
-.aBAOrRList {
-  width: 100%;
-}
-
-.aBAOrR {
+.aBAROrOName {
   position: relative;
   cursor: pointer;
   width: 100%;
 }
 
-.aBAOrRName {
-  position: relative;
-}
-
-.aBAOrRDescription {
+.aBAROrODescription {
   display: flex;
   position: fixed;
   visibility: hidden;
@@ -535,7 +518,7 @@ body {
   pointer-events: none;
 }
 
-.aBAOrR:hover .aBAOrRDescription {
+.aBAROrO:hover .aBAROrODescription {
   visibility: visible;
   opacity: 0.95;
 }
