@@ -35,7 +35,7 @@ const characters = [
       {
         name: 'Longbow Attack',
         type: 'attack ranged',
-        description: 'Make an attack using a longbow dealing 1d8 + 4 damage. +9 to hit.',
+        description: 'Make a ranged attack using a longbow dealing 1d8 + 4 damage. +9 to hit.',
         hitChance: 9,
         damage: {
           numberOfDice: 1,
@@ -46,7 +46,7 @@ const characters = [
       {
         name: 'Dagger Attack',
         type: 'attack melee',
-        description: 'Make an attack using a dagger dealing 1d4 + 4 damage. +7 to hit.',
+        description: 'Make a melee attack using a dagger dealing 1d4 + 4 damage. +7 to hit.',
         hitChance: 7,
         damage: {
           numberOfDice: 1,
@@ -57,7 +57,7 @@ const characters = [
       {
         name: 'Handaxe Attack',
         type: 'attack melee',
-        description: 'Make an attack using a handaxe dealing 1d6 damage. +3 to hit.',
+        description: 'Make a melee attack using a handaxe dealing 1d6 damage. +3 to hit.',
         hitChance: 3,
         damage: {
           numberOfDice: 1,
@@ -82,7 +82,7 @@ const characters = [
         name: 'Bark Skin',
         description: 'Spend a lvl. two spell slot to increase a friendly target\'s AC to 16.',
         type: 'spell',
-        slotRequired: 2,
+        levelChoice: [2],
         concentration: true,
         newAC: 16
       }
@@ -93,6 +93,7 @@ const characters = [
         name: 'Hunter\'s Mark',
         type: 'spell',
         description: 'Mark an enemy. Any physical weapon attacks this character makes towards the marked enemy deal an additional 1d6 damage until the spell ends.',
+        levelChoice: [1],
         concentration: true,
         damage: {
           numberOfDice: 1,
@@ -107,11 +108,12 @@ const characters = [
         //Your first melee attack this turn does 1d6 extra damage for whatever type you stored
         name: 'Absorb Elements',
         type: 'spell',
-        description: 'If an incoming attack deals acid, cold, fire, lightning, or thunder damage, you can use your reaction to absorb 1d6 of that damage. Until the start of your next turn, you have resistence to whatever damage type was stored. Your first melee attack on your next turn does 1d6 extra damage for whatever type you stored.',
+        description: 'If an incoming attack deals acid, cold, fire, lightning, or thunder damage, you can use your reaction to absorb 1d6 of that damage. Until the start of your next turn, you have resistence to whatever damage type was stored. Your first melee attack on your next turn does 1d6 extra damage for whatever type you stored. If this spell is cast at a higher level than lvl. one, add an additional 1d6 to both the damage absorbed and dealt for each additional level.',
+        levelChoice: [1, 2],
         concentration: false,
         absorb: {
-          numberOfDice: 1,
-          kindOfDice: 6
+          numberOfDice: [1, 2],
+          kindOfDice: [6, 6]
         }
       }
     ],
@@ -193,7 +195,7 @@ const characters = [
       {
         name: 'Frenzied Rage',
         type: 'self-buff',
-        description: 'If already raging, this character can progress into a frenzied rage. While frenzied, this character can make an extra attack on it\'s bonus action so long as it\'s rage doesn\'t end.'
+        description: 'If already raging, this character can progress into a frenzied rage. While frenzied, this character can make an extra attack on its bonus action so long as its rage doesn\'t end.'
       }
     ],
     reactions: [
