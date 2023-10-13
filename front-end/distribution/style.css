@@ -453,30 +453,106 @@ body {
   align-items: center;
   justify-content: right;
   font-size: 1.1vw;
+  cursor: pointer;
+}
+
+.saveToolTip {
+  font-size: 1vw;
+  visibility: hidden;
+  position: absolute;
+  text-align: center;
+  align-items: center;
+  background-color: #333;
+  border-radius: 0.5em;
+  padding: 0.25em;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  min-width: 10vw;
 }
 
 .characterModalStrength {
   grid-area: 1/1/2/2;
 }
 
+.characterModalStrengthSave {
+  left: 0.25vw;
+  bottom: 8vw;
+}
+   
+.characterModalStrength:hover .characterModalStrengthSave {
+  visibility: visible;
+  opacity: 0.95;
+}
+
 .characterModalDexterity {
   grid-area: 1/2/2/3;
+}
+
+.characterModalDexteritySave {
+  left: 10vw;
+  bottom: 8vw;
+}
+
+.characterModalDexterity:hover .characterModalDexteritySave {
+  visibility: visible;
+  opacity: 0.95;
 }
 
 .characterModalConstitution {
   grid-area: 2/1/3/2;
 }
 
+.characterModalConstitutionSave {
+  left: -1vw;
+  bottom: 5vw;
+}
+
+.characterModalConstitution:hover .characterModalConstitutionSave {
+  visibility: visible;
+  opacity: 0.95;
+}
+
 .characterModalIntelligence {
   grid-area: 2/2/3/3;
+}
+
+.characterModalIntelligenceSave {
+  left: 10vw;
+  bottom: 5vw;
+}
+
+.characterModalIntelligence:hover .characterModalIntelligenceSave {
+  visibility: visible;
+  opacity: 0.95;
 }
 
 .characterModalWisdom {
   grid-area: 3/1/4/2;
 }
 
+.characterModalWisdomSave {
+  left: 0vw;
+  bottom: 2vw;
+}
+
+.characterModalWisdom:hover .characterModalWisdomSave {
+  visibility: visible;
+  opacity: 0.95;
+}
+
 .characterModalCharisma {
   grid-area: 3/2/4/3;
+}
+
+.characterModalCharismaSave {
+  left: 10vw;
+  bottom: 2vw;
+}
+
+.characterModalCharisma:hover .characterModalCharismaSave {
+  visibility: visible;
+  opacity: 0.95;
 }
 
 .characterModalActionsAndBonusActions {

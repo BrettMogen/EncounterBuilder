@@ -23,12 +23,12 @@ const characters = [
       charisma: 15
     },
     savingStats: {
-      strength: 3,
-      dexterity: 7,
-      constitution: 1,
-      intelligence: -1,
-      wisdom: 2,
-      charisma: 2
+      strengthSave: 3,
+      dexteritySave: 7,
+      constitutionSave: 1,
+      intelligenceSave: -1,
+      wisdomSave: 2,
+      charismaSave: 2
     },
     spellSlots: [4, 2],
     actions: [
@@ -146,12 +146,12 @@ const characters = [
       charisma: 13
     },
     savingStats: {
-      strength: 6,
-      dexterity: 2,
-      constitution: 6,
-      intelligence: -1,
-      wisdom: 0,
-      charisma: 1
+      strengthSave: 6,
+      dexteritySave: 2,
+      constitutionSave: 6,
+      intelligenceSave: -1,
+      wisdomSave: 0,
+      charismaSave: 1
     },
     spellSlots: [],
     actions: [
@@ -232,12 +232,12 @@ const characters = [
       charisma: 18
     },
     savingStats: {
-      strength: -1,
-      dexterity: 2,
-      constitution: 0,
-      intelligence: 1,
-      wisdom: 5,
-      charisma: 7
+      strengthSave: -1,
+      dexteritySave: 2,
+      constitutionSave: 0,
+      intelligenceSave: 1,
+      wisdomSave: 5,
+      charismaSave: 7
     },
     spellSlots: [0, 0, 2],
     actions: [
@@ -385,12 +385,12 @@ const characters = [
       charisma: 14
     },
     savingStats: {
-      strength: -1,
-      dexterity: 6,
-      constitution: 1,
-      intelligence: 6,
-      wisdom: 0,
-      charisma: 2
+      strengthSave: -1,
+      dexteritySave: 6,
+      constitutionSave: 1,
+      intelligenceSave: 6,
+      wisdomSave: 0,
+      charismaSave: 2
     },
     spellSlots: [],
     actions: [
@@ -473,12 +473,12 @@ const characters = [
       charisma: 9
     },
     savingStats: {
-      strength: 6,
-      dexterity: 3,
-      constitution: 5,
-      intelligence: 0,
-      wisdom: 1,
-      charisma: -1
+      strengthSave: 6,
+      dexteritySave: 3,
+      constitutionSave: 5,
+      intelligenceSave: 0,
+      wisdomSave: 1,
+      charismaSave: -1
     },
     spellSlots: [],
     actions: [
@@ -569,12 +569,12 @@ const characters = [
       charisma: 11
     },
     savingStats: {
-      strength: 2,
-      dexterity: 6,
-      constitution: 2,
-      intelligence: 1,
-      wisdom: 2,
-      charisma: 0
+      strengthSave: 2,
+      dexteritySave: 6,
+      constitutionSave: 2,
+      intelligenceSave: 1,
+      wisdomSave: 2,
+      charismaSave: 0
     },
     spellSlots: [],
     kiPoints: 5,
