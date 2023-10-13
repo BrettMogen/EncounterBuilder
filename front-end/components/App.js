@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { MainContext } from '../context.js';
-import Axios from 'axios';
 import CharacterOptions from './CharacterOptions.js';
 import FriendlyParty from './FriendlyParty.js';
 import EnemyTeam from './EnemyTeam.js';
-import UniqueCharacters from './UniqueCharacters.js';
+import Fight from './Fight.js';
 
 const App = () => {
   const [characterOptionsArray, setCharacterOptionsArray] = useState([]);
@@ -30,6 +29,7 @@ const App = () => {
         </div>
         <div className="teamsContainer">
           <FriendlyParty />
+          <Fight />
           <EnemyTeam />
         </div>
       </MainContext.Provider>

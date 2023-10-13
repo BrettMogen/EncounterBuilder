@@ -28,6 +28,7 @@ body {
 
 .teamsContainer {
   height: 80%;
+  position: relative;
 }
 
 /* Friendly Party */
@@ -62,6 +63,78 @@ body {
   height: 100%;
   width: 100%;
 }
+
+/* Fight Button */
+.fightContainer {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  /* background-color: #7019a3; */
+}
+
+.fightButtonSmall {
+  z-index: 2;
+  font-size: 150%;
+  position: absolute;
+  opacity: 0.7;
+  background-color: #1d7d36;
+  border-radius: 50%;
+  height: 50%;
+  width: 50%;
+  top: 50%; /* Adjust this for vertical alignment */
+  left: 50%; /* Adjust this for horizontal alignment */
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  cursor: pointer;
+  transition: opacity 1s ease;
+}
+
+.fightButtonSmall:hover {
+  opacity: 1;
+  height: 100%;
+  width: 100%;
+  font-size: 250%;
+  animation: resize 1s ease;
+}
+
+@keyframes resize {
+  from {
+    height: 50%;
+    width: 50%;
+    font-size: 150%;
+  }
+  to {
+    height: 100%;
+    width: 100%;
+    font-size: 250%;
+  }
+}
+
+/* .fightButtonLarge {
+  position: absolute;
+  z-index: 3;
+  background-color: #6e1c19;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.fightButtonSmall:hover .fightButtonLarge {
+  opacity: 1;
+  cursor: pointer;
+} */
 
 /* Enemy Team */
 .enemyTeamContainer {
