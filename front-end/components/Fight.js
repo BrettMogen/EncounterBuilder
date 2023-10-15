@@ -4,7 +4,7 @@ const Fight = () => {
 
   return (
     <div className="fightContainer">
-      <div className="fightButtonSmall">Fight!</div>
+      <div className="fightButton">Fight!</div>
     </div>
   )
 }
