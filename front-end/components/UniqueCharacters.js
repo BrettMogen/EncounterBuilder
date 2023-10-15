@@ -8,6 +8,7 @@ const UniqueCharacters = ({ character }) => {
 
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
   const { enemyTeam, setEnemyTeam } = useContext(MainContext);
+  const { setModalIsShowing } = useContext(MainContext);
 
   const handleDragStart = (e, character) => {
     e.dataTransfer.setData('text/plain', character.name);
@@ -25,6 +26,7 @@ const UniqueCharacters = ({ character }) => {
   }
 
   const unhideCharacterModal = (character) => {
+    setModalIsShowing(true);
     const newParty = character.inFriendlyParty === true ? [...friendlyParty] : [...enemyTeam];
     const indexToUpdate = newParty.findIndex(index => index.props.character.id === character.id);
     if (indexToUpdate !== -1) {

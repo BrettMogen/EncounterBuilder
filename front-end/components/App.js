@@ -11,6 +11,7 @@ const App = () => {
   const [numberOfAllies, setNumberOfAllies] = useState(0);
   const [enemyTeam, setEnemyTeam] = useState([]);
   const [numberOfEnemies, setNumberOfEnemies] = useState(0);
+  const [modalIsShowing, setModalIsShowing] = useState(false);
 
   return (
     <div>
@@ -19,7 +20,8 @@ const App = () => {
         friendlyParty, setFriendlyParty,
         numberOfAllies, setNumberOfAllies,
         enemyTeam, setEnemyTeam,
-        numberOfEnemies, setNumberOfEnemies
+        numberOfEnemies, setNumberOfEnemies,
+        modalIsShowing, setModalIsShowing
       }}>
         <div className="header" >
           <div className="headerTitle">Encounter Builder</div>

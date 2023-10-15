@@ -9,8 +9,10 @@ const CharacterModal = ({ character }) => {
 
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
   const { enemyTeam, setEnemyTeam } = useContext(MainContext);
+  const { setModalIsShowing } = useContext(MainContext);
 
   const closeModal = (character) => {
+    setModalIsShowing(false);
     const newParty = character.inFriendlyParty === true ? [...friendlyParty] : [...enemyTeam];
     const indexToUpdate = newParty.findIndex(index => index.props.character.id === character.id);
     if (indexToUpdate !== -1) {

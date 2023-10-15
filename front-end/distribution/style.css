@@ -65,76 +65,53 @@ body {
 }
 
 /* Fight Button */
-.fightContainer {
-  z-index: 1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
-  /* background-color: #7019a3; */
-}
-
 .fightButton {
   z-index: 2;
   font-size: 150%;
   position: absolute;
-  opacity: 0.7;
   background-color: #1d7d36;
   border-radius: 50%;
-  height: 50%;
-  width: 50%;
-  top: 50%; /* Adjust this for vertical alignment */
-  left: 50%; /* Adjust this for horizontal alignment */
+  height: 100px;
+  width: 100px;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  cursor: pointer;
-  transition: opacity 1s ease;
-}
-
-.fightButton:hover {
-  opacity: 1;
-  height: 100%;
-  width: 100%;
-  font-size: 250%;
-  animation: resize 1s ease;
-}
-
-@keyframes resize {
-  from {
-    height: 50%;
-    width: 50%;
-    font-size: 150%;
-  }
-  to {
-    height: 100%;
-    width: 100%;
-    font-size: 250%;
-  }
-}
-
-/* .fightButtonLarge {
-  position: absolute;
-  z-index: 3;
-  background-color: #6e1c19;
-  border-radius: 50%;
-  height: 200px;
-  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.3s ease;
-  opacity: 0;
+  cursor: pointer;
+  color: white;
+  text-shadow: 0.08em 0 black,
+    0 0.08em black,
+    -0.08em 0 black,
+    0 -0.08em black;
+  transition: all 1s ease;
 }
 
-.fightButtonSmall:hover .fightButtonLarge {
-  opacity: 1;
-  cursor: pointer;
-} */
+.fightButton:hover {
+  height: 200px;
+  width: 200px;
+  font-size: 250%;
+  background-color: #b51d1d;
+}
+
+.darkenBackground {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.fightButton:hover+.darkenBackground {
+  visibility: visible;
+  opacity: 0.8;
+}
 
 /* Enemy Team */
 .enemyTeamContainer {
@@ -552,7 +529,7 @@ body {
   left: 0.25vw;
   bottom: 8vw;
 }
-   
+
 .characterModalStrength:hover .characterModalStrengthSave {
   visibility: visible;
   opacity: 0.95;
