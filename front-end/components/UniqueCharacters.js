@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../context.js';
 import CharacterModal from './CharacterModal.js';
+import { checkRowDecrease } from './HandleTeamsContainerHeightAndGrids.js';
 
 const UniqueCharacters = ({ character }) => {
   const { name, inFriendlyParty, inEnemyTeam, showModal, cssName, cssBorderColor, health, armour, initiative, image, baseStats } = character;
@@ -9,12 +10,19 @@ const UniqueCharacters = ({ character }) => {
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
   const { enemyTeam, setEnemyTeam } = useContext(MainContext);
   const { setModalIsShowing } = useContext(MainContext);
+  const { numberOfRows, setNumberOfRows } = useContext(MainContext);
+  const { teamsContainerHeight, setTeamsContainerHeight } = useContext(MainContext);
+  const { containerRowHeight, setContainerRowHeight } = useContext(MainContext);
 
   const handleDragStart = (e, character) => {
     e.dataTransfer.setData('text/plain', character.name);
   }
 
   const removeCharacter = (character) => {
+    setModalIsShowing(true);
+    const updatedSizing = character.inFriendlyParty === true ? checkRowDecrease(friendlyParty.length, enemyTeam.length, numberOfRows, containerRowHeight) : checkRowDecrease(enemyTeam.length, friendlyParty.length, numberOfRows, containerRowHeight);
+    setNumberOfRows(updatedSizing[0]);
+    setTeamsContainerHeight(teamsContainerHeight - updatedSizing[1]);
     let newParty = [];
     const whichSide = character.inFriendlyParty === true ? friendlyParty : enemyTeam;
     for (let i = 0; i < whichSide.length; i++) {
@@ -26,7 +34,6 @@ const UniqueCharacters = ({ character }) => {
   }
 
   const unhideCharacterModal = (character) => {
-    setModalIsShowing(true);
     const newParty = character.inFriendlyParty === true ? [...friendlyParty] : [...enemyTeam];
     const indexToUpdate = newParty.findIndex(index => index.props.character.id === character.id);
     if (indexToUpdate !== -1) {
@@ -38,7 +45,7 @@ const UniqueCharacters = ({ character }) => {
   let content;
 
   inFriendlyParty || inEnemyTeam ? content =
-    <div className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}`}}>
+    <div className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}` }}>
       {/* Conditionally render either the characterModal or the show modal and remove hover options. 
       This was done to eliminate any interactivity with these options while the modal is open. */}
       {showModal ? <CharacterModal character={character} /> : <div>
