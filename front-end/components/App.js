@@ -4,7 +4,6 @@ import CharacterOptions from './CharacterOptions.js';
 import FriendlyParty from './FriendlyParty.js';
 import EnemyTeam from './EnemyTeam.js';
 import Fight from './Fight.js';
-// import HandleTeamsContainerHeightAndGrids from './HandleTeamsContainerHeightAndGrids.js';
 
 const App = () => {
   const [characterOptionsArray, setCharacterOptionsArray] = useState([]);
@@ -16,13 +15,6 @@ const App = () => {
   const [numberOfRows, setNumberOfRows] = useState(3);
   const [teamsContainerHeight, setTeamsContainerHeight] = useState(window.screen.height * 0.7);
   const [containerRowHeight, setContainerRowHeight] = useState((window.screen.height * 0.7) / 3);
-
-  //watch the number of items in both the friendly and enemy team
-  //if that number triggers the need for a new row
-    //add a new row to both the friendly and enemy team
-    //add more height to the teams container
-  
-    
 
   return (
     <div>
