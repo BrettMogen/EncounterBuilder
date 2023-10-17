@@ -38,7 +38,7 @@ const UniqueCharacters = ({ character }) => {
   let content;
 
   inFriendlyParty || inEnemyTeam ? content =
-    <div className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}` }}>
+    <div className={`${cssName} characterContainer`} style={{ border: `0.25em ridge ${cssBorderColor}`}}>
       {/* Conditionally render either the characterModal or the show modal and remove hover options. 
       This was done to eliminate any interactivity with these options while the modal is open. */}
       {showModal ? <CharacterModal character={character} /> : <div>

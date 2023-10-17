@@ -2,11 +2,16 @@ import React, { useState, useContext } from 'react';
 import { MainContext } from '../context.js';
 import UniqueCharacters from './UniqueCharacters';
 import DeepClone from './DeepClone.js';
+import { checkRowIncrease } from './HandleTeamsContainerHeightAndGrids.js';
 
 const FriendlyParty = () => {
   const { characterOptionsArray, setCharacterOptionsArray } = useContext(MainContext);
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
+  const { enemyTeam, setEnemyTeam } = useContext(MainContext);
   const { numberOfAllies, setNumberOfAllies } = useContext(MainContext);
+  const { numberOfRows, setNumberOfRows } = useContext(MainContext);
+  const { teamsContainerHeight, setTeamsContainerHeight } = useContext(MainContext);
+  const { containerRowHeight, setContainerRowHeight } = useContext(MainContext);
 
   function handleDragOver(e) {
     e.preventDefault();
@@ -14,6 +19,10 @@ const FriendlyParty = () => {
 
   const handleOnDrop = (e) => {
     e.preventDefault();
+    const updatedSizing = checkRowIncrease(friendlyParty.length, enemyTeam.length, numberOfRows, containerRowHeight);
+    //return and set numberOfRows and teamsContainerHeight
+    setNumberOfRows(updatedSizing[0]);
+    setTeamsContainerHeight(updatedSizing[1] + teamsContainerHeight);
     const characterType = e.dataTransfer.getData('text/plain');
     for (let i = 0; i < characterOptionsArray.length; i++) {
       if (characterOptionsArray[i].props.character.name === characterType) {
@@ -31,7 +40,7 @@ const FriendlyParty = () => {
     <div>
       <div onDrop={handleOnDrop} onDragOver={handleDragOver} className="friendlyPartyContainer">
         <div className="friendlyPartyTitle">Friendly Party</div>
-        <div className="friendlyParty">{friendlyParty}</div>
+        <div className="friendlyParty" style={{gridTemplateRows: `repeat(${numberOfRows.toString()}, 1fr)`}}>{friendlyParty}</div>
       </div>
     </div>
   )

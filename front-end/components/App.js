@@ -4,6 +4,7 @@ import CharacterOptions from './CharacterOptions.js';
 import FriendlyParty from './FriendlyParty.js';
 import EnemyTeam from './EnemyTeam.js';
 import Fight from './Fight.js';
+// import HandleTeamsContainerHeightAndGrids from './HandleTeamsContainerHeightAndGrids.js';
 
 const App = () => {
   const [characterOptionsArray, setCharacterOptionsArray] = useState([]);
@@ -12,6 +13,16 @@ const App = () => {
   const [enemyTeam, setEnemyTeam] = useState([]);
   const [numberOfEnemies, setNumberOfEnemies] = useState(0);
   const [modalIsShowing, setModalIsShowing] = useState(false);
+  const [numberOfRows, setNumberOfRows] = useState(3);
+  const [teamsContainerHeight, setTeamsContainerHeight] = useState(window.screen.height * 0.7);
+  const [containerRowHeight, setContainerRowHeight] = useState((window.screen.height * 0.7) / 3);
+
+  //watch the number of items in both the friendly and enemy team
+  //if that number triggers the need for a new row
+    //add a new row to both the friendly and enemy team
+    //add more height to the teams container
+  
+    
 
   return (
     <div>
@@ -21,7 +32,10 @@ const App = () => {
         numberOfAllies, setNumberOfAllies,
         enemyTeam, setEnemyTeam,
         numberOfEnemies, setNumberOfEnemies,
-        modalIsShowing, setModalIsShowing
+        modalIsShowing, setModalIsShowing,
+        numberOfRows, setNumberOfRows,
+        teamsContainerHeight, setTeamsContainerHeight,
+        containerRowHeight, setContainerRowHeight
       }}>
         <div className="header" >
           <div className="headerTitle">Encounter Builder</div>
@@ -29,7 +43,7 @@ const App = () => {
         <div>
           <CharacterOptions />
         </div>
-        <div className="teamsContainer">
+        <div className="teamsContainer" style={{height: `${teamsContainerHeight.toString()}px`}}>
           <FriendlyParty />
           <Fight />
           <EnemyTeam />
