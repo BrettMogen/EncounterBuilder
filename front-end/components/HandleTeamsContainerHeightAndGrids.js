@@ -1,3 +1,7 @@
+//These functions affect the height of the teamsContainer (which is used to display the friendlyParty and the enemyTeam).
+//The functions allow for the teamsContainer to increase or decrease in height depending on how many characters are on each side.
+//These functions also change the amount of rows in each grid so that characters remain roughly the same height no matter how many are added to each side.
+
 export function checkRowIncrease(growingTeam, stableTeam, numberOfRows, containerRowHeight) {
   growingTeam = growingTeam + 1;
 

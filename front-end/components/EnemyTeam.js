@@ -19,10 +19,11 @@ const EnemyTeam = () => {
 
   const handleOnDrop = (e) => {
     e.preventDefault();
+    //Call the 'checkRowIncrease' function to handle the display of each team (see 'HandleTeamsContainerHeightAndGrid.js')
      const updatedSizing = checkRowIncrease(enemyTeam.length, friendlyParty.length, numberOfRows, containerRowHeight);
-    //return and set numberOfRows and teamsContainerHeight
     setNumberOfRows(updatedSizing[0]);
     setTeamsContainerHeight(updatedSizing[1] + teamsContainerHeight);
+    
     const characterType = e.dataTransfer.getData('text/plain');
     for (let i = 0; i < characterOptionsArray.length; i++) {
       if (characterOptionsArray[i].props.character.name === characterType) {

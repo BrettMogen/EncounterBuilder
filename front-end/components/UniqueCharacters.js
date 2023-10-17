@@ -20,9 +20,11 @@ const UniqueCharacters = ({ character }) => {
 
   const removeCharacter = (character) => {
     setModalIsShowing(true);
+    //Call the 'checkRowDecrease' function to handle the display of each team (see 'HandleTeamsContainerHeightAndGrid.js')
     const updatedSizing = character.inFriendlyParty === true ? checkRowDecrease(friendlyParty.length, enemyTeam.length, numberOfRows, containerRowHeight) : checkRowDecrease(enemyTeam.length, friendlyParty.length, numberOfRows, containerRowHeight);
     setNumberOfRows(updatedSizing[0]);
     setTeamsContainerHeight(teamsContainerHeight - updatedSizing[1]);
+    
     let newParty = [];
     const whichSide = character.inFriendlyParty === true ? friendlyParty : enemyTeam;
     for (let i = 0; i < whichSide.length; i++) {
