@@ -27,6 +27,7 @@ const UniqueCharacters = ({ character }) => {
     setTeamsContainerHeight(teamsContainerHeight - updatedSizing[1]);
     
     let newParty = [];
+
     const whichSide = character.inFriendlyParty === true ? friendlyParty : enemyTeam;
     const sideCount = character.inFriendlyParty === true ? numberOfAllies : numberOfEnemies;
     const setSideCount = character.inFriendlyParty === true ? setNumberOfAllies : setNumberOfEnemies;
