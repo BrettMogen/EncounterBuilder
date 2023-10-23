@@ -9,17 +9,18 @@ const UniqueCharacters = ({ character }) => {
 
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
   const { enemyTeam, setEnemyTeam } = useContext(MainContext);
+  const { numberOfAllies, setNumberOfAllies } = useContext(MainContext);
+  const { numberOfEnemies, setNumberOfEnemies } = useContext(MainContext);
   const { setModalIsShowing } = useContext(MainContext);
   const { numberOfRows, setNumberOfRows } = useContext(MainContext);
   const { teamsContainerHeight, setTeamsContainerHeight } = useContext(MainContext);
-  const { containerRowHeight, setContainerRowHeight } = useContext(MainContext);
+  const { containerRowHeight } = useContext(MainContext);
 
   const handleDragStart = (e, character) => {
     e.dataTransfer.setData('text/plain', character.name);
   }
 
   const removeCharacter = (character) => {
-    setModalIsShowing(true);
     //Call the 'checkRowDecrease' function to handle the display of each team (see 'HandleTeamsContainerHeightAndGrid.js')
     const updatedSizing = character.inFriendlyParty === true ? checkRowDecrease(friendlyParty.length, enemyTeam.length, numberOfRows, containerRowHeight) : checkRowDecrease(enemyTeam.length, friendlyParty.length, numberOfRows, containerRowHeight);
     setNumberOfRows(updatedSizing[0]);
@@ -27,15 +28,25 @@ const UniqueCharacters = ({ character }) => {
     
     let newParty = [];
     const whichSide = character.inFriendlyParty === true ? friendlyParty : enemyTeam;
+    const sideCount = character.inFriendlyParty === true ? numberOfAllies : numberOfEnemies;
+    const setSideCount = character.inFriendlyParty === true ? setNumberOfAllies : setNumberOfEnemies;
+
+    setSideCount(sideCount - 1);
+
     for (let i = 0; i < whichSide.length; i++) {
-      if (character.id !== whichSide[i].props.character.id) {
+      if (character.id > whichSide[i].props.character.id) {
         newParty.push(whichSide[i]);
+      } else if (character.id < whichSide[i].props.character.id) {
+        const updatedCharacter = whichSide[i];
+        updatedCharacter.props.character.id =  updatedCharacter.props.character.id - 1;
+        newParty.push(updatedCharacter);
       }
     }
     character.inFriendlyParty === true ? setFriendlyParty(newParty) : setEnemyTeam(newParty);
   }
 
   const unhideCharacterModal = (character) => {
+    setModalIsShowing(true);
     const newParty = character.inFriendlyParty === true ? [...friendlyParty] : [...enemyTeam];
     const indexToUpdate = newParty.findIndex(index => index.props.character.id === character.id);
     if (indexToUpdate !== -1) {
