@@ -1,13 +1,16 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../context.js';
+import FightModal from './FightModal.js';
 
 const Fight = () => {
   const { modalIsShowing } = useContext(MainContext);
   const { friendlyParty, enemyTeam } = useContext(MainContext);
-  const [ charactersAreFighting, setCharactersAreFighting ] = useState(false);
+  const [charactersAreFighting, setCharactersAreFighting] = useState(false);
 
   const startFight = function () {
-    ((friendlyParty.length > 0) && (enemyTeam.length > 0)) && setCharactersAreFighting(true);
+    // ((friendlyParty.length > 0) && (enemyTeam.length > 0)) && setCharactersAreFighting(true);
+    //Temporarily commenting out while editing CSS
+    setCharactersAreFighting(true);
   }
 
   let content;
@@ -21,10 +24,7 @@ const Fight = () => {
         <div className="darkenBackground"></div>
       </div>
   } else {
-    content =
-      <div>
-        <div className="fightBackdrop"></div>
-      </div>
+    content = <FightModal />
   }
 
   return content;

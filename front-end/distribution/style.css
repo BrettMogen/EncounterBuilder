@@ -111,6 +111,76 @@ body {
   opacity: 0.8;
 }
 
+/* Characters are Fighting */
+.fightModalContainer {
+  z-index: 3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70%;
+  width: 80%;
+}
+
+.fightModal {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.fightIntroduction {
+  display: flex;
+  height: 100%;
+  width: 50%;
+  font-size: 3vw;
+  background-color: white;
+  border-radius: 2vw;
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+}
+
+.textDisplayFightSection {
+  height: 30%;
+  width: 100%;
+  background-color:#295e21;
+  opacity: 0.5;
+}
+
+.fightModalGridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 70%;
+  width: 100%;
+  background-color:#6e1c19;
+  opacity: 0.5;
+}
+
+.fightModalGridSection {
+  height: 100%;
+  width: 100%;
+}
+
+.friendlyFightSection {
+  grid-area: 1/1/2/2;
+  background-color:#7019a3;
+  opacity: 0.5;
+}
+ 
+.diceRollFightSection {
+  grid-area: 1/2/2/3;
+  background-color:#5e4807;
+  opacity: 0.5;
+}
+
+.enemyFightSection {
+  grid-area: 1/3/2/4;
+  background-color:#0e6ba2;
+  opacity: 0.5;
+}
+
 .fightBackdrop {
   z-index: 2;
   position: fixed;
