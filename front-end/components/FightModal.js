@@ -31,25 +31,38 @@ const FightModal = () => {
   }, []);
 
   const [friendlyList, setFriendlyList] = useState([]);
+  const [enemyList, setEnemyList] = useState([]);
 
   useEffect(() => {
 
     if (fightStage.stage === 'introduction' && fightStage.part === 3) {
       let index = 0;
-      const tempList = [];
+      const tempFriendlyList = [];
+      const tempEnemyList = [];
 
       const startPushing = function () {
         setTimeout(() => {
           if (index < friendlyParty.length) {
-            tempList.push(
-              <div key={index}>
+            tempFriendlyList.push(
+              <div key={index} className="friendlyFightListItem">
                 <Typewriter text={friendlyParty[index].props.character.name} />
               </div>);
           }
 
+          if (index < enemyTeam.length) {
+            tempEnemyList.push(
+              <div key={index} className="enemyFightListItem">
+                <Typewriter text={enemyTeam[index].props.character.name} />
+              </div>);
+          }
+
           index++;
-          setFriendlyList([...tempList]);
-          startPushing();
+          setFriendlyList([...tempFriendlyList]);
+          setEnemyList([...tempEnemyList]);
+          console.log('how many times');
+          if (index < friendlyParty.length || index < enemyTeam.length) {
+            startPushing();
+          }
         }, 500);
       }
       startPushing();
@@ -74,7 +87,9 @@ const FightModal = () => {
                   {friendlyList}
                 </div>
                 <div className="centralFightListText">Here are the current teams you've created.</div>
-                <div className="enemyFightList">Some text</div>
+                <div className="enemyFightList">
+                  {enemyList}
+                </div>
               </div>}
             </div>}
         </div>

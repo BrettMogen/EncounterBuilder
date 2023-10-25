@@ -176,11 +176,16 @@ body {
   align-items: center; 
   justify-content: center; 
   text-align: center;
-  display: flex;
   height: 100%;
   width: 0%;
   float: left;
   animation: expandFightListTeam 3s ease forwards;
+}
+
+.friendlyFightListItem {
+  display: block;
+  text-align: center;
+  font-size: 1.5vw;
 }
 
 .centralFightListText {
@@ -197,11 +202,16 @@ body {
   align-items: center; 
   justify-content: center; 
   text-align: center;
-  display: flex;
   height: 100%;
   width: 0%;
   float: right;
   animation: expandFightListTeam 3s ease forwards;
+}
+
+.enemyFightListItem {
+  display: block;
+  text-align: center;
+  font-size: 1.5vw;
 }
 
 @keyframes contractFightListText {
