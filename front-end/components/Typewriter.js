@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Typewriter({ text }) {
+function Typewriter({ text, delayTime=100 }) {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -12,7 +12,7 @@ function Typewriter({ text }) {
       } else {
         clearInterval(intervalId);
       }
-    }, 100);
+    }, delayTime);
 
     return () => {
       clearInterval(intervalId);
