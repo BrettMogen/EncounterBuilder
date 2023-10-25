@@ -133,6 +133,14 @@ body {
 .fightIntroduction {
   display: flex;
   height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.introductionPart1, .introductionPart2{
+  display: flex;
+  height: 100%;
   width: 50%;
   font-size: 3vw;
   background-color: white;
@@ -142,7 +150,79 @@ body {
   text-align: center;
 }
 
-.textDisplayFightSection {
+.introductionPart3 {
+  display: flex;
+  height: 100%;
+  width: 50%;
+  font-size: 3vw;
+  background-color: white;
+  border-radius: 2vw;
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+  animation: expandIntroPart3Container 3s ease forwards;
+}
+
+@keyframes expandIntroPart3Container {
+  from {
+    width: 50%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.friendlyFightList {
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+  display: flex;
+  height: 100%;
+  width: 0%;
+  float: left;
+  animation: expandFightListTeam 3s ease forwards;
+}
+
+.centralFightListText {
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  animation: contractFightListText 3s ease forwards;
+}
+
+.enemyFightList {
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+  display: flex;
+  height: 100%;
+  width: 0%;
+  float: right;
+  animation: expandFightListTeam 3s ease forwards;
+}
+
+@keyframes contractFightListText {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 33%;
+  }
+}
+
+@keyframes expandFightListTeam {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 33%;
+  }
+}
+
+/* .textDisplayFightSection {
   height: 30%;
   width: 100%;
   background-color:#295e21;
@@ -179,7 +259,7 @@ body {
   grid-area: 1/3/2/4;
   background-color:#0e6ba2;
   opacity: 0.5;
-}
+} */
 
 .fightBackdrop {
   z-index: 2;
