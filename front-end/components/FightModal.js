@@ -40,32 +40,47 @@ const FightModal = () => {
       const tempFriendlyList = [];
       const tempEnemyList = [];
 
-      const startPushing = function () {
-        setTimeout(() => {
-          if (index < friendlyParty.length) {
-            tempFriendlyList.push(
-              <div key={index} className="friendlyFightListItem">
-                <Typewriter text={friendlyParty[index].props.character.name} />
-              </div>);
-          }
+      const largerParty = friendlyParty.length > enemyTeam.length ? friendlyParty.length : enemyTeam.length;
+      setTimeout(() => {
+        setFightStage({...fightStage, part: 4});
+      }, (2500 + (largerParty * 300)));
 
-          if (index < enemyTeam.length) {
-            tempEnemyList.push(
-              <div key={index} className="enemyFightListItem">
-                <Typewriter text={enemyTeam[index].props.character.name} />
-              </div>);
-          }
+      setTimeout(() => {
+        tempFriendlyList.push(<div className="fightListTeamTitle"><Typewriter text="Friendly Party" /></div>);
+        tempEnemyList.push(<div className="fightListTeamTitle"><Typewriter text="Enemy Team" /></div>);
+        setFriendlyList([...tempFriendlyList]);
+        setEnemyList([...tempEnemyList]);
+      }, 500);
 
-          index++;
-          setFriendlyList([...tempFriendlyList]);
-          setEnemyList([...tempEnemyList]);
-          console.log('how many times');
-          if (index < friendlyParty.length || index < enemyTeam.length) {
-            startPushing();
-          }
-        }, 500);
-      }
-      startPushing();
+      setTimeout(() => {
+
+
+        const startPushing = function () {
+          setTimeout(() => {
+            if (index < friendlyParty.length) {
+              tempFriendlyList.push(
+                <div key={index} className="fightListItem">
+                  <Typewriter text={friendlyParty[index].props.character.name} delayTime={130} />
+                </div>);
+            }
+
+            if (index < enemyTeam.length) {
+              tempEnemyList.push(
+                <div key={index} className="fightListItem">
+                  <Typewriter text={enemyTeam[index].props.character.name} delayTime={130} />
+                </div>);
+            }
+
+            index++;
+            setFriendlyList([...tempFriendlyList]);
+            setEnemyList([...tempEnemyList]);
+            if (index < friendlyParty.length || index < enemyTeam.length) {
+              startPushing();
+            }
+          }, 300);
+        }
+        startPushing();
+      }, 1000);
     }
   }, [fightStage])
 
@@ -82,13 +97,18 @@ const FightModal = () => {
               {fightStage.part === 2 && <div className="introductionPart2">
                 <Typewriter text="Here are the current teams you've created." />
               </div>}
-              {fightStage.part === 3 && <div className="introductionPart3">
-                <div className="friendlyFightList">
-                  {friendlyList}
+              {(fightStage.part === 3 || fightStage.part === 4) && <div className="introductionPart3">
+                <div className="fightListContainer">
+                  <div className="fightListContent">
+                    {friendlyList}
+                  </div>
                 </div>
-                <div className="centralFightListText">Here are the current teams you've created.</div>
-                <div className="enemyFightList">
-                  {enemyList}
+                {fightStage.part === 3 &&  <div className="centralFightListTextPart3">Here are the current teams you've created.</div>}
+                {fightStage.part === 4 &&  <div className="centralFightListTextPart4"><Typewriter text="This is your last chance to edit your choices before combat begins."/></div>}
+                <div className="fightListContainer">
+                  <div className="fightListContent">
+                    {enemyList}
+                  </div>
                 </div>
               </div>}
             </div>}

@@ -141,7 +141,7 @@ body {
 .introductionPart1, .introductionPart2{
   display: flex;
   height: 100%;
-  width: 50%;
+  width: 40%;
   font-size: 3vw;
   background-color: white;
   border-radius: 2vw;
@@ -153,7 +153,7 @@ body {
 .introductionPart3 {
   display: flex;
   height: 100%;
-  width: 50%;
+  width: 40%;
   font-size: 3vw;
   background-color: white;
   border-radius: 2vw;
@@ -165,14 +165,15 @@ body {
 
 @keyframes expandIntroPart3Container {
   from {
-    width: 50%;
+    width: 40%;
   }
   to {
     width: 100%;
   }
 }
 
-.friendlyFightList {
+.fightListContainer {
+  box-sizing: border-box;
   align-items: center; 
   justify-content: center; 
   text-align: center;
@@ -180,38 +181,61 @@ body {
   width: 0%;
   float: left;
   animation: expandFightListTeam 3s ease forwards;
+  padding: 3vw 0;
+  overflow: hidden;
 }
 
-.friendlyFightListItem {
+.fightListContent {
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+  padding-right: 17px;
+}
+
+.fightListContainer .fightListContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.fightListContainer .fightListContent::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.fightListContainer .fightListContent::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.fightListContainer .fightListContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.fightListContainer .fightListContent::-webkit-scrollbar-button {
+  display: none;
+}
+
+.fightListContainer:hover .fightListContent::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+.fightListTeamTitle {
+  text-decoration: underline;
+  margin-bottom: 0.5vw;
+  font-size: 1.75vw;
+}
+
+.fightListItem {
   display: block;
   text-align: center;
   font-size: 1.5vw;
 }
 
-.centralFightListText {
+.centralFightListTextPart3 {
   align-items: center; 
   justify-content: center; 
   text-align: center;
   display: flex;
   height: 100%;
   width: 100%;
-  animation: contractFightListText 3s ease forwards;
-}
-
-.enemyFightList {
-  align-items: center; 
-  justify-content: center; 
-  text-align: center;
-  height: 100%;
-  width: 0%;
-  float: right;
-  animation: expandFightListTeam 3s ease forwards;
-}
-
-.enemyFightListItem {
-  display: block;
-  text-align: center;
-  font-size: 1.5vw;
+  animation: contractFightListText 1.5s ease forwards;
 }
 
 @keyframes contractFightListText {
@@ -219,7 +243,7 @@ body {
     width: 100%;
   }
   to {
-    width: 33%;
+    width: 40%;
   }
 }
 
@@ -228,8 +252,17 @@ body {
     width: 0%;
   }
   to {
-    width: 33%;
+    width: 30%;
   }
+}
+
+.centralFightListTextPart4 {
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+  display: flex;
+  height: 100%;
+  width: 40%;
 }
 
 /* .textDisplayFightSection {
