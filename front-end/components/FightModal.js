@@ -2,15 +2,24 @@ import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../context.js';
 import Typewriter from './Typewriter.js';
 
-const FightModal = () => {
+const FightModal = (props) => {
+  console.log('props', props);
+  console.log('props.data', props.data);
+
+  const setCharactersAreFighting = props.data;
+
+  const closeFightModal = function () {
+    setCharactersAreFighting(false);
+  }
+
   const [fightStage, setFightStage] = useState({ stage: 'introduction', part: 1 });
   const { friendlyParty } = useContext(MainContext);
   const { enemyTeam } = useContext(MainContext);
 
   useEffect(() => {
     const stages = [
-      { part: 1, delay: 1000 },
-      { part: 2, delay: 1000 },
+      { part: 1, delay: 6000 },
+      { part: 2, delay: 6000 },
       { part: 3, delay: 6000 },
     ];
 
@@ -42,8 +51,8 @@ const FightModal = () => {
 
       const largerParty = friendlyParty.length > enemyTeam.length ? friendlyParty.length : enemyTeam.length;
       setTimeout(() => {
-        setFightStage({...fightStage, part: 4});
-      }, (2500 + (largerParty * 300)));
+        setFightStage({ ...fightStage, part: 4 });
+      }, (5000 + (largerParty * 300)));
 
       setTimeout(() => {
         tempFriendlyList.push(<div className="fightListTeamTitle"><Typewriter text="Friendly Party" /></div>);
@@ -103,8 +112,8 @@ const FightModal = () => {
                     {friendlyList}
                   </div>
                 </div>
-                {fightStage.part === 3 &&  <div className="centralFightListTextPart3">Here are the current teams you've created.</div>}
-                {fightStage.part === 4 &&  <div className="centralFightListTextPart4"><Typewriter text="This is your last chance to edit your choices before combat begins."/></div>}
+                {fightStage.part === 3 && <div className="centralFightListTextPart3">Here are the current teams you've created.</div>}
+                {fightStage.part === 4 && <div className="centralFightListTextPart4"><Typewriter text="This is your last chance to edit your choices before combat begins." /></div>}
                 <div className="fightListContainer">
                   <div className="fightListContent">
                     {enemyList}
@@ -113,6 +122,9 @@ const FightModal = () => {
               </div>}
             </div>}
         </div>
+      </div>
+      <div className="closeFightModalContainer">
+        <div className="closeFightModal" onClick={closeFightModal}>Close</div>
       </div>
       <div className="fightBackdrop"></div>
     </div>

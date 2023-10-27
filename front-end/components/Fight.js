@@ -24,7 +24,7 @@ const Fight = () => {
         <div className="darkenBackground"></div>
       </div>
   } else {
-    content = <FightModal />
+    content = <FightModal data={setCharactersAreFighting}/>
   }
 
   return content;
