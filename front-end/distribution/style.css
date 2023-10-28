@@ -42,10 +42,6 @@ body {
   background-image: url("./images/NavyRepeatingFantasy.jpeg");
   background-repeat: repeat;
   background-size: 800px 800px;
-  text-shadow: 0.15em 0 black,
-    0 0.15em black,
-    -0.15em 0 black,
-    0 -0.15em black;
 }
 
 .friendlyPartyTitle {
@@ -58,6 +54,10 @@ body {
   align-items: center;
   font-size: 5vw;
   font-style: italic;
+  text-shadow: 0.03em 0 black,
+  0 0.03em black,
+  -0.03em 0 black,
+  0 -0.03em black;
   color: white;
 }
 
@@ -376,11 +376,6 @@ body {
   background-image: url("./images/OrangeRepeatingFantasy.jpeg");
   background-repeat: repeat;
   background-size: 400px 400px;
-  text-shadow: 0.15em 0 black,
-  0 0.15em black,
-  -0.15em 0 black,
-  0 -0.15em black;
-  color: white;
 }
 
 .enemyTeamTitle {
@@ -393,6 +388,11 @@ body {
   align-items: center;
   font-size: 5vw;
   font-style: italic;
+  text-shadow: 0.03em 0 black,
+  0 0.03em black,
+  -0.03em 0 black,
+  0 -0.03em black;
+  color: white;
 }
 
 .enemyTeam {
