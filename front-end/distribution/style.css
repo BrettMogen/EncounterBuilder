@@ -7,15 +7,31 @@ body {
 
 .header {
   display: flex;
-  position: relative;
   height: 15%;
   padding-left: 5vw;
-  background-image: url("./images/mushroom-background.avif");
   text-shadow: 0.15em 0 black,
     0 0.15em black,
     -0.15em 0 black,
     0 -0.15em black;
   color: white;
+}
+
+/* Apply this to elements needing the mushroom background */
+.mushroomBackground {
+  position: relative;
+}
+
+.mushroomBackground::before {
+  z-index: -1;
+  content: "";
+  background-image: url("./images/mushroom-background.avif");
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #cfcfcf;
+  background-blend-mode: multiply;
 }
 
 .headerTitle {
@@ -55,9 +71,9 @@ body {
   font-size: 5vw;
   font-style: italic;
   text-shadow: 0.03em 0 black,
-  0 0.03em black,
-  -0.03em 0 black,
-  0 -0.03em black;
+    0 0.03em black,
+    -0.03em 0 black,
+    0 -0.03em black;
   color: white;
 }
 
@@ -127,10 +143,10 @@ body {
   transform: translate(-50%, -50%);
   height: 70%;
   width: 80%;
-  text-shadow: 0.25em 0 black,
-    0 0.25em black,
-    -0.25em 0 black,
-    0 -0.25em black;
+  text-shadow: 0.12em 0 black,
+    0 0.12em black,
+    -0.12em 0 black,
+    0 -0.12em black;
   color: white;
 }
 
@@ -156,19 +172,21 @@ body {
   height: 100%;
   width: 40%;
   font-size: 3vw;
-  background-image: url("./images/mushroom-background.avif");
   border: 1vw ridge #c4a44b;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 2vw;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .introductionPart3 {
   display: flex;
+  box-sizing: border-box;
   height: 100%;
   width: 40%;
   font-size: 3vw;
-  background-image: url("./images/mushroom-background.avif");
   border: 1vw ridge #c4a44b;
   align-items: center;
   justify-content: center;
@@ -197,9 +215,75 @@ body {
   animation: expandFightListTeam 3s ease forwards;
   padding: 3vw 0;
   overflow: hidden;
+  position: relative;
+}
+
+.friendlyFightListBackground {
+  z-index: 0;
+  position: absolute;
+  height: calc(100% - 4vw);
+  width: calc(100% - 4vw);
+  border-radius: 3vw;
+  top: 2vw;
+  left: 2vw;
+  background-image: url("./images/NavyRepeatingFantasy.jpeg");
+  background-repeat: repeat;
+  background-size: 800px 800px;
+  opacity: 0;
+  animation: imageBackgroundAppears 3s ease forwards;
+}
+
+.enemyFightListBackgroundImage {
+  z-index: 0;
+  position: absolute;
+  height: calc(100% - 4vw);
+  width: calc(100% - 4vw);
+  border-radius: 3vw;
+  top: 2vw;
+  left: 2vw;
+  background-image: url("./images/OrangeRepeatingFantasy.jpeg");
+  background-repeat: repeat;
+  background-size: 400px 400px;
+  opacity: 0;
+  animation: imageBackgroundAppears 3s ease forwards;
+}
+
+.fightListBackgroundDarken {
+  z-index: -1;
+  position: absolute;
+  height: calc(100% - 4vw);
+  width: calc(100% - 4vw);
+  border-radius: 3vw;
+  top: 2vw;
+  left: 2vw;
+  background-color: black;
+  opacity: 0;
+  animation: darkenBackgroundAppears 3s ease forwards;
+}
+
+@keyframes darkenBackgroundAppears {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes imageBackgroundAppears {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.85;
+  }
 }
 
 .fightListContent {
+  z-index: 1;
+  position: relative;
   height: 100%;
   width: 100%;
   overflow: scroll;
@@ -243,13 +327,15 @@ body {
 }
 
 .centralFightListTextPart3 {
+  box-sizing: border-box;
   align-items: center;
   justify-content: center;
   text-align: center;
   display: flex;
   height: 100%;
   width: 100%;
-  animation: contractFightListText 1.5s ease forwards;
+  animation: contractFightListText 2s ease forwards;
+  padding: 2vw;
 }
 
 @keyframes contractFightListText {
@@ -273,52 +359,15 @@ body {
 }
 
 .centralFightListTextPart4 {
+  box-sizing: border-box;
   align-items: center;
   justify-content: center;
   text-align: center;
   display: flex;
   height: 100%;
   width: 40%;
+  padding: 2vw;
 }
-
-/* .textDisplayFightSection {
-  height: 30%;
-  width: 100%;
-  background-color:#295e21;
-  opacity: 0.5;
-}
-
-.fightModalGridContainer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  height: 70%;
-  width: 100%;
-  background-color:#6e1c19;
-  opacity: 0.5;
-}
-
-.fightModalGridSection {
-  height: 100%;
-  width: 100%;
-}
-
-.friendlyFightSection {
-  grid-area: 1/1/2/2;
-  background-color:#7019a3;
-  opacity: 0.5;
-}
- 
-.diceRollFightSection {
-  grid-area: 1/2/2/3;
-  background-color:#5e4807;
-  opacity: 0.5;
-}
-
-.enemyFightSection {
-  grid-area: 1/3/2/4;
-  background-color:#0e6ba2;
-  opacity: 0.5;
-} */
 
 .fightBackdrop {
   z-index: 2;
@@ -348,7 +397,6 @@ body {
   display: flex;
   font-size: 2.5vw;
   background-color: red;
-  color: black;
   text-align: center;
   border-radius: 1vw;
   align-items: center;
@@ -358,6 +406,11 @@ body {
   width: 15%;
   opacity: 0;
   transition: opacity 0.5s ease;
+  text-shadow: 0.05em 0 black,
+    0 0.05em black,
+    -0.05em 0 black,
+    0 -0.05em black;
+  color: white;
 }
 
 .closeFightModalContainer:hover .closeFightModal {
@@ -389,9 +442,9 @@ body {
   font-size: 5vw;
   font-style: italic;
   text-shadow: 0.03em 0 black,
-  0 0.03em black,
-  -0.03em 0 black,
-  0 -0.03em black;
+    0 0.03em black,
+    -0.03em 0 black,
+    0 -0.03em black;
   color: white;
 }
 

@@ -29,7 +29,7 @@ const App = () => {
         teamsContainerHeight, setTeamsContainerHeight,
         containerRowHeight, setContainerRowHeight
       }}>
-        <div className="header" >
+        <div className="header mushroomBackground" >
           <div className="headerTitle">Encounter Builder</div>
         </div>
         <div>

@@ -13,13 +13,14 @@ const FightModal = (props) => {
   }
 
   const [fightStage, setFightStage] = useState({ stage: 'introduction', part: 1 });
+  const [fightListBackgroundsVisibility, setFightListBackgroundsVisibility] = useState('invisible');
   const { friendlyParty } = useContext(MainContext);
   const { enemyTeam } = useContext(MainContext);
 
   useEffect(() => {
     const stages = [
-      { part: 1, delay: 6000 },
-      { part: 2, delay: 6000 },
+      { part: 1, delay: 1000 },
+      { part: 2, delay: 1000 },
       { part: 3, delay: 6000 },
     ];
 
@@ -48,6 +49,10 @@ const FightModal = (props) => {
       let index = 0;
       const tempFriendlyList = [];
       const tempEnemyList = [];
+
+      setTimeout(() => {
+        setFightListBackgroundsVisibility('visible');
+      }, 2500);
 
       const largerParty = friendlyParty.length > enemyTeam.length ? friendlyParty.length : enemyTeam.length;
       setTimeout(() => {
@@ -100,14 +105,16 @@ const FightModal = (props) => {
           {/* Introduction Stage */}
           {fightStage.stage === 'introduction' &&
             <div className="fightIntroduction">
-              {fightStage.part === 1 && <div className="introductionPart1">
+              {fightStage.part === 1 && <div className="introductionPart1 mushroomBackground">
                 <Typewriter text='Welcome to the fight simulator!' />
               </div>}
-              {fightStage.part === 2 && <div className="introductionPart2">
+              {fightStage.part === 2 && <div className="introductionPart2 mushroomBackground">
                 <Typewriter text="Here are the current teams you've created." />
               </div>}
-              {(fightStage.part === 3 || fightStage.part === 4) && <div className="introductionPart3">
+              {(fightStage.part === 3 || fightStage.part === 4) && <div className="introductionPart3 mushroomBackground">
                 <div className="fightListContainer">
+                {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}
+                  {fightListBackgroundsVisibility === 'visible' && <div className="friendlyFightListBackground"></div>}
                   <div className="fightListContent">
                     {friendlyList}
                   </div>
@@ -115,6 +122,8 @@ const FightModal = (props) => {
                 {fightStage.part === 3 && <div className="centralFightListTextPart3">Here are the current teams you've created.</div>}
                 {fightStage.part === 4 && <div className="centralFightListTextPart4"><Typewriter text="This is your last chance to edit your choices before combat begins." /></div>}
                 <div className="fightListContainer">
+                {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}
+                  {fightListBackgroundsVisibility === 'visible' && <div className="enemyFightListBackgroundImage"></div>}
                   <div className="fightListContent">
                     {enemyList}
                   </div>
@@ -132,10 +141,3 @@ const FightModal = (props) => {
 }
 
 export default FightModal;
-
-{/* <div className='textDisplayFightSection'></div>
-          <div className='fightModalGridContainer'>
-            <div className='friendlyFightSection fightModalGridSection'></div>
-            <div className='diceRollFightSection fightModalGridSection'></div>
-            <div className='enemyFightSection fightModalGridSection'></div>
-          </div> */}
