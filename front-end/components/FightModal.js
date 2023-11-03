@@ -19,8 +19,8 @@ const FightModal = (props) => {
 
   useEffect(() => {
     const stages = [
-      { part: 1, delay: 5000 }, //final product should be set to delay: 5000
-      { part: 2, delay: 5000 }, //final product should be set to delay: 5000
+      { part: 1, delay: 1000 }, //final product should be set to delay: 5000
+      { part: 2, delay: 1000 }, //final product should be set to delay: 5000
       { part: 3, delay: 6000 },
     ];
 
@@ -56,7 +56,27 @@ const FightModal = (props) => {
 
       const largerParty = friendlyParty.length > enemyTeam.length ? friendlyParty.length : enemyTeam.length;
       setTimeout(() => {
-        setFightStage({ ...fightStage, part: 4 });
+        const stages = [
+          { part: 4, delay: 1000 }, //set to 10,000
+          { part: 5, delay: 1500 }, 
+          { part: 6, delay: 11000 },
+        ];
+    
+        let counter = 0;
+    
+        const updateFightStage = () => {
+          if (counter < stages.length) {
+            const stage = stages[counter];
+            setFightStage({ ...fightStage, part: stage.part });
+            counter++;
+    
+            const delay = stage.delay;
+            setTimeout(updateFightStage, delay);
+          }
+        };
+
+        updateFightStage();
+
       }, (6000 + (largerParty * 300)));
 
       setTimeout(() => {
@@ -111,7 +131,7 @@ const FightModal = (props) => {
               {fightStage.part === 2 && <div className="introductionPart2 mushroomBackground">
                 <Typewriter text="Here are the current teams you've created." />
               </div>}
-              {(fightStage.part === 3 || fightStage.part === 4) && <div className="introductionPart3 mushroomBackground">
+              {(fightStage.part === 3 || fightStage.part === 4 || fightStage.part === 5 || fightStage.part === 6) && <div className="introductionPart3 mushroomBackground">
                 <div className="fightListContainer">
                   {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}
                   {fightListBackgroundsVisibility === 'visible' && <div className="friendlyFightListBackground"></div>}
@@ -120,14 +140,13 @@ const FightModal = (props) => {
                   </div>
                 </div>
                 {fightStage.part === 3 && <div className="centralFightListTextPart3">Here are the current teams you've created.
-                  {fightListBackgroundsVisibility === 'visible' && <div><div className="centralTextDarkenedBackgroundPart3"></div><div className="centralTextDarkenedBackgroundPart3Border"></div></div>}
                 </div>}
-                {fightStage.part === 4 && <div className="centralFightListTextPart4">
-                  <Typewriter text="This is your last chance to edit your choices before combat begins." />
-                  <div>
-                    <div className="centralTextDarkenedBackgroundPart4"></div>
-                    <div className="centralTextDarkenedBackgroundPart4Border"></div>
-                  </div>
+                {(fightStage.part === 4 || fightStage.part === 5 || fightStage.part === 6) && <div className="centralFightListTextPart4">
+                  {fightStage.part === 4 && <Typewriter text="This is your last chance to edit your choices before combat begins." />}
+                  {fightStage.part === 5 && <div className="centralFightTextFadeOut">This is your last chance to edit your choices before combat begins.</div>}
+                  {fightStage.part === 6 && <div className="beginFightOrMakeEditsContainer">
+                    <div className="letsBeginButton">Let's Begin</div>
+                    <div className="makeFurtherEditsButton" onClick={closeFightModal}>Make Further Edits...</div></div>}
                 </div>}
                 <div className="fightListContainer">
                   {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}
