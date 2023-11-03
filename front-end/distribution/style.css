@@ -230,11 +230,23 @@ body {
   position: relative;
 }
 
+@keyframes expandFightListTeam {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 30%;
+  }
+}
+
 .friendlyFightListBackground {
   z-index: 0;
+  box-sizing: border-box;
   position: absolute;
   height: calc(100% - 4vw);
   width: calc(100% - 4vw);
+  border: 0.5vw solid #0b1029;
   border-radius: 3vw;
   top: 2vw;
   left: 2vw;
@@ -242,14 +254,16 @@ body {
   background-repeat: repeat;
   background-size: 800px 800px;
   opacity: 0;
-  animation: imageBackgroundAppears 3s ease forwards;
+  animation: imageBackgroundAppears 4s ease forwards;
 }
 
 .enemyFightListBackgroundImage {
   z-index: 0;
+  box-sizing: border-box;
   position: absolute;
   height: calc(100% - 4vw);
   width: calc(100% - 4vw);
+  border: 0.5vw solid #b34e14;
   border-radius: 3vw;
   top: 2vw;
   left: 2vw;
@@ -257,7 +271,7 @@ body {
   background-repeat: repeat;
   background-size: 400px 400px;
   opacity: 0;
-  animation: imageBackgroundAppears 3s ease forwards;
+  animation: imageBackgroundAppears 4s ease forwards;
 }
 
 .fightListBackgroundDarken {
@@ -270,7 +284,7 @@ body {
   left: 2vw;
   background-color: black;
   opacity: 0;
-  animation: darkenBackgroundAppears 3s ease forwards;
+  animation: darkenBackgroundAppears 4s ease forwards;
 }
 
 @keyframes darkenBackgroundAppears {
@@ -339,11 +353,12 @@ body {
 }
 
 .centralFightListTextPart3 {
+  display: flex;
+  position: relative;
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
   text-align: center;
-  display: flex;
   height: 100%;
   width: 100%;
   animation: contractFightListText 2s ease forwards;
@@ -360,17 +375,56 @@ body {
   }
 }
 
-@keyframes expandFightListTeam {
+.centralTextDarkenedBackgroundPart3 {
+  z-index: -1;
+  position: absolute;
+  box-sizing: border-box;
+  height: calc(100% - 4vw);
+  width: calc(100% - 2vw);
+  top: 2vw;
+  left: 1vw;
+  border-radius: 3vw;
+  background-color: black;
+  opacity: 0;
+  animation: darkenBackground 4s ease forwards;
+}
+
+@keyframes darkenBackground {
   from {
-    width: 0%;
+    opacity: 0;
   }
 
   to {
-    width: 30%;
+    opacity: 0.4;
+  }
+}
+
+.centralTextDarkenedBackgroundPart3Border {
+  z-index: -1;
+  position: absolute;
+  box-sizing: border-box;
+  height: calc(100% - 4vw);
+  width: calc(100% - 2vw);
+  top: 2vw;
+  left: 1vw;
+  border: 0.5vw solid black;
+  border-radius: 3vw;
+  opacity: 0;
+  animation: darkenBackgroundBorder 4s ease forwards;
+}
+
+@keyframes darkenBackgroundBorder {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
 .centralFightListTextPart4 {
+  position: relative;
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
@@ -379,6 +433,30 @@ body {
   height: 100%;
   width: 40%;
   padding: 2vw;
+}
+
+.centralTextDarkenedBackgroundPart4 {
+  z-index: -1;
+  position: absolute;
+  height: calc(100% - 4vw);
+  width: calc(100% - 2vw);
+  top: 2vw;
+  left: 1vw;
+  border-radius: 3vw;
+  background-color: black;
+  opacity: 0.4;
+}
+
+.centralTextDarkenedBackgroundPart4Border {
+  z-index: -1;
+  position: absolute;
+  box-sizing: border-box;
+  height: calc(100% - 4vw);
+  width: calc(100% - 2vw);
+  top: 2vw;
+  left: 1vw;
+  border: 0.5vw solid black;
+  border-radius: 3vw;
 }
 
 .fightBackdrop {

@@ -19,8 +19,8 @@ const FightModal = (props) => {
 
   useEffect(() => {
     const stages = [
-      { part: 1, delay: 1000 },
-      { part: 2, delay: 1000 },
+      { part: 1, delay: 5000 }, //final product should be set to delay: 5000
+      { part: 2, delay: 5000 }, //final product should be set to delay: 5000
       { part: 3, delay: 6000 },
     ];
 
@@ -57,7 +57,7 @@ const FightModal = (props) => {
       const largerParty = friendlyParty.length > enemyTeam.length ? friendlyParty.length : enemyTeam.length;
       setTimeout(() => {
         setFightStage({ ...fightStage, part: 4 });
-      }, (5000 + (largerParty * 300)));
+      }, (6000 + (largerParty * 300)));
 
       setTimeout(() => {
         tempFriendlyList.push(<div className="fightListTeamTitle"><Typewriter text="Friendly Party" /></div>);
@@ -113,16 +113,24 @@ const FightModal = (props) => {
               </div>}
               {(fightStage.part === 3 || fightStage.part === 4) && <div className="introductionPart3 mushroomBackground">
                 <div className="fightListContainer">
-                {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}
+                  {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}
                   {fightListBackgroundsVisibility === 'visible' && <div className="friendlyFightListBackground"></div>}
                   <div className="fightListContent">
                     {friendlyList}
                   </div>
                 </div>
-                {fightStage.part === 3 && <div className="centralFightListTextPart3">Here are the current teams you've created.</div>}
-                {fightStage.part === 4 && <div className="centralFightListTextPart4"><Typewriter text="This is your last chance to edit your choices before combat begins." /></div>}
+                {fightStage.part === 3 && <div className="centralFightListTextPart3">Here are the current teams you've created.
+                  {fightListBackgroundsVisibility === 'visible' && <div><div className="centralTextDarkenedBackgroundPart3"></div><div className="centralTextDarkenedBackgroundPart3Border"></div></div>}
+                </div>}
+                {fightStage.part === 4 && <div className="centralFightListTextPart4">
+                  <Typewriter text="This is your last chance to edit your choices before combat begins." />
+                  <div>
+                    <div className="centralTextDarkenedBackgroundPart4"></div>
+                    <div className="centralTextDarkenedBackgroundPart4Border"></div>
+                  </div>
+                </div>}
                 <div className="fightListContainer">
-                {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}
+                  {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}
                   {fightListBackgroundsVisibility === 'visible' && <div className="enemyFightListBackgroundImage"></div>}
                   <div className="fightListContent">
                     {enemyList}
