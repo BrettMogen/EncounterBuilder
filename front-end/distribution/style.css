@@ -465,6 +465,66 @@ body {
   font-size: 37.5%;
 }
 
+.initiativeContainer {
+  position: relative;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  height: 100%;
+  width: 40%;
+  padding: 2vw;
+}
+
+.beginFightOrMakeEditsContainerFadeOut {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  animation: buttonsFadeOut 1.5s ease forwards;
+}
+
+@keyframes buttonsFadeOut {
+  from {
+    opacity: 1;
+  } 
+  to {
+    opacity: 0;
+  }
+}
+
+.letsBeginButtonNoTransition {
+  position: absolute;
+  font-size: 85%;
+  top: 50%;
+  left: 50%;
+  height: 35%;
+  width: 77.5%;
+  background-color: #b51d1d;
+  transform: translate(-50%, -50%);
+  border-radius: 1vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.makeFurtherEditsButtonNoTransition {
+  position: absolute;
+  font-size: 35%;
+  top: 75%;
+  left: 50%;
+  height: 10%;
+  width: 40%;
+  background-color: #0e6ba2;
+  border-radius: 1vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
 .fightBackdrop {
   z-index: 2;
   position: fixed;

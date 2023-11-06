@@ -13,6 +13,10 @@ const Fight = () => {
     setCharactersAreFighting(true);
   }
 
+  const updateCharactersAreFighting = function(value) {
+    setCharactersAreFighting(value);
+  }
+
   let content;
 
   if (modalIsShowing && !charactersAreFighting) {
@@ -24,7 +28,7 @@ const Fight = () => {
         <div className="darkenBackground"></div>
       </div>
   } else {
-    content = <FightModal data={setCharactersAreFighting}/>
+    content = <FightModal updateCharactersAreFighting={updateCharactersAreFighting}/>
   }
 
   return content;

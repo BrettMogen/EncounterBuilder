@@ -3,13 +3,10 @@ import { MainContext } from '../context.js';
 import Typewriter from './Typewriter.js';
 
 const FightModal = (props) => {
-  console.log('props', props);
-  console.log('props.data', props.data);
-
-  const setCharactersAreFighting = props.data;
+  const updateCharactersAreFighting = props.updateCharactersAreFighting;
 
   const closeFightModal = function () {
-    setCharactersAreFighting(false);
+    updateCharactersAreFighting(false);
   }
 
   const [fightStage, setFightStage] = useState({ stage: 'introduction', part: 1 });
@@ -21,7 +18,7 @@ const FightModal = (props) => {
     const stages = [
       { part: 1, delay: 1000 }, //final product should be set to delay: 5000
       { part: 2, delay: 1000 }, //final product should be set to delay: 5000
-      { part: 3, delay: 6000 },
+      { part: 3, delay: 1000 },  // set to 6000
     ];
 
     let counter = 0;
@@ -57,19 +54,19 @@ const FightModal = (props) => {
       const largerParty = friendlyParty.length > enemyTeam.length ? friendlyParty.length : enemyTeam.length;
       setTimeout(() => {
         const stages = [
-          { part: 4, delay: 1000 }, //set to 10,000
-          { part: 5, delay: 1500 }, 
-          { part: 6, delay: 11000 },
+          { part: 4, delay: 10000 }, //set to 10,000
+          { part: 5, delay: 1500 },
+          { part: 6, delay: 0 },
         ];
-    
+
         let counter = 0;
-    
+
         const updateFightStage = () => {
           if (counter < stages.length) {
             const stage = stages[counter];
             setFightStage({ ...fightStage, part: stage.part });
             counter++;
-    
+
             const delay = stage.delay;
             setTimeout(updateFightStage, delay);
           }
@@ -116,47 +113,83 @@ const FightModal = (props) => {
         startPushing();
       }, 1000);
     }
-  }, [fightStage])
+  }, [fightStage]);
+
+  const startInitiativeStage = function () {
+    setFightStage({ stage: 'initiative', part: 0 });
+  }
+
+  useEffect(() => {
+    if ( fightStage.stage === 'initiative' && fightStage.part === 0) {
+      const stages = [
+        { part: 1, delay: 2000 }, 
+        { part: 2, delay: 1500 },
+        // { part: 3, delay: 0 },
+      ];
+
+      let counter = 0;
+
+      const updateFightStage = () => {
+        if (counter < stages.length) {
+          const stage = stages[counter];
+          setFightStage({ ...fightStage, part: stage.part });
+          counter++;
+
+          const delay = stage.delay;
+          setTimeout(updateFightStage, delay);
+        }
+      };
+
+      updateFightStage();
+    }
+  }, [fightStage]);
 
   return (
     <div>
       <div className="fightModalContainer">
         <div className="fightModal">
           {/* Introduction Stage */}
-          {fightStage.stage === 'introduction' &&
-            <div className="fightIntroduction">
-              {fightStage.part === 1 && <div className="introductionPart1 mushroomBackground">
-                <Typewriter text='Welcome to the fight simulator!' />
-              </div>}
-              {fightStage.part === 2 && <div className="introductionPart2 mushroomBackground">
-                <Typewriter text="Here are the current teams you've created." />
-              </div>}
-              {(fightStage.part === 3 || fightStage.part === 4 || fightStage.part === 5 || fightStage.part === 6) && <div className="introductionPart3 mushroomBackground">
-                <div className="fightListContainer">
-                  {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}
-                  {fightListBackgroundsVisibility === 'visible' && <div className="friendlyFightListBackground"></div>}
-                  <div className="fightListContent">
-                    {friendlyList}
-                  </div>
-                </div>
-                {fightStage.part === 3 && <div className="centralFightListTextPart3">Here are the current teams you've created.
-                </div>}
-                {(fightStage.part === 4 || fightStage.part === 5 || fightStage.part === 6) && <div className="centralFightListTextPart4">
-                  {fightStage.part === 4 && <Typewriter text="This is your last chance to edit your choices before combat begins." />}
-                  {fightStage.part === 5 && <div className="centralFightTextFadeOut">This is your last chance to edit your choices before combat begins.</div>}
-                  {fightStage.part === 6 && <div className="beginFightOrMakeEditsContainer">
-                    <div className="letsBeginButton">Let's Begin</div>
-                    <div className="makeFurtherEditsButton" onClick={closeFightModal}>Make Further Edits...</div></div>}
-                </div>}
-                <div className="fightListContainer">
-                  {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}
-                  {fightListBackgroundsVisibility === 'visible' && <div className="enemyFightListBackgroundImage"></div>}
-                  <div className="fightListContent">
-                    {enemyList}
-                  </div>
-                </div>
-              </div>}
+          <div className="fightIntroduction">
+            {(fightStage.stage === 'introduction' && fightStage.part === 1) && <div className="introductionPart1 mushroomBackground">
+              <Typewriter text='Welcome to the fight simulator!' />
             </div>}
+            {(fightStage.stage === 'introduction' && fightStage.part === 2) && <div className="introductionPart2 mushroomBackground">
+              <Typewriter text="Here are the current teams you've created." />
+            </div>}
+            {((fightStage.stage === 'introduction' && fightStage.part !== 1 && fightStage.part !== 2) || fightStage.stage === 'initiative') && <div className="introductionPart3 mushroomBackground">
+              <div className="fightListContainer">
+                {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}
+                {fightListBackgroundsVisibility === 'visible' && <div className="friendlyFightListBackground"></div>}
+                <div className="fightListContent">
+                  {friendlyList}
+                </div>
+              </div>
+              {(fightStage.stage === 'introduction' && fightStage.part === 3) && <div className="centralFightListTextPart3">Here are the current teams you've created.
+              </div>}
+              {(fightStage.stage === 'introduction' && (fightStage.part === 4 || fightStage.part === 5 || fightStage.part === 6)) && <div className="centralFightListTextPart4">
+                {fightStage.part === 4 && <Typewriter text="This is your last chance to edit your choices before combat begins." />}
+                {fightStage.part === 5 && <div className="centralFightTextFadeOut">This is your last chance to edit your choices before combat begins.</div>}
+                {fightStage.part === 6 && <div className="beginFightOrMakeEditsContainer">
+                  <div className="letsBeginButton" onClick={startInitiativeStage}>Let's Begin</div>
+                  <div className="makeFurtherEditsButton" onClick={closeFightModal}>Make Further Edits...</div>
+                </div>}
+              </div>}
+              {fightStage.stage === 'initiative' && <div className="initiativeContainer">
+               {fightStage.part === 1 && <div className="beginFightOrMakeEditsContainerFadeOut">
+                  <div className="letsBeginButtonNoTransition">Let's Begin</div>
+                  <div className="makeFurtherEditsButtonNoTransition">Make Further Edits...</div>
+                </div>}
+                {fightStage.part === 2 && <Typewriter text="Let's roll initiative for both teams to determine combat order."/>}
+              </div>}
+              <div className="fightListContainer">
+                {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}
+                {fightListBackgroundsVisibility === 'visible' && <div className="enemyFightListBackgroundImage"></div>}
+                <div className="fightListContent">
+                  {enemyList}
+                </div>
+              </div>
+            </div>}
+          </div>
         </div>
       </div>
       <div className="closeFightModalContainer">
