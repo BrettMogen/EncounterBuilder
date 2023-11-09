@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../context.js';
 import Typewriter from './Typewriter.js';
+import BuildFightListItem from './BuildFightListItem.js';
 
 const FightModal = (props) => {
   const updateCharactersAreFighting = props.updateCharactersAreFighting;
@@ -89,10 +90,8 @@ const FightModal = (props) => {
         const startPushing = function () {
           setTimeout(() => {
             if (index < friendlyParty.length) {
-              tempFriendlyList.push(
-                <div key={index} className="fightListItem">
-                  <Typewriter text={friendlyParty[index].props.character.name} delayTime={130} />
-                </div>);
+            //  console.log('startPushing', friendlyParty[index].props.character);
+              tempFriendlyList.push(<BuildFightListItem key={index} partyAndIndex={['anything', index]}/>);
             }
 
             if (index < enemyTeam.length) {
@@ -123,8 +122,8 @@ const FightModal = (props) => {
     if ( fightStage.stage === 'initiative' && fightStage.part === 0) {
       const stages = [
         { part: 1, delay: 2000 }, 
-        { part: 2, delay: 1500 },
-        // { part: 3, delay: 0 },
+        { part: 2, delay: 3500 },
+        { part: 3, delay: 0 },
       ];
 
       let counter = 0;
@@ -174,12 +173,14 @@ const FightModal = (props) => {
                   <div className="makeFurtherEditsButton" onClick={closeFightModal}>Make Further Edits...</div>
                 </div>}
               </div>}
+              {/* Initiative Stage */}
               {fightStage.stage === 'initiative' && <div className="initiativeContainer">
                {fightStage.part === 1 && <div className="beginFightOrMakeEditsContainerFadeOut">
                   <div className="letsBeginButtonNoTransition">Let's Begin</div>
                   <div className="makeFurtherEditsButtonNoTransition">Make Further Edits...</div>
                 </div>}
-                {fightStage.part === 2 && <Typewriter text="Let's roll initiative for both teams to determine combat order."/>}
+                {fightStage.part === 2 && <Typewriter text="Let's roll initiative for both teams."/>}
+                {fightStage.part === 3 && <div className="rollInitiativeFadeOut">Let's roll initiative for both teams.</div>}
               </div>}
               <div className="fightListContainer">
                 {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}
