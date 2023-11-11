@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../context.js';
 import Typewriter from './Typewriter.js';
-import BuildFightListItem from './BuildFightListItem.js';
+import CreateFightListItem from './CreateFightListItem.js';
 
 const FightModal = (props) => {
   const updateCharactersAreFighting = props.updateCharactersAreFighting;
@@ -90,15 +90,11 @@ const FightModal = (props) => {
         const startPushing = function () {
           setTimeout(() => {
             if (index < friendlyParty.length) {
-            //  console.log('startPushing', friendlyParty[index].props.character);
-              tempFriendlyList.push(<BuildFightListItem key={index} partyAndIndex={['anything', index]}/>);
+              tempFriendlyList.push(<CreateFightListItem key={index} character={friendlyParty[index].props.character} />);
             }
 
             if (index < enemyTeam.length) {
-              tempEnemyList.push(
-                <div key={index} className="fightListItem">
-                  <Typewriter text={enemyTeam[index].props.character.name} delayTime={130} />
-                </div>);
+              tempEnemyList.push(<CreateFightListItem key={index} character={enemyTeam[index].props.character} />);
             }
 
             index++;
@@ -119,9 +115,9 @@ const FightModal = (props) => {
   }
 
   useEffect(() => {
-    if ( fightStage.stage === 'initiative' && fightStage.part === 0) {
+    if (fightStage.stage === 'initiative' && fightStage.part === 0) {
       const stages = [
-        { part: 1, delay: 2000 }, 
+        { part: 1, delay: 2000 },
         { part: 2, delay: 3500 },
         { part: 3, delay: 0 },
       ];
@@ -175,11 +171,11 @@ const FightModal = (props) => {
               </div>}
               {/* Initiative Stage */}
               {fightStage.stage === 'initiative' && <div className="initiativeContainer">
-               {fightStage.part === 1 && <div className="beginFightOrMakeEditsContainerFadeOut">
+                {fightStage.part === 1 && <div className="beginFightOrMakeEditsContainerFadeOut">
                   <div className="letsBeginButtonNoTransition">Let's Begin</div>
                   <div className="makeFurtherEditsButtonNoTransition">Make Further Edits...</div>
                 </div>}
-                {fightStage.part === 2 && <Typewriter text="Let's roll initiative for both teams."/>}
+                {fightStage.part === 2 && <Typewriter text="Let's roll initiative for both teams." />}
                 {fightStage.part === 3 && <div className="rollInitiativeFadeOut">Let's roll initiative for both teams.</div>}
               </div>}
               <div className="fightListContainer">
