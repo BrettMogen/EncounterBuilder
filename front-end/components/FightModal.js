@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../context.js';
 import Typewriter from './Typewriter.js';
 import CreateFightListItem from './CreateFightListItem.js';
+import RollingInitiative from './RollingInitiative.js';
 
 const FightModal = (props) => {
   const updateCharactersAreFighting = props.updateCharactersAreFighting;
@@ -12,8 +13,8 @@ const FightModal = (props) => {
 
   const [fightStage, setFightStage] = useState({ stage: 'introduction', part: 1 });
   const [fightListBackgroundsVisibility, setFightListBackgroundsVisibility] = useState('invisible');
-  const { friendlyParty } = useContext(MainContext);
-  const { enemyTeam } = useContext(MainContext);
+  const { friendlyParty, setFriendlyParty } = useContext(MainContext);
+  const { enemyTeam, setEnemyTeam } = useContext(MainContext);
 
   useEffect(() => {
     const stages = [
@@ -90,11 +91,11 @@ const FightModal = (props) => {
         const startPushing = function () {
           setTimeout(() => {
             if (index < friendlyParty.length) {
-              tempFriendlyList.push(<CreateFightListItem key={index} character={friendlyParty[index].props.character} />);
+              tempFriendlyList.push(<CreateFightListItem key={index} characterTeamIndex={[friendlyParty, index]} />);
             }
 
             if (index < enemyTeam.length) {
-              tempEnemyList.push(<CreateFightListItem key={index} character={enemyTeam[index].props.character} />);
+              tempEnemyList.push(<CreateFightListItem key={index} characterTeamIndex={[enemyTeam, index]} />);
             }
 
             index++;
@@ -119,7 +120,8 @@ const FightModal = (props) => {
       const stages = [
         { part: 1, delay: 2000 },
         { part: 2, delay: 3500 },
-        { part: 3, delay: 0 },
+        { part: 3, delay: 1500 },
+        { part: 4, delay: 1000 },
       ];
 
       let counter = 0;
@@ -177,6 +179,7 @@ const FightModal = (props) => {
                 </div>}
                 {fightStage.part === 2 && <Typewriter text="Let's roll initiative for both teams." />}
                 {fightStage.part === 3 && <div className="rollInitiativeFadeOut">Let's roll initiative for both teams.</div>}
+                {fightStage.part === 4 && <RollingInitiative />}
               </div>}
               <div className="fightListContainer">
                 {fightListBackgroundsVisibility === 'visible' && <div className="fightListBackgroundDarken"></div>}

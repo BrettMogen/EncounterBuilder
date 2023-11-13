@@ -2,16 +2,20 @@ import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../context.js';
 import Typewriter from './Typewriter.js';
 
-const CreateFightListItem = (props) => {
+const CreateFightListItem = ({ characterTeamIndex }) => {
+  const {friendlyParty, enemyTeam} = useContext(MainContext);
+
+  const character = characterTeamIndex[0][characterTeamIndex[1]].props.character;
+
 
   return (
     <div className="fightListItem">
       <div className="fightListItemLeftColumn">
-        <div className="fightListItemArrowIndicator"></div>
+        {(character.isRollingInitiative === true) && <div className="fightListItemArrowIndicator"></div>}
       </div>
       <div className="fightListItemMiddleColumn">
         <div className="fightListItemName">
-          <Typewriter text={props.character.name} delayTime={130} />
+          <Typewriter text={character.name} delayTime={130} />
         </div>
       </div>
       <div className="fightListItemRightColumn">

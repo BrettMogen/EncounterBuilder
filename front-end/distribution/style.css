@@ -572,6 +572,11 @@ body {
   }
 }
 
+.rollingInitiativeContainter {
+  height: 100%;
+  width: 100%;
+}
+
 .fightBackdrop {
   z-index: 2;
   position: fixed;
