@@ -572,9 +572,103 @@ body {
   }
 }
 
-.rollingInitiativeContainter {
+.rollingInitiativeContainer {
   height: 100%;
   width: 100%;
+}
+
+.testImage {
+  height: 50%;
+  width: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.testButtonToChangeImage {
+  height: 100px;
+  width: 100px;
+  background-color: #1d7d36;
+}
+
+.D20-1 {
+  background-image: url('./images/D20-1.png');
+}
+
+.D20-2 {
+  background-image: url('./images/D20-2.png');
+}
+
+.D20-3 {
+  background-image: url('./images/D20-3.png');
+}
+
+.D20-4 {
+  background-image: url('./images/D20-4.png');
+}
+
+.D20-5 {
+  background-image: url('./images/D20-5.png');
+}
+
+.D20-6 {
+  background-image: url('./images/D20-6.png');
+}
+
+.D20-7 {
+  background-image: url('./images/D20-7.png');
+}
+
+.D20-8 {
+  background-image: url('./images/D20-8.png');
+}
+
+.D20-9 {
+  background-image: url('./images/D20-9.png');
+}
+
+.D20-10 {
+  background-image: url('./images/D20-10.png');
+}
+
+.D20-11 {
+  background-image: url('./images/D20-11.png');
+}
+
+.D20-12 {
+  background-image: url('./images/D20-12.png');
+}
+
+.D20-13 {
+  background-image: url('./images/D20-13.png');
+}
+
+.D20-14 {
+  background-image: url('./images/D20-14.png');
+}
+
+.D20-15 {
+  background-image: url('./images/D20-15.png');
+}
+
+.D20-16 {
+  background-image: url('./images/D20-16.png');
+}
+
+.D20-17 {
+  background-image: url('./images/D20-17.png');
+}
+
+.D20-18 {
+  background-image: url('./images/D20-18.png');
+}
+
+.D20-19 {
+  background-image: url('./images/D20-19.png');
+}
+
+.D20-20 {
+  background-image: url('./images/D20-20.png');
 }
 
 .fightBackdrop {

@@ -12,13 +12,24 @@ const RollingInitiative = () => {
       newFriendlyParty[0] = newCharacter;
       setFriendlyParty(newFriendlyParty);
     }
-  }, [])
+  }, []);
 
+  const [testImage, setTestImage] = useState('1');
 
+  const changeImage = function () {
+    if (testImage === '20') {
+      setTestImage('1');
+    } else {
+      let newTestImage = Number(testImage) + 1;
+      newTestImage = newTestImage.toString();
+      setTestImage(newTestImage);
+    }
+  }
 
   return (
     <div className="rollingInitiativeContainer">
-      <div></div>
+      <div className={`testImage D20-${testImage}`}></div>
+      <div className="testButtonToChangeImage" onClick={changeImage}>Switch</div>
     </div>
   )
 }
