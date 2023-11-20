@@ -2,9 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import { MainContext } from '../context.js';
 
 const RollingInitiative = () => {
-  const { friendlyParty, setFriendlyParty } = useContext(MainContext);
+  const { friendlyParty, setFriendlyParty, enemyTeam, setEnemyTeam } = useContext(MainContext);
 
   useState(() => {
+    console.log('this triggered!');
     if (friendlyParty[0].props.character.isRollingInitiative !== true) {
       let newCharacter = friendlyParty[0];
       newCharacter.props.character.isRollingInitiative = true;

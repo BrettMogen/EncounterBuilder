@@ -9,8 +9,10 @@ const App = () => {
   const [characterOptionsArray, setCharacterOptionsArray] = useState([]);
   const [friendlyParty, setFriendlyParty] = useState([]);
   const [numberOfAllies, setNumberOfAllies] = useState(0);
+  const [originalFriendlyParty, setOriginalFriendlyParty] = useState(undefined);
   const [enemyTeam, setEnemyTeam] = useState([]);
   const [numberOfEnemies, setNumberOfEnemies] = useState(0);
+  const [originalEnemyTeam, setOriginalEnemyTeam] = useState(undefined);
   const [modalIsShowing, setModalIsShowing] = useState(false);
   const [numberOfRows, setNumberOfRows] = useState(3);
   const [teamsContainerHeight, setTeamsContainerHeight] = useState(window.screen.height * 0.7);
@@ -22,8 +24,10 @@ const App = () => {
         characterOptionsArray, setCharacterOptionsArray,
         friendlyParty, setFriendlyParty,
         numberOfAllies, setNumberOfAllies,
+        originalFriendlyParty, setOriginalFriendlyParty,
         enemyTeam, setEnemyTeam,
         numberOfEnemies, setNumberOfEnemies,
+        originalEnemyTeam, setOriginalEnemyTeam,
         modalIsShowing, setModalIsShowing,
         numberOfRows, setNumberOfRows,
         teamsContainerHeight, setTeamsContainerHeight,

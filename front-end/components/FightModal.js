@@ -7,14 +7,20 @@ import RollingInitiative from './RollingInitiative.js';
 const FightModal = (props) => {
   const updateCharactersAreFighting = props.updateCharactersAreFighting;
 
-  const closeFightModal = function () {
-    updateCharactersAreFighting(false);
-  }
+
 
   const [fightStage, setFightStage] = useState({ stage: 'introduction', part: 1 });
   const [fightListBackgroundsVisibility, setFightListBackgroundsVisibility] = useState('invisible');
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
   const { enemyTeam, setEnemyTeam } = useContext(MainContext);
+  const { originalFriendlyParty, originalEnemyTeam } = useContext(MainContext);
+
+  const closeFightModal = function () {
+
+    setFriendlyParty(originalFriendlyParty);
+    setEnemyTeam(originalEnemyTeam);
+    updateCharactersAreFighting(false);
+  }
 
   useEffect(() => {
     const stages = [

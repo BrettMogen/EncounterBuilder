@@ -1,16 +1,20 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MainContext } from '../context.js';
 import FightModal from './FightModal.js';
+import DeepClone from './DeepClone.js';
 
 const Fight = () => {
   const { modalIsShowing } = useContext(MainContext);
   const { friendlyParty, enemyTeam } = useContext(MainContext);
+  const { setOriginalFriendlyParty, setOriginalEnemyTeam } = useContext(MainContext);
   const [charactersAreFighting, setCharactersAreFighting] = useState(false);
 
   const startFight = function () {
     // ((friendlyParty.length > 0) && (enemyTeam.length > 0)) && setCharactersAreFighting(true);
     //Temporarily commenting out while editing CSS
     setCharactersAreFighting(true);
+    setOriginalFriendlyParty(DeepClone(friendlyParty));
+    setOriginalEnemyTeam(DeepClone(enemyTeam));
   }
 
   const updateCharactersAreFighting = function(value) {
