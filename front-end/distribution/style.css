@@ -496,6 +496,8 @@ body {
   font-size: 37.5%;
 }
 
+/* Initiative Stage of Fight Modal */
+
 .initiativeContainer {
   position: relative;
   box-sizing: border-box;
@@ -577,18 +579,35 @@ body {
   width: 100%;
 }
 
-.testImage {
-  height: 50%;
-  width: 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+.rollingInitiativeTopText {
+  height: 25%;
+  width: 100%;
 }
 
-.testButtonToChangeImage {
-  height: 100px;
-  width: 100px;
-  background-color: #1d7d36;
+.currentTopText {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  animation: currentTopTextFadeIn 1s ease forwards;
+}
+
+@keyframes currentTopTextfadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.rollingInitiativeDiceDisplay {
+  height: 50%;
+  width: 100%;
+}
+
+.rollingInitiativeBottomText {
+  height: 25%;
+  width: 100%;
 }
 
 .D20-1 {
