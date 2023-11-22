@@ -62,7 +62,7 @@ const FightModal = (props) => {
       const largerParty = friendlyParty.length > enemyTeam.length ? friendlyParty.length : enemyTeam.length;
       setTimeout(() => {
         const stages = [
-          { part: 4, delay: 10000 }, //set to 10,000
+          { part: 4, delay: 1000 }, //set to 10,000
           { part: 5, delay: 1500 },
           { part: 6, delay: 0 },
         ];
