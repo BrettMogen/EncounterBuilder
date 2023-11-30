@@ -584,11 +584,11 @@ body {
   width: 100%;
 }
 
-.currentTopText {
+.topTextEnters {
   height: 100%;
   width: 100%;
   opacity: 0;
-  animation: currentTopTextFadeIn 1s ease forwards;
+  animation: currentTopTextFadeIn 0.5s ease forwards;
 }
 
 @keyframes currentTopTextfadeIn {
@@ -603,6 +603,38 @@ body {
 .rollingInitiativeDiceDisplay {
   height: 50%;
   width: 100%;
+}
+
+.enterDie {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  animation: currentDisplayedDieFadeIn 0.25s ease forwards;
+}
+
+@keyframes currentDisplayedDieFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.exitDie {
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  animation: currentDisplayedDieFadeOut 0.25s ease forwards;
+}
+
+@keyframes currentDisplayedDieFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .rollingInitiativeBottomText {
