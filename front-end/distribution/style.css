@@ -591,7 +591,7 @@ body {
   animation: currentTopTextFadeIn 0.5s ease forwards;
 }
 
-@keyframes currentTopTextfadeIn {
+@keyframes currentTopTextFadeIn {
   from {
     opacity: 0;
   }
