@@ -582,6 +582,7 @@ body {
 .rollingInitiativeTopText {
   height: 25%;
   width: 100%;
+  font-size: 2.5vw;
 }
 
 .topTextEnters {
@@ -603,12 +604,17 @@ body {
 .rollingInitiativeDiceDisplay {
   height: 50%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .enterDie {
   height: 100%;
-  width: 100%;
+  width: 52%;
   opacity: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
   animation: currentDisplayedDieFadeIn 0.25s ease forwards;
 }
 
@@ -623,8 +629,10 @@ body {
 
 .exitDie {
   height: 100%;
-  width: 100%;
+  width: 52%;
   opacity: 1;
+  background-repeat: no-repeat;
+  background-size: contain;
   animation: currentDisplayedDieFadeOut 0.25s ease forwards;
 }
 
@@ -640,6 +648,7 @@ body {
 .rollingInitiativeBottomText {
   height: 25%;
   width: 100%;
+  font-size: 2vw;
 }
 
 .D20-1 {
