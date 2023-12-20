@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { MainContext } from '../context.js';
+import DeepClone from './DeepClone.js';
 
 const RollingInitiative = () => {
-  const { friendlyParty, enemyTeam } = useContext(MainContext);
+  const { friendlyParty, setFriendlyParty} = useContext(MainContext);
+  const { enemyTeam, setEnemyTeam } = useContext(MainContext);
 
   const [topText, setTopText] = useState(''); //reset to ''
   const [displayedDie, setDisplayedDie] = useState(''); // reset to ''
@@ -12,7 +14,8 @@ const RollingInitiative = () => {
   const generateD20 = () => Math.floor(20 * Math.random()) + 1;
   
   //control dice entering and leaving, then handle bottom text entering as well as all sections leaving(final stage for each character)
-  const startRolling = (currentCharacter, rollCounter) => {
+  const startRolling = (index, currentParty, rollCounter) => {
+    const currentCharacter = currentParty[index];
     const currentRoll = generateD20();
 
     setDisplayedDie(<div className={`D20-${currentRoll} enterDie`}></div>);
@@ -25,11 +28,11 @@ const RollingInitiative = () => {
       }, 750);
 
       setTimeout(() => {
-        startRolling(currentCharacter, newRollCounter);
+        startRolling(index, currentParty, newRollCounter);
       }, 1000);
     } else {
       const finalInitiative = currentRoll + currentCharacter.props.character.initiative;
-      const aOrAn = 'a';
+      let aOrAn = 'a';
       if (currentRoll === 8 || currentRoll === 11 || currentRoll === 18) {
         aOrAn = 'an';
       }
@@ -55,34 +58,57 @@ const RollingInitiative = () => {
   };
 
   //top text enters, and startRolling is called to begin dice being displayed for that character
-  const updateNextCharacter = function (currentCharacter) {
+  const updateNextCharacter = function (index, currentParty) {
+    const currentCharacter = currentParty[index];
     setTopText(<div className="topTextEnters">{currentCharacter.props.character.name} is rolling initiative...</div>);
+    let clonedCharacter = DeepClone(currentParty[index]);
+    let clonedArray = DeepClone(currentParty);
+    clonedCharacter.props.character.isRollingInitiative = true;
+    clonedArray[index] = clonedCharacter;
+    console.log('currentParty', currentParty);
+    console.log('currentParty === friendlyParty', currentParty === friendlyParty);
+    if (currentParty === friendlyParty) {
+     setFriendlyParty((prevFriendlyParty => {
+      const newFriendlyParty = [...prevFriendlyParty];
+      newFriendlyParty[index] = clonedCharacter;
+      return newFriendlyParty;
+     }));
+    } else {
+      setEnemyTeam(clonedArray);
+    }
     setBottomText(<div></div>);
     setTimeout(() => {
-      startRolling(currentCharacter, 0);
+      startRolling(index,currentParty, 0);
     }, 1500);
 
   }
 
   //runs once on initial render to begin cycling through each character and sending them to updateNextCharacter. After parties are exhausted, do something else
   useEffect(() => {
-    let counter = 0;
+    let index = 0;
     let currentParty = friendlyParty;
 
     const cycleThroughBothParties = function () {
-      updateNextCharacter(currentParty[counter]);
+      if (currentParty === friendlyParty) {
+        updateNextCharacter(index, friendlyParty);
+      } else {
+        updateNextCharacter(index, enemyTeam);
+      }
+      
 
       setTimeout(() => {
-        if (counter < currentParty.length - 1) {
-          counter++;
+        if (index < currentParty.length - 1) {
+          index++;
           cycleThroughBothParties();
-        } else if (counter === currentParty.length - 1) {
+        } else if (index === currentParty.length - 1) {
           if (currentParty === friendlyParty) {
-            counter = 0;
+            index = 0;
             currentParty = enemyTeam;
             cycleThroughBothParties();
           } else {
             console.log('Both parties are exhausted.');
+            console.log('friendlyParty', friendlyParty);
+            console.log('enemyTeam', enemyTeam);
           }
         }
       }, 12000);

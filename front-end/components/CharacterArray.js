@@ -6,6 +6,7 @@ const characters = [
     inFriendlyParty: false,
     inEnemyTeam: false,
     showModal: false,
+    isRollingInitiative: undefined,
     name: 'Ranger',
     cssName: 'ranger',
     cssBorderColor: '#295e21',

@@ -3,19 +3,23 @@ import { MainContext } from '../context.js';
 import Typewriter from './Typewriter.js';
 
 const CreateFightListItem = ({ characterTeamIndex }) => {
-  const {friendlyParty, enemyTeam} = useContext(MainContext);
+  const { friendlyParty, enemyTeam } = useContext(MainContext);
+  const [currentCharacter, setCurrentCharacter] = useState(friendlyParty[characterTeamIndex[1]]);
 
-  const character = characterTeamIndex[0][characterTeamIndex[1]].props.character;
-
+  useEffect(() => {
+    if (characterTeamIndex[0] === enemyTeam) {
+      setCurrentCharacter(enemyTeam[characterTeamIndex[1]]);
+    }
+  }, [])
 
   return (
     <div className="fightListItem">
       <div className="fightListItemLeftColumn">
-        {(character.isRollingInitiative === true) && <div className="fightListItemArrowIndicator"></div>}
+      {(currentCharacter.props.character.isRollingInitiative === true) && <div className="fightListItemArrowIndicator"></div>}
       </div>
       <div className="fightListItemMiddleColumn">
         <div className="fightListItemName">
-          <Typewriter text={character.name} delayTime={130} />
+          <Typewriter text={currentCharacter.props.character.name} delayTime={130} />
         </div>
       </div>
       <div className="fightListItemRightColumn">
