@@ -7,8 +7,6 @@ import RollingInitiative from './RollingInitiative.js';
 const FightModal = (props) => {
   const updateCharactersAreFighting = props.updateCharactersAreFighting;
 
-
-
   const [fightStage, setFightStage] = useState({ stage: 'introduction', part: 1 });
   const [fightListBackgroundsVisibility, setFightListBackgroundsVisibility] = useState('invisible');
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
@@ -92,8 +90,6 @@ const FightModal = (props) => {
       }, 500);
 
       setTimeout(() => {
-
-
         const startPushing = function () {
           setTimeout(() => {
             if (index < friendlyParty.length) {
