@@ -3,7 +3,7 @@ import { MainContext } from '../context.js';
 import DeepClone from './DeepClone.js';
 
 const RollingInitiative = () => {
-  const { friendlyParty, setFriendlyParty} = useContext(MainContext);
+  const { friendlyParty, setFriendlyParty } = useContext(MainContext);
   const { enemyTeam, setEnemyTeam } = useContext(MainContext);
 
   const [topText, setTopText] = useState(''); //reset to ''
@@ -12,7 +12,7 @@ const RollingInitiative = () => {
 
   //helper function to generate new D20 rolls
   const generateD20 = () => Math.floor(20 * Math.random()) + 1;
-  
+
   //control dice entering and leaving, then handle bottom text entering as well as all sections leaving(final stage for each character)
   const startRolling = (index, currentParty, rollCounter) => {
     const currentCharacter = currentParty[index];
@@ -61,24 +61,20 @@ const RollingInitiative = () => {
   const updateNextCharacter = function (index, currentParty) {
     const currentCharacter = currentParty[index];
     setTopText(<div className="topTextEnters">{currentCharacter.props.character.name} is rolling initiative...</div>);
+
     let clonedCharacter = DeepClone(currentParty[index]);
-    let clonedArray = DeepClone(currentParty);
+    let clonedParty = DeepClone(currentParty);
     clonedCharacter.props.character.isRollingInitiative = true;
-    clonedArray[index] = clonedCharacter;
-    console.log('currentParty', currentParty);
-    console.log('currentParty === friendlyParty', currentParty === friendlyParty);
+    clonedParty[index] = clonedCharacter;
     if (currentParty === friendlyParty) {
-     setFriendlyParty((prevFriendlyParty => {
-      const newFriendlyParty = [...prevFriendlyParty];
-      newFriendlyParty[index] = clonedCharacter;
-      return newFriendlyParty;
-     }));
+      setFriendlyParty(clonedParty);
     } else {
-      setEnemyTeam(clonedArray);
+      setEnemyTeam(clonedParty);
     }
+
     setBottomText(<div></div>);
     setTimeout(() => {
-      startRolling(index,currentParty, 0);
+      startRolling(index, currentParty, 0);
     }, 1500);
 
   }
@@ -94,7 +90,6 @@ const RollingInitiative = () => {
       } else {
         updateNextCharacter(index, enemyTeam);
       }
-      
 
       setTimeout(() => {
         if (index < currentParty.length - 1) {
@@ -107,8 +102,6 @@ const RollingInitiative = () => {
             cycleThroughBothParties();
           } else {
             console.log('Both parties are exhausted.');
-            console.log('friendlyParty', friendlyParty);
-            console.log('enemyTeam', enemyTeam);
           }
         }
       }, 12000);

@@ -10,7 +10,11 @@ const CreateFightListItem = ({ characterTeamIndex }) => {
     if (characterTeamIndex[0] === enemyTeam) {
       setCurrentCharacter(enemyTeam[characterTeamIndex[1]]);
     }
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    setCurrentCharacter(characterTeamIndex[0][characterTeamIndex[1]]);
+  }, [friendlyParty, enemyTeam]);
 
   return (
     <div className="fightListItem">

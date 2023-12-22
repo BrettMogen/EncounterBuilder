@@ -13,6 +13,9 @@ const FightModal = (props) => {
   const { enemyTeam, setEnemyTeam } = useContext(MainContext);
   const { originalFriendlyParty, originalEnemyTeam } = useContext(MainContext);
 
+  const [friendlyList, setFriendlyList] = useState([]);
+  const [enemyList, setEnemyList] = useState([]);
+
   const closeFightModal = function () {
 
     setFriendlyParty(originalFriendlyParty);
@@ -42,9 +45,6 @@ const FightModal = (props) => {
 
     updateFightStage();
   }, []);
-
-  const [friendlyList, setFriendlyList] = useState([]);
-  const [enemyList, setEnemyList] = useState([]);
 
   useEffect(() => {
 
