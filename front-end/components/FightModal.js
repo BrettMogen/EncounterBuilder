@@ -16,6 +16,21 @@ const FightModal = (props) => {
   const [friendlyList, setFriendlyList] = useState([]);
   const [enemyList, setEnemyList] = useState([]);
 
+  const {setInitiativeSelector} = useContext(MainContext);
+
+  useEffect(() => {
+    let tempInitiativeSelector = [];    
+    for (let i = 0; i < friendlyParty.length; i++) {
+      tempInitiativeSelector.push(false);
+    } 
+
+    for (let i = 0; i < enemyTeam.length; i++) {
+      tempInitiativeSelector.push(false);
+    } 
+
+    setInitiativeSelector(tempInitiativeSelector);
+  }, []);
+
   const closeFightModal = function () {
 
     setFriendlyParty(originalFriendlyParty);

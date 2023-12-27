@@ -5,6 +5,7 @@ import DeepClone from './DeepClone.js';
 const RollingInitiative = () => {
   const { friendlyParty, setFriendlyParty } = useContext(MainContext);
   const { enemyTeam, setEnemyTeam } = useContext(MainContext);
+  const { initiativeSelector, setInitiativeSelector } = useContext(MainContext);
 
   const [topText, setTopText] = useState(''); //reset to ''
   const [displayedDie, setDisplayedDie] = useState(''); // reset to ''
@@ -62,14 +63,24 @@ const RollingInitiative = () => {
     const currentCharacter = currentParty[index];
     setTopText(<div className="topTextEnters">{currentCharacter.props.character.name} is rolling initiative...</div>);
 
-    let clonedCharacter = DeepClone(currentParty[index]);
-    let clonedParty = DeepClone(currentParty);
-    clonedCharacter.props.character.isRollingInitiative = true;
-    clonedParty[index] = clonedCharacter;
+    // let clonedCharacter = DeepClone(currentParty[index]);
+    // let clonedParty = DeepClone(currentParty);
+    // clonedCharacter.props.character.isRollingInitiative = true;
+    // clonedParty[index] = clonedCharacter;
+    // if (currentParty === friendlyParty) {
+    //   setFriendlyParty(clonedParty);
+    // } else {
+    //   setEnemyTeam(clonedParty);
+    // }
+
     if (currentParty === friendlyParty) {
-      setFriendlyParty(clonedParty);
-    } else {
-      setEnemyTeam(clonedParty);
+      let tempInitiativeSelector = DeepClone(initiativeSelector);
+      tempInitiativeSelector[index] = true;
+      setInitiativeSelector(tempInitiativeSelector);
+    } else if (currentParty === enemyTeam) {
+      let tempInitiativeSelector = DeepClone(initiativeSelector);
+      tempInitiativeSelector[index + friendlyParty.length] = true;
+      setInitiativeSelector(tempInitiativeSelector);
     }
 
     setBottomText(<div></div>);

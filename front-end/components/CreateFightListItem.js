@@ -5,6 +5,16 @@ import Typewriter from './Typewriter.js';
 const CreateFightListItem = ({ characterTeamIndex }) => {
   const { friendlyParty, enemyTeam } = useContext(MainContext);
   const [currentCharacter, setCurrentCharacter] = useState(friendlyParty[characterTeamIndex[1]]);
+  const { initiativeSelector } = useContext(MainContext);
+  const [characterIsRollingInitiative, setCharacterIsRollingInitiative] = useState(undefined);
+
+  useEffect(() => {
+    if (characterTeamIndex[0] === friendlyParty) {
+      setCharacterIsRollingInitiative(initiativeSelector[characterTeamIndex[1]]);
+    } else if (characterTeamIndex[0] === enemyTeam) {
+      setCharacterIsRollingInitiative(initiativeSelector[friendlyParty.length + characterTeamIndex[1]]);
+    }
+  }, [initiativeSelector]);
 
   useEffect(() => {
     if (characterTeamIndex[0] === enemyTeam) {
@@ -12,14 +22,10 @@ const CreateFightListItem = ({ characterTeamIndex }) => {
     }
   }, []);
 
-  useEffect(() => {
-    setCurrentCharacter(characterTeamIndex[0][characterTeamIndex[1]]);
-  }, [friendlyParty, enemyTeam]);
-
   return (
     <div className="fightListItem">
       <div className="fightListItemLeftColumn">
-      {(currentCharacter.props.character.isRollingInitiative === true) && <div className="fightListItemArrowIndicator"></div>}
+      {characterIsRollingInitiative && <div className="fightListItemArrowIndicator"></div>}
       </div>
       <div className="fightListItemMiddleColumn">
         <div className="fightListItemName">

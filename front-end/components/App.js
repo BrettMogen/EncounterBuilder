@@ -17,6 +17,7 @@ const App = () => {
   const [numberOfRows, setNumberOfRows] = useState(3);
   const [teamsContainerHeight, setTeamsContainerHeight] = useState(window.screen.height * 0.7);
   const [containerRowHeight, setContainerRowHeight] = useState((window.screen.height * 0.7) / 3);
+  const [initiativeSelector, setInitiativeSelector] = useState([]);
 
   return (
     <div>
@@ -31,7 +32,8 @@ const App = () => {
         modalIsShowing, setModalIsShowing,
         numberOfRows, setNumberOfRows,
         teamsContainerHeight, setTeamsContainerHeight,
-        containerRowHeight, setContainerRowHeight
+        containerRowHeight, setContainerRowHeight,
+        initiativeSelector, setInitiativeSelector
       }}>
         <div className="header mushroomBackground" >
           <div className="headerTitle">Encounter Builder</div>
