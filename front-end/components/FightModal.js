@@ -40,9 +40,9 @@ const FightModal = (props) => {
 
   useEffect(() => {
     const stages = [
-      { part: 1, delay: 1000 }, //final product should be set to delay: 5000
-      { part: 2, delay: 1000 }, //final product should be set to delay: 5000
-      { part: 3, delay: 1000 },  // set to 6000
+      { part: 1, delay: 5000 }, //final product should be set to delay: 5000
+      { part: 2, delay: 5000 }, //final product should be set to delay: 5000
+      { part: 3, delay: 6000 },  // set to 6000
     ];
 
     let counter = 0;
@@ -75,7 +75,7 @@ const FightModal = (props) => {
       const largerParty = friendlyParty.length > enemyTeam.length ? friendlyParty.length : enemyTeam.length;
       setTimeout(() => {
         const stages = [
-          { part: 4, delay: 1000 }, //set to 10,000
+          { part: 4, delay: 10000 }, //set to 10,000
           { part: 5, delay: 1500 },
           { part: 6, delay: 0 },
         ];
@@ -136,9 +136,9 @@ const FightModal = (props) => {
     if (fightStage.stage === 'initiative' && fightStage.part === 0) {
       const stages = [
         { part: 1, delay: 2000 },
-        { part: 2, delay: 3500 },
-        { part: 3, delay: 1500 },
-        { part: 4, delay: 1000 },
+        { part: 2, delay: 4500 },
+        { part: 3, delay: 3000 },
+        { part: 4, delay: 10000 },
       ];
 
       let counter = 0;
